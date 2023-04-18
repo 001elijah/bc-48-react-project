@@ -1,4 +1,6 @@
-@import-normalize; /* bring in normalize.css styles */
+@import './assets/styles/utils/reset-style';
+@import './assets/styles/utils/vars';
+@import './assets/styles/utils/mixins';
 
 body {
   margin: 0;
