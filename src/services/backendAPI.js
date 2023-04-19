@@ -2,7 +2,7 @@ import axios from "axios";
 
 axios.defaults.baseURL = 'https://flat-backend.p.goit.global';
 
-//---------------------------------------------------------------Auth Services//
+//---------------------------------------------------------------Auth Services----------------------//
 
 export const registerUserApi = ({ name, email, password }) => {
     return axios
@@ -54,8 +54,95 @@ export const addBalanceApi = ({ balance }) => {
         .then(({ data: { balance } }) => ({ balance }));
 }
 
-//---------------------------------------------------------------Personal Plan Services//
-//---------------------------------------------------------------Cashflow Services//
+//---------------------------------------------------------------Personal Plan Services----------------------//
+
+export const prePostPlanAPI = ({ salary, passiveIncome, savings, cost, footage, procent }) => {
+    return axios
+        .post(
+            "/api/personal-plan/pre",
+            {
+                salary,
+                passiveIncome,
+                savings,
+                cost,
+                footage,
+                procent,
+            },
+        )
+        .then(({ data: { salary, passiveIncome, savings, cost, footage, procent, year, month } }) => ({
+            salary,
+            passiveIncome,
+            savings,
+            cost,
+            footage,
+            procent,
+            year,
+            month
+        }));
+};
+
+export const postPlanAPI = ({ salary, passiveIncome, savings, cost, footage, procent }) => {
+    return axios
+        .post(
+            "/api/personal-plan",
+            {
+                salary,
+                passiveIncome,
+                savings,
+                cost,
+                footage,
+                procent,
+            },
+        )
+        .then(({ data: { salary, passiveIncome, savings, cost, footage, procent, year, month } }) => ({
+            salary,
+            passiveIncome,
+            savings,
+            cost,
+            footage,
+            procent,
+            year,
+            month
+        }));
+};
+
+export const getPlanAPI = () => {
+    return axios
+        .get("/api/personal-plan")
+        .then(({ data: { salary, passiveIncome, savings, cost, footage, procent, year, month } }) => ({
+            salary,
+            passiveIncome,
+            savings,
+            cost,
+            footage,
+            procent,
+            year,
+            month
+        }));
+};
+
+export const putPlanAPI = ({ salary, passiveIncome, savings, cost, footage, procent }) => {
+    return axios
+        .put("/api/personal-plan", { salary, passiveIncome, savings, cost, footage, procent })
+        .then(({ data: { salary, passiveIncome, savings, cost, footage, procent, year, month } }) => ({
+            salary,
+            passiveIncome,
+            savings,
+            cost,
+            footage,
+            procent,
+            year,
+            month
+        }));
+};
+
+export const getDailyLimitAPI = () => {
+    return axios
+        .get("/api/personal-plan/daily-limit")
+        .then(({ data: { monthLimit, dailyLimit } }) => ({ monthLimit, dailyLimit }));
+};
+
+//---------------------------------------------------------------Cashflow Services----------------------//
 
 export const getListOfCategoryApi = () => {
     return axios
@@ -98,7 +185,7 @@ export const deleteOneTransactionApi = (transactionId) => {
         .then(() => transactionId);
 }
 
-export const putOneTransactionApi = (transactionId, { type, category, comment, sum, date }) => {
+export const putOneTransactionApi = ({ transactionId, type, category, comment, sum, date }) => {
     return axios
         .put(`/api/cashflow/${transactionId}`, { type, category, comment, sum, date })
         .then(({ data: { type, category, comment, sum }}) => ({ type, category, comment, sum }))
@@ -110,7 +197,7 @@ export const getCashflowStatApi = ({ month, year }) => {
         .then(({ data }) => data);
 }
 
-//---------------------------------------------------------------Dynamics Services//
+//---------------------------------------------------------------Dynamics Services----------------------//
 
 export const getCustomerSavingsForChartApi = () => {
     return axios
