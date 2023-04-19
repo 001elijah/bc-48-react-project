@@ -5,6 +5,7 @@ const navItems = [
     { href: "plan", text: "Personal Plan" },
     { href: "cash-flow", text: "Cashflow" },
     { href: "dynamics", text: "Dynamics" },
+    { href: "statistics", text: "Statistics" },
 ];
 
 const UserNav = () => {
