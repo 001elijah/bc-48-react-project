@@ -7,6 +7,7 @@ import { RegisterPage } from "pages/RegisterPage";
 import { LoginPage } from "pages/LoginPage";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { HomePage } from "pages/HomePage";
+import { StatisticsPage } from "pages/StatisticsPage";
 
 // import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
 
@@ -82,6 +83,10 @@ export const App = () => {
         <Route
           path="/dynamics"
           element={<DynamicsPage />}
+        />
+        <Route
+          path="/statistics"
+          element={<StatisticsPage />}
         />
         <Route
           path="/register"
