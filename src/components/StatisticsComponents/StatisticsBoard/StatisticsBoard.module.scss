@@ -10,7 +10,7 @@
   padding: 16px;
   width: 343px;
 
-  background: $backgroud;
+  background: $text-input-color;
   &:not(:last-child){
     border-bottom: 1px solid $border-color;
   } 
@@ -75,7 +75,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  color: $text-color3;
+  color: $input-hint-color;
   ;
   margin-bottom: 3px;
 }
@@ -162,7 +162,7 @@
   margin-top: 50px;
   margin-bottom: 18px;
 
-  background: $backgroud1;
+  background: $text-input-color1;
   border-radius: 16px;
   border: none;
 

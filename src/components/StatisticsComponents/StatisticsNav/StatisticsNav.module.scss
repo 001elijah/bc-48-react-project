@@ -17,7 +17,7 @@
   width: 106px;
   background: $main-backgroud;
   border-radius: 16px 16px 0px 0px;
-  color:  $non_active;
+  color:  $text-input-title-color;
   cursor: pointer;
 
   @include tablet{
@@ -25,7 +25,7 @@
   }
 }
 .active_link {
-  background: $backgroud;
+  background: $text-input-color;
   border-top: 1px solid  $accent;
   color: $main-white;
 }
