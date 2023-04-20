@@ -1,0 +1,42 @@
+@import '../../../assets/styles/utils/vars';
+
+.allPeriod {
+  font-size: 12px;
+  line-height: 1;
+  color: $main-white;
+  margin-top: 50px;
+}
+
+.list {
+  margin-top: 32px;
+  width: 269px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 17/14;
+  color: rgba(243, 243, 243, 0.4);
+}
+
+.value {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17/14;
+  color: $main-white;
+}
+
+.acumulated {
+  margin-top: 28px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 19/16;
+  color: $main-white;
+}

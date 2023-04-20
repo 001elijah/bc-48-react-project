@@ -1,0 +1,25 @@
+.fileUpload {
+  height: 260px;
+  width: 343px;
+  border-radius: 16px;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #1f2534 50%, #ffffff 50%);
+  background-size: 100% 200%;
+  color: #ffffff;
+
+  input[type='file'] {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
