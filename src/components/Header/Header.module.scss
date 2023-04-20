@@ -1,0 +1,22 @@
+@import 'assets/styles/utils/mixins';
+
+.HeaderBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    @include mobile {
+        max-width: 335px;
+    }
+
+    @include tablet {
+        max-width: 728px;
+    }
+
+    @include desktop {
+        max-width: 1110px;
+        padding: 16px 55px;
+    }
+};

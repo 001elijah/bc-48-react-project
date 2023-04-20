@@ -1,0 +1,58 @@
+@import 'assets/styles/utils/vars';
+@import 'assets/styles/utils/mixins';
+@font-face {
+    font-family: "Lato-Bold";
+    src: local("Lato-Bold"),
+        url("../../../assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+    font-weight: 700;
+};
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+};
+
+.ItemsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include desktop {
+        flex-direction: row;
+        gap: 32px;
+    }
+};
+
+.Item {
+    font-family: "Lato-Bold";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.11;
+    text-decoration: none;
+    margin: 10px 0;
+    text-align: center;
+    color: $main-white;
+    &:hover {
+        color: $accent;
+    }
+
+    @include desktop {
+        margin: 0;
+    }
+};
+
+.Active {
+    font-family: "Lato-Bold";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.11;
+    text-decoration: none;
+    margin: 10px 0;
+    text-align: center;
+    color: $accent;
+};

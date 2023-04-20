@@ -1,16 +1,37 @@
-import AuthNav from "./AuthNav/AuthNav";
-import UserNav from "./UserNav/UserNav";
-
-// const navItems = [
-//     { href: "/", text: "Home" },
-//     { href: "movies", text: "Movies" }
-// ];
+import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+import { selectAuthorized } from 'redux/selectors/authSelectors';
+import { UserNav } from './UserNav/UserNav';
+import { Navigation } from './Navigation/Navigation';
+import { Logo } from './Logo/Logo';
+import s from './Header.module.scss';
 
 export const Header = () => {
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1279px)' });
+    const isBigScreen = useMediaQuery({ query: '(min-width: 1280px)' });
+    const isAuthorized = useSelector(selectAuthorized);
+    
     return (
-        <header>
-            <UserNav />
-            <AuthNav />
-        </header>
+        <header className={s.Container}>
+            {(isAuthorized && isTabletOrMobile)&&
+                <div className={s.HeaderBox}>
+                    <Logo />
+                    <Navigation />
+                </div>}
+
+            {(isAuthorized && isBigScreen)&&
+                <div className={s.HeaderBox}>
+                    <UserNav />
+                    <Logo />
+                    <Navigation />
+                </div>
+            }
+            {!isAuthorized &&
+                <div className={s.HeaderBox}>
+                    <Logo />
+                    <Navigation />
+                </div>
+            }
+        </header>  
     );
-}
+};
