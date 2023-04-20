@@ -1,23 +1,6 @@
 import s from './StatisticsBoard.module.scss';
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-
-import 'react-datepicker/dist/react-datepicker.css';
-
-// CSS Modules, react-datepicker-cssmodules.css
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-
-const Example = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  console.log(startDate)
-  return (
-    <DatePicker 
-      dateFormat="MMMM, yyyy"
-    selected={startDate} 
-    onChange={date => setStartDate(date.getMonth)}
-    showMonthYearPicker />
-  );
-};
+import LetterSvg from './Svg'
+import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
 
 const data = [
   {
@@ -50,39 +33,35 @@ const data = [
   },
   { id: 5, date: '05.01.2023', comment: 'Bag', category: 'Other', sum: '1500' },
 ];
-const staticNavList = ['Expenses', 'Categories'];
+
 
 export const Item = ({ id, date, comment, category, sum }) => {
   return (
     <>
       <li key={id} className={s.wrapper}>
-        <div>
-          <p className={s.expense_date}>{date}</p>
-          <p className={s.expense_comment}>{comment}</p>
-          <p className={s.expense_category}> {category}</p>
-        </div>
-        <div>
+        <div className={s.comment_block}>
+          <div>
+            <p className={s.expense_date}>{date}</p>
+            <p className={s.expense_comment}>{comment}</p>
+          </div>
           <p className={s.expense_sum}> {sum} UAH</p>
-          <button>edit</button>
-          <button>del</button>
+        </div>
+        <div className={s.category_block}>
+          <p className={s.expense_category}> {category}</p>
+          <div className={s.icon_block}>
+            {LetterSvg('edit', '#3A6AF5', '20')}
+            {LetterSvg('delete', 'white', '20')}
+          </div>
         </div>
       </li>
     </>
   );
 };
 
-const ExpensesList = () => {
+export const ExpensesList = () => {
   return (
     <>
-      <Example />
-      <ul className={s.static_nav}>
-        {staticNavList.map(nav => (
-          <li className={s.static_nav__item}>
-            <span className={s.static_nav__title}>{nav}</span>
-          </li>
-        ))}
-      </ul>
-
+      <StatisticsNav />
       <ul>
         {data.map(item => (
           <Item key={item.id} {...item} />
@@ -91,4 +70,5 @@ const ExpensesList = () => {
     </>
   );
 };
-export default ExpensesList;
+
+

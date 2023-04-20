@@ -1,0 +1,34 @@
+.static_nav {
+  display: flex;
+}
+
+.link {
+  width: 106px;
+  background: rgba(31, 37, 52, 0.4);
+  border-radius: 16px 16px 0px 0px;
+  color: rgba(243, 243, 243, 0.4);
+  cursor: pointer;
+}
+.active_link {
+  background: #252c41;
+  border-top: 1px solid #3a6af5;
+  color: #F3F3F3;
+}
+.link__title {
+  display: flex;
+  justify-content: center;
+
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+
+  /* white */
+  color: currentColor;
+}
+.active_link__title {
+  color: rgba(243, 243, 243, 0.4);
+}

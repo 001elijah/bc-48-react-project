@@ -1,11 +1,6 @@
 .wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 16px;
-  gap: 15px;
   isolation: isolate;
-
   width: 343px;
   height: 104px;
   background: #252c41;
@@ -52,33 +47,45 @@
   color: #ffffff;
   margin-bottom: 14px;
 }
-.static_nav {
+
+.react-datepicker__month-wrapper {
+  margin-bottom: 15px;
+}
+.icon_block {
+}
+.comment_block {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.static_nav__item_active {
-  background: #252c41;
-  border-top: 1px solid #3a6af5;
-}
-.static_nav__item {
-  width: 106px;
-  background: rgba(31, 37, 52, 0.4);
-  border-radius: 16px 16px 0px 0px;
-}
-.static_nav__title {
+.category_block {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input_field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 217px;
+  height: 56px;
+  text-align: left;
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-bottom: 10px;
+
+  background: rgba(37, 44, 65, 0.5);
+  border-radius: 16px;
+  border: none;
 
   font-family: 'Lato';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  padding-top: 18px;
-  padding-bottom: 18px;
+
 
   /* white */
   color: #f3f3f3;
-}
-.react-datepicker__month-wrapper{
-   margin-bottom: 15px;
 }

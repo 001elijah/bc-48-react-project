@@ -8,6 +8,8 @@ import { LoginPage } from "pages/LoginPage";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { HomePage } from "pages/HomePage";
 import { StatisticsPage } from "pages/StatisticsPage";
+import{ ExpensesList} from './StatisticsComponents/StatisticsBoard/StatisticsBoard'
+import {CategoriesList} from './StatisticsComponents/StatisticsBoard/CategoryBoard'
 
 // import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
 
@@ -87,7 +89,11 @@ export const App = () => {
         <Route
           path="/statistics"
           element={<StatisticsPage />}
-        />
+        >
+        <Route path=':expenses' element={<ExpensesList/>}/>
+        <Route path='/statistics/categories' element={<CategoriesList/>}/>
+        <Route index element={<Navigate to=':expenses'  />} />
+        </Route>
         <Route
           path="/register"
           element={<RegisterPage />}
