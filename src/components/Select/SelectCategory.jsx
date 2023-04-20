@@ -1,12 +1,12 @@
 import Select, {
   //   OptionProps,
-  components,
+  // components,
   //   ControlProps,
   //   Props,
   StylesConfig,
 } from 'react-select';
 import { useState } from 'react';
-import s from './Select.module.scss';
+import s from './SelectCategory.module.scss';
 
 //   <Select
 //        value={value}
@@ -25,24 +25,10 @@ const options = [
   { value: 'Other', label: 'Other' },
 ];
 
-export default function Selected() {
+export default function SelectCategory() {
   const [selectedOption, setSelectedOption] = useState(null);
 
-  console.log(selectedOption);
-  //   const EMOJIS = ['👍'];
-
-  //   const Control = ({ children, ...props }: ControlProps<options, false>) => {
-  //     // @ts-ignore
-  //     // const { emoji, onEmojiClick } = props.selectProps;
-  //     const style = { cursor: 'pointer' };
-
-  //     return (
-  //       <components.Control {...props}>
-  //         <span style={style}>{EMOJIS}</span>
-  //         {children}
-  //       </components.Control>
-  //     );
-  //   };
+  // console.log(selectedOption);
 
   const styles: StylesConfig<options, false> = {
     control: css => ({
@@ -53,6 +39,10 @@ export default function Selected() {
       color: 'blue',
       background: '#252C41',
       borderRadius: '16px',
+    }),
+    indicatorSeparator: base => ({
+      ...base,
+      display: 'none',
     }),
     option: ccs => ({
       //   ...css,
@@ -66,7 +56,7 @@ export default function Selected() {
       ':hover': {
         background: ' #3A6AF5',
         borderRadius: '10px',
-        // color: 'white',
+        color: 'white',
       },
       '::before': {
         position: 'absolute',
@@ -81,35 +71,6 @@ export default function Selected() {
       },
     }),
   };
-
-  //   const customStyles = {
-  //     control: base => ({
-  //       //   ...base,
-  //       //   height: '74px',
-  //     }),
-  //     placeholder: () => ({
-  //       color: 'red',
-  //     }),
-  //     indicatorSeparator: base => ({
-  //       ...base,
-  //       minHeight: '1px',
-  //       height: '2px',
-  //     }),
-  //     indicatorsContainer: base => ({
-  //       ...base,
-  //       height: 200,
-  //       minHeight: 100,
-  //       width: 204,
-  //     }),
-  //   };
-
-  const Control = ({ children, ...props }) => (
-    // console.log(props),
-    // console.log(children),
-    <components.Control {...props}>👍{children}</components.Control>
-    // (<components.Option {...props}>👍{children}</components.Option>)
-    // <compo
-  );
 
   // //// start стрелка
 
@@ -139,25 +100,15 @@ export default function Selected() {
         // defaultValue={options[0]}
         className={s.select}
         // components={{ Option: CustomOption }}
-        components={{ Control }}
+        // components={{ Control }}
         styles={styles}
         onChange={setSelectedOption}
-        placeholder={'Choose'}
+        placeholder={'Per category'}
         options={options}
         theme={theme => ({ ...theme, borderRadius: '16px' })}
         isSearchable={false}
+        indicatorSeparator={false}
       />
     </div>
   );
 }
-
-// const CustomOption = ({ innerProps, isDisabled }) =>
-//   !isDisabled ? (
-//     <div {...innerProps}>{/* your component internals */}</div>
-//   ) : null;
-
-// class Component extends React.Component {
-//   render() {
-//     return <Select components={{ Option: CustomOption }} />;
-//   }
-// }

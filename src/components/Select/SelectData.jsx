@@ -31,10 +31,21 @@ export const SelectData = () => {
       background: '#3A6AF5',
       borderRadius: '16px',
     }),
+    indicatorSeparator: base => ({
+      ...base,
+      display: 'none',
+    }),
+    placeholder: base => ({
+      ...base,
+      fontFamily: '"Lato"',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: '16px',
+      lineHeight: '19px',
+      color: 'rgba(243, 243, 243, 0.4)',
+    }),
+
     option: ccs => ({
-      //   ...css,
-      //   background: 'red',
-      //   position: 'relative',
       padding: '5px',
       borderRadius: '10px',
       paddingLeft: '15px',
@@ -44,13 +55,15 @@ export const SelectData = () => {
       ':hover': {
         background: ' #3A6AF5',
         borderRadius: '10px',
-        // color: 'white',
+        color: 'white',
       },
     }),
   };
 
   return (
     <Select
+      // defaultValue="date"
+      placeholder="Month"
       isSearchable={false}
       options={options}
       className={s.select}
