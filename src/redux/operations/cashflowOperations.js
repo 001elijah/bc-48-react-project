@@ -7,9 +7,9 @@ import {
     // getLimitsAndTotalsApi,
     // postTransactionApi,
     // getListOfTransactionsApi,
-    // deleteOneTransactionApi,
-    // putOneTransactionApi,
-    // getCashflowStatApi
+    deleteOneTransactionApi,
+    putOneTransactionApi,
+    getCashflowStatApi
 } from "../../services/backendAPI";
 
 const axiosHeaderToken = {
@@ -86,41 +86,41 @@ export const getDailyLimit = createAsyncThunk('cashflow/getDailyLimit',
 //     }
 // )
 
-// export const deleteOneTransaction = createAsyncThunk('cashflow/deleteOneTransaction',
-//     async ( transactionId, { getState, rejectWithValue }) => {
-//         const { token } = getState().authorized;
-//         axiosHeaderToken.set(token);
-//         try {
-//             await deleteOneTransactionApi(transactionId);
-//             return transactionId;
-//         } catch (error) {
-//             rejectWithValue(error.message)
-//         }
-//     }
-// )
+export const deleteOneTransaction = createAsyncThunk('cashflow/deleteOneTransaction',
+    async ( transactionId, { getState, rejectWithValue }) => {
+        const { token } = getState().authorized;
+        axiosHeaderToken.set(token);
+        try {
+            await deleteOneTransactionApi(transactionId);
+            return transactionId;
+        } catch (error) {
+            rejectWithValue(error.message)
+        }
+    }
+)
 
-// export const putOneTransaction = createAsyncThunk('cashflow/putOneTransaction',
-//     async (transactionIdAndData, { getState, rejectWithValue }) => {
-//         const { token } = getState().authorized;
-//         axiosHeaderToken.set(token);
-//         try {
-//             const transaction = await putOneTransactionApi(transactionIdAndData);
-//             return transaction;
-//         } catch (error) {
-//             rejectWithValue(error.message)
-//         }
-//     }
-// )
+export const putOneTransaction = createAsyncThunk('cashflow/putOneTransaction',
+    async (transactionIdAndData, { getState, rejectWithValue }) => {
+        const { token } = getState().authorized;
+        axiosHeaderToken.set(token);
+        try {
+            const transaction = await putOneTransactionApi(transactionIdAndData);
+            return transaction;
+        } catch (error) {
+            rejectWithValue(error.message)
+        }
+    }
+)
 
-// export const getCashflowStat = createAsyncThunk('cashflow/getCashflowStat',
-//     async (periodData, { getState, rejectWithValue }) => {
-//         const { token } = getState().authorized;
-//         axiosHeaderToken.set(token);
-//         try {
-//             const statistics = await getCashflowStatApi(periodData);
-//             return statistics;
-//         } catch (error) {
-//             rejectWithValue(error.message)
-//         }
-//     }
-// )
+export const getCashflowStat = createAsyncThunk('cashflow/getCashflowStat',
+    async (periodData, { getState, rejectWithValue }) => {
+        const { token } = getState().authorized;
+        axiosHeaderToken.set(token);
+        try {
+            const statistics = await getCashflowStatApi(periodData);
+            return statistics;
+        } catch (error) {
+            rejectWithValue(error.message)
+        }
+    }
+)

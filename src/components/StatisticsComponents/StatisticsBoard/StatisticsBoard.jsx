@@ -1,6 +1,11 @@
 import s from './StatisticsBoard.module.scss';
-import LetterSvg from './Svg'
+import LetterSvg from './Svg';
 import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
+import {
+  deleteOneTransaction,
+  putOneTransaction,
+} from '../../../redux/operations/cashflowOperations';
+import { useDispatch } from 'react-redux';
 
 const data = [
   {
@@ -34,11 +39,11 @@ const data = [
   { id: 5, date: '05.01.2023', comment: 'Bag', category: 'Other', sum: '1500' },
 ];
 
-
 export const Item = ({ id, date, comment, category, sum }) => {
+  const dispatch = useDispatch();
   return (
     <>
-      <li key={id} className={s.wrapper}>
+      <li key={id} className={s.wrapper_expense}>
         <div className={s.comment_block}>
           <div>
             <p className={s.expense_date}>{date}</p>
@@ -49,8 +54,12 @@ export const Item = ({ id, date, comment, category, sum }) => {
         <div className={s.category_block}>
           <p className={s.expense_category}> {category}</p>
           <div className={s.icon_block}>
-            {LetterSvg('edit', '#3A6AF5', '20')}
-            {LetterSvg('delete', 'white', '20')}
+            {LetterSvg('edit', '#3A6AF5', '20', () =>
+              dispatch(putOneTransaction(id))
+            )}
+            {LetterSvg('delete', 'white', '20', () =>
+              dispatch(deleteOneTransaction(id))
+            )}
           </div>
         </div>
       </li>
@@ -60,15 +69,13 @@ export const Item = ({ id, date, comment, category, sum }) => {
 
 export const ExpensesList = () => {
   return (
-    <>
+    <div className={s.container}>
       <StatisticsNav />
       <ul>
         {data.map(item => (
           <Item key={item.id} {...item} />
         ))}
       </ul>
-    </>
+    </div>
   );
 };
-
-

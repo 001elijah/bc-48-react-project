@@ -1,5 +1,14 @@
+@import 'src/assets/styles/utils/mixins';
 .static_nav {
   display: flex;
+  position: relative;
+  margin-top: 125px;
+  @include tablet{
+    margin-top: 50px;
+  }
+  @include desktop{
+    margin-top: 38px;
+  }
 }
 
 .link {
@@ -8,6 +17,10 @@
   border-radius: 16px 16px 0px 0px;
   color: rgba(243, 243, 243, 0.4);
   cursor: pointer;
+
+  @include tablet{
+    width: 115px;
+  }
 }
 .active_link {
   background: #252c41;

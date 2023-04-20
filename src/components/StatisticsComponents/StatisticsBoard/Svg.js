@@ -1,7 +1,9 @@
 import svg from '../../../assets/icons/sprite.svg';
 
-const LetterSvg = (letter, color, size, id) => (
-    <svg fill={color} width={size} height={size} onClick>
+
+
+const LetterSvg = (letter, color, size, func) => (
+    <svg fill={color} width={size} height={size} onClick={func}>
       <use href={`${svg}#icon-${letter}`} />
     </svg>
   );

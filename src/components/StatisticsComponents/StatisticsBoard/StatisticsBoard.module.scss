@@ -1,8 +1,15 @@
-.wrapper {
+@import 'src/assets/styles/utils/mixins';
+
+.container {
+  @include container;
+}
+
+.wrapper_category,
+.wrapper_expense {
   padding: 16px;
   isolation: isolate;
   width: 343px;
-  height: 104px;
+
   background: #252c41;
   border-bottom: 1px solid rgba(243, 243, 243, 0.06);
   &:first-child {
@@ -10,6 +17,57 @@
   }
   &:last-child {
     border-radius: 0px 0px 16px 16px;
+  }
+  @include tablet {
+    height: 70px;
+    width: 704px;
+    display: flex;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include desktop {
+    width: 769px;
+    display: flex;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.wrapper_category {
+  height: 83px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include tablet {
+    height: 70px;
+    padding: 22px 150px 22px 32px;
+    flex-direction: row;
+  }
+  @include desktop {
+    height: 70px;
+    padding: 22px 150px 22px 32px;
+    flex-direction: row;
+  }
+}
+.wrapper_expense {
+  height: 104px;
+  @include tablet {
+    height: 70px;
+  }
+  @include desktop {
+    height: 70px;
+  }
+}
+.expenses_items {
+  display: flex;
+  justify-content: space-between;
+
+  @include tablet {
+    width: 70%;
+  }
+  @include desktop {
+    width: 70%;
   }
 }
 .expense_date {
@@ -32,6 +90,10 @@
 }
 .expense_comment {
   margin-bottom: 13px;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
 }
 .expense_category {
 }
@@ -42,10 +104,14 @@
   font-size: 18px;
   line-height: 22px;
   text-align: right;
-
-  /* Light/FFFFFF */
   color: #ffffff;
-  margin-bottom: 14px;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
+  @include desktop {
+    margin-bottom: 0;
+  }
 }
 
 .react-datepicker__month-wrapper {
@@ -53,15 +119,35 @@
 }
 .icon_block {
 }
-.comment_block {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+.comment_block,
 .category_block {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include tablet {
+    width: 50%;
+  }
+  @include desktop {
+    width: 50%;
+  }
+}
+.comment_block {
+  @media screen and (min-width: 768px) {
+    margin-right: 24px;
+    &::after {
+      content: '';
+      height: 41px;
+      left: 373px;
+      top: 14px;
+
+      border: 1px solid rgba(243, 243, 243, 0.06);
+      flex: none;
+      order: 3;
+      flex-grow: 0;
+      z-index: 3;
+    }
+  }
 }
 
 .input_field {
@@ -73,7 +159,8 @@
   text-align: left;
   padding-left: 18px;
   padding-right: 18px;
-  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 18px;
 
   background: rgba(37, 44, 65, 0.5);
   border-radius: 16px;
@@ -85,7 +172,37 @@
   font-size: 16px;
   line-height: 19px;
 
-
   /* white */
   color: #f3f3f3;
+}
+.expense_percent {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: left;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.positions {
+  position: relative;
+  background-color: black;
+}
+.calendar {
+  position: absolute;
+
+  top: -114px;
+  left: 0px;
+  z-index: 10;
+  @include tablet {
+    top: -54px;
+    left: 484px;
+    z-index: 10;
+  }
+  @include desktop {
+    top: -54px;
+    left: 550px;
+    z-index: 10;
+  }
 }
