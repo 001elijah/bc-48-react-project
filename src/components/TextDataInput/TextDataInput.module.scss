@@ -1,0 +1,46 @@
+.TextDataInputWrapper {
+    position: absolute;
+}
+
+.TextDataInput {
+    box-sizing: border-box;
+    padding-left: 18px;
+    padding-top: 8px;
+    
+    width: 370px;
+    height: 74px;
+
+    background: #252c41;
+    border-radius: 16px;
+    border: 1px solid transparent;
+
+    color: #F3F3F3;
+    font-family: 'Lato-Regular';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    &:focus {
+        background: #252c41;
+        border: 1px solid #3A6AF5;
+    }
+    &:focus+label > span {
+        color: #3A6AF5;
+    }
+}
+
+.TextDataInputTitle {
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #f3f3f366;
+
+    &.active {
+        color: #3A6AF5;
+    }
+}

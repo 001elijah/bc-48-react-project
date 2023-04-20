@@ -12,6 +12,11 @@ import {
 import storage from 'redux-persist/lib/storage'
 
 import authReducer from './slices/authSlice';
+import personalPlanReducer from './slices/personalPlanSlice';
+import cashflowReducer from './slices/cashflowSlice';
+import categoriesReducer from './slices/categoriesSlice';
+import dynamicsDataReducer from './slices/dynamicsDataSlice';
+import transactionsReducer from './slices/transactionsSlice';
 
 const authPersistConfigs = {
   key: 'token',
@@ -23,7 +28,12 @@ const persistedAuthReducer = persistReducer(authPersistConfigs, authReducer)
 
 export const store = configureStore({
   reducer: {
-        authorized: persistedAuthReducer,
+    authorized: persistedAuthReducer,
+    personalPlan: personalPlanReducer,
+    cashflow: cashflowReducer,
+    categories: categoriesReducer,
+    dynamicsData: dynamicsDataReducer,
+    transactions: transactionsReducer,
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

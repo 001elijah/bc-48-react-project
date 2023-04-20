@@ -2,13 +2,62 @@
 @import './assets/styles/utils/vars';
 @import './assets/styles/utils/mixins';
 
+@font-face {
+  font-family: "Roboto-Regular";
+  src: local("Roboto-Regular"),
+    url("./assets/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Unbounded-Medium";
+  src: local("Unbounded-Medium"),
+    url("./assets/fonts/Unbounded/Unbounded-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Lato-Black";
+  src: local("Lato-Black"),
+    url("./assets/fonts/Lato/Lato-Black.ttf") format("truetype");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Lato-Bold";
+  src: local("Lato-Bold"),
+    url("./assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Lato-Medium";
+  src: local("Lato-Medium"),
+    url("./assets/fonts/Lato/Lato-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: local("Lato-Regular"),
+    url("./assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Lato-Semibold";
+  src: local("Lato-Semibold"),
+    url("./assets/fonts/Lato/Lato-Semibold.ttf") format("truetype");
+  font-weight: 700;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: 'Lato-Regular', 'Roboto-Regular', 'Unbounded-Medium', -apple-system, BlinkMacSystemFont,
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
 }
 
 code {
