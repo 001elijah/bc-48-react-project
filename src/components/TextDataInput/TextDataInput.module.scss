@@ -1,0 +1,71 @@
+@import '../../assets/styles/utils/vars';
+@import '../../assets/styles/utils/mixins';
+
+.TextDataInputWrapper {
+    position: relative;
+    width: 100%;
+
+    @include tablet {
+        width: 336px;
+    }
+
+    @include desktop {
+        width: 370px;
+    }
+}
+
+.TextDataInput {
+    box-sizing: border-box;
+    padding-left: 18px;
+    padding-top: 10px;
+    
+    width: 100%;
+    height: 74px;
+
+    background: $text-input-color;
+    border-radius: 16px;
+    border: 1px solid transparent;
+
+    color: $main-white;
+    font-family: 'Lato-Regular';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $accent;
+    }
+    &:focus+label > span {
+        color: $accent;
+    }
+    &::placeholder {
+        color:$main-white;
+    }
+}
+
+.TextDataInputTitle {
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $text-input-title-color;
+
+    &.active {
+        color: $accent;
+    }
+}
+
+.Hint {
+    margin-top: 8px;
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $input-hint-color;
+}

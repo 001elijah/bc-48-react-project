@@ -1,0 +1,258 @@
+@import '../../assets/styles/utils/vars';
+@import '../../assets/styles/utils/mixins';
+
+.BoardWrapper {
+    padding: 40px 48px;
+    margin-top: 54px;
+    width: 100%;
+    height: 388px;
+    background-color: $accent;
+    border-radius: 16px;
+
+    @include tablet {
+        margin: 82px auto 0 auto;
+        width: 672px;
+        height: 196px;
+    }
+
+    @include desktop {
+        margin: 10px auto 0 auto;
+        padding: 24px 66px;
+        width: 770px;
+        height: 156px;
+    }
+}
+
+.FlexWrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+        column-gap: 18px;
+        align-items: flex-end;
+    }
+
+    @include desktop {
+        flex-direction: row;
+        column-gap: 18px;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+}
+.DailyFlexWrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+        column-gap: 18px;
+    }
+
+    @include desktop {
+        flex-direction: row;
+        column-gap: 18px;
+        justify-content: space-between;
+    }
+}
+
+.BoardButtonsWrapper {
+    @include tablet {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 200px;
+        margin-left: 6px;
+    }
+
+    @include desktop {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 200px;
+        margin-left: 38px;
+    }
+}
+.DailyBoardButtonsWrapper {
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        margin-left: 6px;
+    }
+
+    @include desktop {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        margin-left: 38px;
+    }
+}
+
+.BoardTitle {
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: 0.15px;
+
+    color: $main-white;
+}
+
+.DataLabel {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 6px;
+
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: $text-input-title-color;
+
+    @include desktop {
+        margin-top: 14px;
+    }
+}
+.DataLabelDaily {
+    display: block;
+    margin-top: 6px;
+    margin-bottom: 18px;
+
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: $text-input-title-color;
+
+    @include desktop {
+        margin-top: 14px;
+    }
+}
+
+.DataDisplayField {
+    padding: 14px 0px 14px 24px;
+
+    width: 100%;
+    height: 46px;
+
+    border: 1px solid rgba(243, 243, 243, 0.4);
+    border-radius: 28px;
+
+    background-color: transparent;
+
+    font-size: 14px;
+
+    &::placeholder {
+        color: $main-white;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        cursor: auto;
+    }
+}
+
+.FitsBtn {
+    margin-top: 28px;
+
+    width: 100%;
+    height: 46px;
+
+    background: $main-white;
+    border: transparent;
+    border-radius: 60px;
+
+    @include tablet {
+        margin-top: 14px;
+    }
+    @include desktop {
+        margin-top: 14px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+.ReadyBtn {
+    // margin-top: 28px;
+
+    width: 100%;
+    height: 46px;
+
+    background: $main-white;
+    border: transparent;
+    border-radius: 60px;
+
+    @include tablet {
+        // margin-top: 14px;
+    }
+    @include desktop {
+        // margin-top: 14px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.AddBalanceBtn {
+    margin-top: 14px;
+
+    width: 100%;
+
+    background: none;
+    border: none;
+    padding: 0;
+
+    text-decoration-line: underline;
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: $main-white;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @include tablet {
+        margin-top: 0;
+    }
+    @include desktop {
+        margin-top: 0;
+    }
+}
+.AddIncomeBtn {
+    margin-top: 14px;
+
+    width: 100%;
+
+    background: none;
+    border: none;
+    padding: 0;
+
+    text-decoration-line: underline;
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: $main-white;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @include tablet {
+        margin-top: 14px;
+    }
+    @include desktop {
+        margin-top: 14px;
+    }
+}
