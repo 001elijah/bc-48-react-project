@@ -1,4 +1,5 @@
 @import 'src/assets/styles/utils/mixins';
+@import 'src/assets/styles/utils/vars';
 
 .container {
   @include container;
@@ -7,14 +8,12 @@
 .wrapper_category,
 .wrapper_expense {
   padding: 16px;
-  isolation: isolate;
   width: 343px;
 
-  background: #252c41;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.06);
-  &:first-child {
-    border-radius: 0px 16px 0px 0px;
-  }
+  background: $backgroud;
+  &:not(:last-child){
+    border-bottom: 1px solid $border-color;
+  } 
   &:last-child {
     border-radius: 0px 0px 16px 16px;
   }
@@ -76,7 +75,8 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  color: rgba(243, 243, 243, 0.3);
+  color: $text-color3;
+  ;
   margin-bottom: 3px;
 }
 .expense_comment,
@@ -86,7 +86,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  color: #ffffff;
+  color: $text-color;
 }
 .expense_comment {
   margin-bottom: 13px;
@@ -104,7 +104,7 @@
   font-size: 18px;
   line-height: 22px;
   text-align: right;
-  color: #ffffff;
+  color: $text-color;
 
   @include tablet {
     margin-bottom: 0;
@@ -141,7 +141,7 @@
       left: 373px;
       top: 14px;
 
-      border: 1px solid rgba(243, 243, 243, 0.06);
+      border: 1px solid $border-color;
       flex: none;
       order: 3;
       flex-grow: 0;
@@ -162,7 +162,7 @@
   margin-top: 50px;
   margin-bottom: 18px;
 
-  background: rgba(37, 44, 65, 0.5);
+  background: $backgroud1;
   border-radius: 16px;
   border: none;
 
@@ -173,7 +173,7 @@
   line-height: 19px;
 
   /* white */
-  color: #f3f3f3;
+  color: $main-white;
 }
 .expense_percent {
   font-family: 'Lato';
@@ -183,7 +183,7 @@
   line-height: 17px;
   text-align: left;
   margin-top: 8px;
-  color: rgba(255, 255, 255, 0.4);
+  color: $text-color1 ;
 }
 .positions {
   position: relative;

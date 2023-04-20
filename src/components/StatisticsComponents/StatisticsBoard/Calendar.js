@@ -2,7 +2,7 @@ import { forwardRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './StatisticsBoard.module.scss';
-import LetterSvg from './Svg';
+import iconSvg from './Svg';
 
 
 // const months = {
@@ -29,7 +29,7 @@ export const Calendar = () => {
   const ChangeInput = forwardRef(({ value, onClick }, ref) => (
     <button className={s.input_field} onClick={onClick} ref={ref}>
       {value}
-      {LetterSvg('calendar', 'white', '20')}
+      {iconSvg('calendar', 'white', '20')}
     </button>
   ));
 

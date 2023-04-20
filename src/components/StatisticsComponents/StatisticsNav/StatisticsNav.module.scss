@@ -1,4 +1,6 @@
 @import 'src/assets/styles/utils/mixins';
+@import 'src/assets/styles/utils/vars';
+
 .static_nav {
   display: flex;
   position: relative;
@@ -13,9 +15,9 @@
 
 .link {
   width: 106px;
-  background: rgba(31, 37, 52, 0.4);
+  background: $main-backgroud;
   border-radius: 16px 16px 0px 0px;
-  color: rgba(243, 243, 243, 0.4);
+  color:  $non_active;
   cursor: pointer;
 
   @include tablet{
@@ -23,9 +25,9 @@
   }
 }
 .active_link {
-  background: #252c41;
-  border-top: 1px solid #3a6af5;
-  color: #F3F3F3;
+  background: $backgroud;
+  border-top: 1px solid  $accent;
+  color: $main-white;
 }
 .link__title {
   display: flex;
@@ -41,7 +43,4 @@
 
   /* white */
   color: currentColor;
-}
-.active_link__title {
-  color: rgba(243, 243, 243, 0.4);
 }

@@ -1,5 +1,5 @@
 import s from './StatisticsBoard.module.scss';
-import LetterSvg from './Svg';
+import iconSvg from './Svg';
 import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
 import {
   deleteOneTransaction,
@@ -54,10 +54,10 @@ export const Item = ({ id, date, comment, category, sum }) => {
         <div className={s.category_block}>
           <p className={s.expense_category}> {category}</p>
           <div className={s.icon_block}>
-            {LetterSvg('edit', '#3A6AF5', '20', () =>
+            {iconSvg('edit', '#3A6AF5', '20', () =>
               dispatch(putOneTransaction(id))
             )}
-            {LetterSvg('delete', 'white', '20', () =>
+            {iconSvg('delete', 'white', '20', () =>
               dispatch(deleteOneTransaction(id))
             )}
           </div>
