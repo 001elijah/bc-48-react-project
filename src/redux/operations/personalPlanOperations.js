@@ -6,7 +6,6 @@ import {
     postPlanAPI,
     getPlanAPI,
     putPlanAPI,
-    getDailyLimitAPI
 } from "../../services/backendAPI";
 
 const axiosHeaderToken = {
@@ -64,19 +63,6 @@ export const putPlan = createAsyncThunk('personalPlan/put',
         try {
             const plan = await putPlanAPI(planData);
             return plan;
-        } catch (error) {
-            rejectWithValue(error.message);
-        }
-    }
-)
-
-export const getDailyLimit = createAsyncThunk('personalPlan/getDailyLimit',
-    async (_, { getState, rejectWithValue }) => {
-        const { token } = getState().authorized;
-        axiosHeaderToken.set(token);
-        try {
-            const dailyLimit = await getDailyLimitAPI();
-            return dailyLimit;
         } catch (error) {
             rejectWithValue(error.message);
         }

@@ -1,24 +1,38 @@
-// import axios from "axios";
-// import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// import {
-//     getListOfCategoryApi,
-//     getLimitsAndTotalsApi,
-//     postTransactionApi,
-//     getListOfTransactionsApi,
-//     deleteOneTransactionApi,
-//     putOneTransactionApi,
-//     getCashflowStatApi
-// } from "../../services/backendAPI";
+import {
+    getDailyLimitAPI,
+    // getListOfCategoryApi,
+    // getLimitsAndTotalsApi,
+    // postTransactionApi,
+    // getListOfTransactionsApi,
+    // deleteOneTransactionApi,
+    // putOneTransactionApi,
+    // getCashflowStatApi
+} from "../../services/backendAPI";
 
-// const axiosHeaderToken = {
-//     set(token) {
-//         axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//     },
-//     unset() {
-//         axios.defaults.headers.common.Authorization = '';
-//     }
-// }
+const axiosHeaderToken = {
+    set(token) {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    },
+    unset() {
+        axios.defaults.headers.common.Authorization = '';
+    }
+}
+
+export const getDailyLimit = createAsyncThunk('cashflow/getDailyLimit',
+    async (_, { getState, rejectWithValue }) => {
+        const { token } = getState().authorized;
+        axiosHeaderToken.set(token);
+        try {
+            const dailyLimit = await getDailyLimitAPI();
+            return dailyLimit;
+        } catch (error) {
+            rejectWithValue(error.message);
+        }
+    }
+)
 
 // export const getListOfCategory = createAsyncThunk('cashflow/getListOfCategory',
 //     async (_, { getState, rejectWithValue }) => {

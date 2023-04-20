@@ -1,17 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getListOfCategory } from "redux/operations/categoriesOperations";
 
 const categoriesSlice = createSlice({
     name: 'categories',
-    initialState: {
-        products: "Products",
-        clothingAndFootwear: "Clothing and Footwear",
-        cafesAndRestaurants: "Cafes and restaurants",
-        beautyAndMedicine: "Beauty and medicine",
-        health: "Health",
-        transport: "Transport",
-        house: "House",
-        other: "Other"
-    },
+    initialState: [],
+    extraReducers: (builder) => {
+        builder
+            .addCase(getListOfCategory.fulfilled, (state, { payload }) => {
+                state = payload;
+            })
+        }
 });
 
 export default categoriesSlice.reducer;
