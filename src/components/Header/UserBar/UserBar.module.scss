@@ -72,8 +72,9 @@
         overflow: hidden;
         background-image: url('../../../assets/img/bg-tablet.png');
         background-repeat: no-repeat;
-        background-size: inherit;
-        background-position-y: 100%;
+        background-size: auto;
+        background-position: bottom;
+
     }
 };
 
