@@ -1,20 +1,24 @@
 {
   "files": {
-    "main.css": "/bc-48-react-project/static/css/main.fc24b6a1.css",
-    "main.js": "/bc-48-react-project/static/js/main.09e942e0.js",
+    "main.css": "/bc-48-react-project/static/css/main.97867850.css",
+    "main.js": "/bc-48-react-project/static/js/main.78ff42fc.js",
     "static/media/Lato-Semibold.ttf": "/bc-48-react-project/static/media/Lato-Semibold.dab63590f439194ec956.ttf",
     "static/media/Lato-Bold.ttf": "/bc-48-react-project/static/media/Lato-Bold.9cfae71062337c38b44f.ttf",
     "static/media/Lato-Regular.ttf": "/bc-48-react-project/static/media/Lato-Regular.cbcf73593dd54516d4b3.ttf",
     "static/media/Lato-Medium.ttf": "/bc-48-react-project/static/media/Lato-Medium.70b0923d7cb977f41dd4.ttf",
     "static/media/Lato-Black.ttf": "/bc-48-react-project/static/media/Lato-Black.2678bc5be691402b8993.ttf",
+    "static/media/hero-bg-desktop.png": "/bc-48-react-project/static/media/hero-bg-desktop.8b256dd90e54a895c28f.png",
+    "static/media/hero-bg-tablet.png": "/bc-48-react-project/static/media/hero-bg-tablet.cf630f824e74a1888b93.png",
     "static/media/Unbounded-Medium.ttf": "/bc-48-react-project/static/media/Unbounded-Medium.7c175c8bf950f747caf2.ttf",
+    "static/media/hero-bg-mobile.png": "/bc-48-react-project/static/media/hero-bg-mobile.16e294de17fc8d0b8405.png",
     "static/media/Roboto-Regular.ttf": "/bc-48-react-project/static/media/Roboto-Regular.160d7a6ac26376e5e977.ttf",
+    "static/media/sprite.svg": "/bc-48-react-project/static/media/sprite.c2b9f25a6f3a77a68593f58ac5441b28.svg",
     "index.html": "/bc-48-react-project/index.html",
-    "main.fc24b6a1.css.map": "/bc-48-react-project/static/css/main.fc24b6a1.css.map",
-    "main.09e942e0.js.map": "/bc-48-react-project/static/js/main.09e942e0.js.map"
+    "main.97867850.css.map": "/bc-48-react-project/static/css/main.97867850.css.map",
+    "main.78ff42fc.js.map": "/bc-48-react-project/static/js/main.78ff42fc.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc24b6a1.css",
-    "static/js/main.09e942e0.js"
+    "static/css/main.97867850.css",
+    "static/js/main.78ff42fc.js"
   ]
 }
