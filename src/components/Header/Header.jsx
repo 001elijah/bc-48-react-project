@@ -7,13 +7,12 @@ import { Logo } from './Logo/Logo';
 import s from './Header.module.scss';
 
 export const Header = () => {
-    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1279px)' });
     const isBigScreen = useMediaQuery({ query: '(min-width: 1280px)' });
     const isAuthorized = useSelector(selectAuthorized);
     
     return (
         <header>
-            {(isAuthorized && isTabletOrMobile)&&
+            {(isAuthorized && !isBigScreen)&&
                 <div className={s.AuthHeaderBox}>
                     <Logo />
                     <Navigation />

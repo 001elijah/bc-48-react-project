@@ -79,6 +79,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 768px;
     height: calc(100vh - 70px);
     background-color: $main-dark;
     z-index: 999;
@@ -90,6 +91,7 @@
         background-repeat: no-repeat;
         background-size: 100%;
         background-position: bottom;
+        height: calc(100vh - 72px);
     }
 };
 
