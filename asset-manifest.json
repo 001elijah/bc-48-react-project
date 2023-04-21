@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/bc-48-react-project/static/css/main.a930f0c0.css",
-    "main.js": "/bc-48-react-project/static/js/main.1a95602b.js",
+    "main.css": "/bc-48-react-project/static/css/main.f4aea4fe.css",
+    "main.js": "/bc-48-react-project/static/js/main.dbe664d9.js",
     "static/media/Lato-Semibold.ttf": "/bc-48-react-project/static/media/Lato-Semibold.dab63590f439194ec956.ttf",
     "static/media/Lato-Bold.ttf": "/bc-48-react-project/static/media/Lato-Bold.9cfae71062337c38b44f.ttf",
     "static/media/Lato-Regular.ttf": "/bc-48-react-project/static/media/Lato-Regular.cbcf73593dd54516d4b3.ttf",
@@ -12,13 +12,14 @@
     "static/media/Unbounded-Medium.ttf": "/bc-48-react-project/static/media/Unbounded-Medium.7c175c8bf950f747caf2.ttf",
     "static/media/hero-bg-mobile.png": "/bc-48-react-project/static/media/hero-bg-mobile.16e294de17fc8d0b8405.png",
     "static/media/Roboto-Regular.ttf": "/bc-48-react-project/static/media/Roboto-Regular.160d7a6ac26376e5e977.ttf",
-    "static/media/sprite.svg": "/bc-48-react-project/static/media/sprite.c2b9f25a6f3a77a68593f58ac5441b28.svg",
+    "static/media/bg-tablet.png": "/bc-48-react-project/static/media/bg-tablet.3fc6c1c515420d40ec4b.png",
+    "static/media/sprite.svg": "/bc-48-react-project/static/media/sprite.03ee50865cb635cec594ffa1bba33f13.svg",
     "index.html": "/bc-48-react-project/index.html",
-    "main.a930f0c0.css.map": "/bc-48-react-project/static/css/main.a930f0c0.css.map",
-    "main.1a95602b.js.map": "/bc-48-react-project/static/js/main.1a95602b.js.map"
+    "main.f4aea4fe.css.map": "/bc-48-react-project/static/css/main.f4aea4fe.css.map",
+    "main.dbe664d9.js.map": "/bc-48-react-project/static/js/main.dbe664d9.js.map"
   },
   "entrypoints": [
-    "static/css/main.a930f0c0.css",
-    "static/js/main.1a95602b.js"
+    "static/css/main.f4aea4fe.css",
+    "static/js/main.dbe664d9.js"
   ]
 }
