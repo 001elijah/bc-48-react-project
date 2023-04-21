@@ -1,11 +1,12 @@
 import s from './StatisticsBoard.module.scss';
-import iconSvg from './Svg';
+import iconSvg from '../Svg';
 import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
 import {
   deleteOneTransaction,
-  putOneTransaction,
 } from '../../../redux/operations/cashflowOperations';
 import { useDispatch } from 'react-redux';
+import { Popup } from '../Modal/Popup';
+import { useState } from 'react';
 
 const data = [
   {
@@ -39,8 +40,20 @@ const data = [
   { id: 5, date: '05.01.2023', comment: 'Bag', category: 'Other', sum: '1500' },
 ];
 
-export const Item = ({ id, date, comment, category, sum }) => {
+export const Item = ({
+  id,
+  date,
+  comment,
+  category,
+  sum,
+  setActive,
+  setTransID,
+}) => {
   const dispatch = useDispatch();
+  const getPopUp = id => {
+    setActive(true);
+    setTransID(id)
+  };
   return (
     <>
       <li key={id} className={s.wrapper_expense}>
@@ -54,9 +67,7 @@ export const Item = ({ id, date, comment, category, sum }) => {
         <div className={s.category_block}>
           <p className={s.expense_category}> {category}</p>
           <div className={s.icon_block}>
-            {iconSvg('edit', '#3A6AF5', '20', () =>
-              dispatch(putOneTransaction(id))
-            )}
+            {iconSvg('edit', '#3A6AF5', '20', ()=>getPopUp(id))}
             {iconSvg('delete', 'white', '20', () =>
               dispatch(deleteOneTransaction(id))
             )}
@@ -68,14 +79,23 @@ export const Item = ({ id, date, comment, category, sum }) => {
 };
 
 export const ExpensesList = () => {
+  const [popupActive, setPopupActive] = useState(false);
+  const [transID, setTransID] = useState('');
   return (
     <div className={s.container}>
       <StatisticsNav />
       <ul>
         {data.map(item => (
-          <Item key={item.id} {...item} />
+          <Item
+            key={item.id}
+            {...item}
+            setActive={setPopupActive}
+            setTransID={setTransID}
+          />
         ))}
       </ul>
+      <Popup isActive={popupActive} setActive={setPopupActive} id={transID} />
     </div>
   );
 };
+/* dispatch(putOneTransaction(id)) */

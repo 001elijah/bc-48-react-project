@@ -150,31 +150,6 @@
   }
 }
 
-.input_field {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 217px;
-  height: 56px;
-  text-align: left;
-  padding-left: 18px;
-  padding-right: 18px;
-  margin-top: 50px;
-  margin-bottom: 18px;
-
-  background: $text-input-color1;
-  border-radius: 16px;
-  border: none;
-
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-
-  /* white */
-  color: $main-white;
-}
 .expense_percent {
   font-family: 'Lato';
   font-style: normal;
@@ -189,20 +164,4 @@
   position: relative;
   background-color: black;
 }
-.calendar {
-  position: absolute;
 
-  top: -114px;
-  left: 0px;
-  z-index: 10;
-  @include tablet {
-    top: -54px;
-    left: 484px;
-    z-index: 10;
-  }
-  @include desktop {
-    top: -54px;
-    left: 550px;
-    z-index: 10;
-  }
-}

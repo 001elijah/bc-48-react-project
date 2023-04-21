@@ -99,15 +99,15 @@ export const deleteOneTransaction = createAsyncThunk('cashflow/deleteOneTransact
     }
 )
 
-export const putOneTransaction = createAsyncThunk('cashflow/putOneTransaction',
-    async (transactionIdAndData, { getState, rejectWithValue }) => {
+export const putOneTransaction = ('cashflow/putOneTransaction',
+    async (transactionIdAndData, { getState }) => {
         const { token } = getState().authorized;
         axiosHeaderToken.set(token);
         try {
             const transaction = await putOneTransactionApi(transactionIdAndData);
             return transaction;
         } catch (error) {
-            rejectWithValue(error.message)
+           throw Error (error.message)
         }
     }
 )

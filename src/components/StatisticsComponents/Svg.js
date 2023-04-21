@@ -1,4 +1,4 @@
-import svg from '../../../assets/icons/sprite.svg';
+import svg from '../../assets/icons/sprite.svg';
 
 const iconSvg = (letter, color, size, func) => (
     <svg fill={color} width={size} height={size} onClick={func}>
@@ -8,7 +8,7 @@ const iconSvg = (letter, color, size, func) => (
   
   iconSvg.defaultProps = {
     size: 20,
-    color: 'white',
+    color: '#ffffff',
   };
 
   export default iconSvg

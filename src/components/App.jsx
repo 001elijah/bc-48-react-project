@@ -90,9 +90,9 @@ export const App = () => {
           path="/statistics"
           element={<StatisticsPage />}
         >
-        <Route path=':expenses' element={<ExpensesList/>}/>
+        <Route path='/statistics/expenses' element={<ExpensesList/>}/>
         <Route path='/statistics/categories' element={<CategoriesList/>}/>
-        <Route index element={<Navigate to=':expenses'  />} />
+        <Route index element={<Navigate to='/statistics/expenses'  />} />
         </Route>
         <Route
           path="/register"
