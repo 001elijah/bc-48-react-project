@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 
 import s from './FinanceForm.module.scss';
 import { FinanceDataBoard } from "components/FinanceDataBoard/FinanceDataBoard";
+import shortid from "shortid";
 
 // export const OwnPlanPage = () => {
 //     return (
@@ -27,55 +28,107 @@ const OwnPlanSchema = Yup.object().shape({
 });
  
 export const FinanceForm = () => {
-const formik = useFormik({
-     initialValues: {
-        salary: null,
-        passiveIncome: null,
-        savings: true,
-        cost: null,
-        footage: null,
-        procent: null,
-     },
-     onSubmit: values => {
-         console.log(values);
+    const formik = useFormik({
+        initialValues: {
+            salary: '',
+            passiveIncome: '',
+            savings: '',
+            cost: '',
+            footage: '',
+            procent: '',
         },
-     validationSchema: OwnPlanSchema,
-   });
+        onSubmit: values => {
+            console.log(values);
+            },
+        validationSchema: OwnPlanSchema,
+    });
+
+    const textDataInputCollection = [
+        {
+            label: '1. RFP of both spouses, ₴',
+            htmlFor: 'salary',
+            placeholder: '75 000',
+            hint: null,
+            id: 'salary',
+            name: 'salary',
+            onChange: formik.handleChange,
+            value: formik.values.salary
+        },
+        {
+            label: '2. Passive income, months, ₴',
+            htmlFor: 'passiveIncome',
+            placeholder: 'Enter text',
+            hint: null,
+            id: 'passiveIncome',
+            name: 'passiveIncome',
+            onChange: formik.handleChange,
+            value: formik.values.passiveIncome
+        },
+        {
+            label: '3. Savings, ₴',
+            htmlFor: 'savings',
+            placeholder: 'Enter text',
+            hint: null,
+            id: 'savings',
+            name: 'savings',
+            onChange: formik.handleChange,
+            value: formik.values.savings
+        },
+        {
+            label: '4. Specify the cost of your future apartment, ₴',
+            htmlFor: 'cost',
+            placeholder: '90 000',
+            hint: null,
+            id: 'cost',
+            name: 'cost',
+            onChange: formik.handleChange,
+            value: formik.values.cost
+        },
+        {
+            label: '5. Specify the number of sq.m. of your future apartment',
+            htmlFor: 'footage',
+            placeholder: 'Enter text',
+            hint: null,
+            id: 'footage',
+            name: 'footage',
+            onChange: formik.handleChange,
+            value: formik.values.footage
+        },
+        {
+            label: '6. Accumulation, %',
+            htmlFor: 'procent',
+            placeholder: 'Enter text',
+            hint: 'Specify the percentage that you would like to accumulate per month from the total amount of income and you will see when you reach the goal',
+            id: 'procent',
+            name: 'procent',
+            onChange: formik.handleChange,
+            value: formik.values.procent
+        }
+    ];
     // const dispatch = useDispatch();
 
     return (
         <div className={s.Container}>
             <form
-                className={s.Form}
+                className={s.PlanFormWrapper}
                 onSubmit={formik.handleSubmit}
             >
-                <TextDataInput
-                    label={'1. RFP of both spouses, ₴'}
-                    placeholder={'75 000'}
-                />
-                <TextDataInput
-                    label={'2. Passive income, months, ₴'}
-                    placeholder={'Enter text'}
-                />
-                <TextDataInput
-                    label={'3. Savings, ₴'} 
-                    placeholder={'Enter text'}
-                />
-                <TextDataInput
-                    label={'4. Specify the cost of your future apartment, ₴'} 
-                    placeholder={'90 000'}
-                />
-                <TextDataInput
-                    label={'5. Specify the number of sq.m. of your future apartment'} 
-                    placeholder={'Enter text'}
-                />
-                <TextDataInput
-                    label={'6. Accumulation, %'}
-                    placeholder={'Enter text'}
-                    hint={'Specify the percentage that you would like to accumulate per month from the total amount of income and you will see when you reach the goal'}
-                />
-                <FinanceDataBoard BoardTitle={"You will have apartment in:"} />
-                {/* <FinanceDataBoard /> */}
+            {textDataInputCollection.map(({ label, htmlFor, placeholder, hint, id, name, onChange, value }) =>
+                    <TextDataInput
+                        key={shortid.generate()}
+                        id={id}
+                        name={name}
+                        onChange={onChange}
+                        value={value}
+                        label={label}
+                        htmlFor={htmlFor}
+                        placeholder={placeholder}
+                        hint={hint}
+                    />
+            )}
+                
+            <FinanceDataBoard BoardTitle={"You will have apartment in:"} />
+            {/* <FinanceDataBoard /> */}
                     {/* <TextField
                         size="small"
                         id="name"
