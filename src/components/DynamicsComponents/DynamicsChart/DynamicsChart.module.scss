@@ -5,6 +5,7 @@
   padding: 50px 16px 100px 16px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     width: 768px;
@@ -13,7 +14,6 @@
   @media screen and (min-width: 1280px) {
     width: 1280px;
     padding: 66px 55px;
-    margin: 0 auto;
   }
 }
 

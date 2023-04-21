@@ -50,3 +50,41 @@
     fill: $accent;
   }
 }
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  text-decoration-line: underline;
+
+  color: $main-white;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  color: $accent;
+}
+
+.inputfile + label {
+  cursor: pointer;
+}
+
+.inputChangeContainer {
+  display: flex;
+  justify-content: end;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
