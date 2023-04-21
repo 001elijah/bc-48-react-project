@@ -4,31 +4,31 @@ import s from './Modal.module.scss'
 const Modal = ({ children, closeModal }) => {
     
     useEffect(() => {
-        window.addEventListener("keydown", closeEscape);
+        window.addEventListener("keydown", closeOnBackdropEscape);
         document.body.style.overflow = 'hidden';
     });
 
     useEffect(() => {
         return () => {
-            window.removeEventListener("keydown", closeEscape);
+            window.removeEventListener("keydown", closeOnBackdropEscape);
             document.body.style.overflow = 'unset';
         };
     });
 
-    const closeEscape = (event) => {
+    const closeOnBackdropEscape = (event) => {
         if (event.code === 'Escape') {
             closeModal();
         }
     }
 
-    const closeMouse = (event) => {
+    const closeOnBackdropMouse = (event) => {
         if (event.target === event.currentTarget) {
             closeModal();
         }
     }
 
     return (
-        <div onClick={closeMouse} className={s.backdrop}>
+        <div onClick={closeOnBackdropMouse} className={s.backdrop}>
             {children}
         </div>
     );
