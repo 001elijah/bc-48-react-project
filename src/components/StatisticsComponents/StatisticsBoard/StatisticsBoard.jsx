@@ -1,11 +1,9 @@
 import s from './StatisticsBoard.module.scss';
 import iconSvg from '../Svg';
 import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
-import {
-  deleteOneTransaction,
-} from '../../../redux/operations/cashflowOperations';
+import { deleteOneTransaction } from '../../../redux/operations/cashflowOperations';
 import { useDispatch } from 'react-redux';
-import { Popup } from '../Modal/Popup';
+import { PopUp } from '../Modal/Modal';
 import { useState } from 'react';
 
 const data = [
@@ -52,7 +50,7 @@ export const Item = ({
   const dispatch = useDispatch();
   const getPopUp = id => {
     setActive(true);
-    setTransID(id)
+    setTransID(id);
   };
   return (
     <>
@@ -67,7 +65,7 @@ export const Item = ({
         <div className={s.category_block}>
           <p className={s.expense_category}> {category}</p>
           <div className={s.icon_block}>
-            {iconSvg('edit', '#3A6AF5', '20', ()=>getPopUp(id))}
+            {iconSvg('edit', '#3A6AF5', '20', () => getPopUp(id))}
             {iconSvg('delete', 'white', '20', () =>
               dispatch(deleteOneTransaction(id))
             )}
@@ -94,8 +92,9 @@ export const ExpensesList = () => {
           />
         ))}
       </ul>
-      <Popup isActive={popupActive} setActive={setPopupActive} id={transID} />
+      {popupActive && (
+        <PopUp isActive={popupActive} setActive={setPopupActive} id={transID} />
+      )}
     </div>
   );
 };
-/* dispatch(putOneTransaction(id)) */

@@ -9,7 +9,6 @@ const getLinkActiveClass = ({ isActive }) =>
 
 
 export const StatisticsNav = () => {
-  const path = window.location.pathname
   return (
     <>
       <ul className={s.static_nav}>
