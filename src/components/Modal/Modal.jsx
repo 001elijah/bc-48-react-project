@@ -34,4 +34,5 @@ const Modal = ({ children, closeModal }) => {
     );
 }
 
+
 export default Modal;
