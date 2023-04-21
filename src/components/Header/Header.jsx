@@ -12,15 +12,15 @@ export const Header = () => {
     const isAuthorized = useSelector(selectAuthorized);
     
     return (
-        <header className={s.Container}>
+        <header>
             {(isAuthorized && isTabletOrMobile)&&
-                <div className={s.HeaderBox}>
+                <div className={s.AuthHeaderBox}>
                     <Logo />
                     <Navigation />
                 </div>}
 
             {(isAuthorized && isBigScreen)&&
-                <div className={s.HeaderBox}>
+                <div className={s.AuthHeaderBox}>
                     <UserNav />
                     <Logo />
                     <Navigation />

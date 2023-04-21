@@ -1,4 +1,5 @@
 @import 'assets/styles/utils/vars';
+@import 'assets/styles/utils/mixins';
 @font-face {
     font-family: "Lato-Bold";
     src: local("Lato-Bold"),
@@ -10,18 +11,23 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    @include tablet {
+        gap: 12px;
+    }
+    @include desktop {
+        gap: 12px;
+    }
 };
 
 .Login {
     font-family: "Lato-Bold";
     font-style: normal;
     font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
     text-align: center;
-    text-decoration: none;
     color: $text-button-color;
     display: block;
+    font-size: 12px;
+    line-height: 1.17;
     padding: 8px 18px;
     background: $main-white;
     border-radius: 60px;
@@ -31,6 +37,17 @@
     transition: transform 0.2s ease-in-out;
     &:hover {
         transform: scale(1.1);
+    }
+
+    @include tablet {
+        font-size: 14px;
+        line-height: 1.43;
+        padding: 10px 24px;
+    }
+    @include desktop {
+        font-size: 14px;
+        line-height: 1.43;
+        padding: 10px 24px;
     }
 };
 
@@ -42,7 +59,6 @@
     line-height: 1.17;
     text-align: center;
     color: $main-white;
-    text-decoration: none;
     display: block;
     padding: 8px 18px;
     background: $accent;
@@ -53,5 +69,17 @@
     transition: transform 0.2s ease-in-out;
     &:hover {
         transform: scale(1.1);
+    }
+
+    @include tablet {
+        font-size: 14px;
+        line-height: 1.43;
+        padding: 10px 24px;
+    }
+
+    @include desktop {
+        font-size: 14px;
+        line-height: 1.43;
+        padding: 10px 24px;
     }
 };

@@ -12,6 +12,12 @@
     justify-content: space-between;
     align-items: center;
     gap: 16px;
+    @include tablet {
+        gap: 24px;
+    }
+    @include desktop {
+        gap: 24px;
+    }
 };
 
 .Stats {
@@ -74,7 +80,6 @@
         background-repeat: no-repeat;
         background-size: auto;
         background-position: bottom;
-
     }
 };
 

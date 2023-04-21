@@ -10,6 +10,7 @@ export const UserBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isBigScreen = useMediaQuery({ query: '(min-width: 1280px)' });
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1279px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
   const handleMenuClick = () => {
     setIsOpen(!isOpen); 
@@ -24,9 +25,16 @@ export const UserBar = () => {
       {isTabletOrMobile && (
         <div className={s.Container}>
           <NavLink className={s.Stats} to="/statistics/transactions" onClick={handleCloseClick}>
-            <svg width="40" height="40" fill="#fff">
-              <use xlinkHref={`${svg}#icon-stats`} />
-            </svg>
+            {isMobile &&
+              <svg width="38" height="35" fill="#fff">
+                <use xlinkHref={`${svg}#icon-stats`} />
+              </svg>
+            }
+            {!isMobile &&
+              <svg width="40" height="37" fill="#fff">
+                <use xlinkHref={`${svg}#icon-stats`} />
+              </svg>
+            }
           </NavLink>
           <span className={s.User}>N</span>
           {isOpen ? (
@@ -57,7 +65,7 @@ export const UserBar = () => {
       {isBigScreen && (
         <div className={s.Container}>
           <NavLink className={s.Stats} to="/statistics/transactions">
-            <svg width="40" height="40" fill="#fff">
+            <svg width="40" height="37" fill="#fff">
               <use xlinkHref={`${svg}#icon-stats`} />
             </svg>
           </NavLink>

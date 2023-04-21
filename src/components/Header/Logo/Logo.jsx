@@ -3,12 +3,11 @@ import logoMobile from 'assets/img/logo-mobile.png';
 import logoTabletDesktop from 'assets/img/logo-desktop-tablet.png'
 
 export const Logo = () => {
-    const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 769px)' });
-    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 768px)' });
 
     return (
         <>
-            {isMobile &&
+            {!isDesktopOrLaptop &&
                 <img
                     src={logoMobile}
                     width="93"

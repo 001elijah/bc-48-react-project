@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { OwnPlanPage } from "pages/OwnPlanPage";
 import { CashflowPage } from "pages/CashflowPage";
 import { DynamicsPage } from "pages/DynamicsPage";
@@ -9,7 +9,7 @@ import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { HomePage } from "pages/HomePage";
 import { StatisticsPage } from "pages/StatisticsPage";
 
-// import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
+import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
 
 // const PrivateRoute = ({ component, redirectTo = "/" }) => {
 //   const isAuth = useSelector(selectorIsAuth);
@@ -24,10 +24,10 @@ import { StatisticsPage } from "pages/StatisticsPage";
 // };
 
 export const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   return (
     <>
-      {/* <button type="button"
+      <button type="button"
         onClick={() =>
           dispatch(register({
             "name": "jane",
@@ -65,7 +65,7 @@ export const App = () => {
         onClick={() => dispatch(getCurrentUserInfo())}
       >
         getUserInfo
-      </button> */}
+      </button>
       <SharedLayout />
       <Routes>
         <Route
