@@ -1,0 +1,121 @@
+@import '../../assets/styles/utils/mixins';
+@import '../../assets/styles/utils/vars';
+
+@font-face {
+    font-family: "Unbounded-Medium";
+    src: local("Unbounded-Medium"),
+        url("../../assets/fonts/Unbounded/Unbounded-Medium.ttf") format("truetype");
+    font-weight: 500;
+}
+
+.container{
+    padding-top: 60px;
+    position: relative;
+    @include container;
+    @include tablet{
+        padding-top: 72px;
+    }
+    @include desktop{
+        display: flex;
+        padding-top: 142px;
+    }
+}
+
+.title{
+    margin-bottom: 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    font-family: 'Unbounded-Medium';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.42;
+
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-feature-settings: 'liga' off;
+
+    color: $main-white;
+
+    @include tablet{
+        width: 646px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+
+        font-size: 44px;
+        line-height: 1.27;
+    }
+
+    @include desktop{
+        width: 646px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 0px;
+
+        font-size: 44px;
+        line-height: 1.27;
+    }
+}
+
+.textTwo{
+    @include tablet{
+        font-size: 48px;
+        line-height: 1;
+    }
+    @include desktop{
+        font-size: 48px;
+        line-height: 1;
+    }
+}
+
+.text{
+    padding: 10px 20px;
+
+    font-family: 'Unbounded-Medium';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1;
+
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-feature-settings: 'liga' off;
+
+    color: $main-white;
+
+    background: $accent;
+    border-radius: 60px;
+    @include tablet{
+        font-size: 48px;
+    }
+    @include desktop{
+        font-size: 48px;
+    }
+}
+
+
+.icon{
+    position: relative;
+    right: 16px;
+    @include tablet{
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+
+        content: url('../../assets/img/hero-bg-tablet.png');
+    }
+    @include desktop{
+        position: absolute;
+        top: 0;
+        right: 0;
+        content: url('../../assets/img/hero-bg-desktop.png');
+    }
+}
