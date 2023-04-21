@@ -71,7 +71,10 @@ export const App = () => {
         <Route
           path="/"
           element={<HomePage />}
-        />
+        >
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+        </Route>
         <Route
           path="/plan"
           element={<OwnPlanPage />}
@@ -88,14 +91,14 @@ export const App = () => {
           path="/statistics"
           element={<StatisticsPage />}
         />
-        <Route
+        {/* <Route
           path="/register"
           element={<RegisterPage />}
         />
         <Route
           path="/login"
           element={<LoginPage />}
-        />
+        /> */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
