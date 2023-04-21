@@ -69,3 +69,15 @@
     line-height: 14px;
     color: $input-hint-color;
 }
+
+.Error {
+    position: absolute;
+    top: 54px;
+    left: 18px;
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    color: #FF2E00;
+}

@@ -4,14 +4,14 @@ import { prePostPlan, postPlan, getPlan, putPlan } from "redux/operations/person
 const personalPlanSlice = createSlice({
     name: 'personalPlan',
     initialState: {
-        salary: null,
-        passiveIncome: null,
-        savings: null,
-        cost: null,
-        footage: null,
-        procent: null,
-        year: null,
-        month: null
+        salary: '123123',
+        passiveIncome: '123',
+        savings: '123123',
+        cost: '123123',
+        footage: '123123',
+        procent: '123',
+        year: '123123',
+        month: '12313'
     },
     extraReducers: (builder) => {
         builder
