@@ -1,0 +1,52 @@
+@import 'assets/styles/utils/vars';
+@import 'assets/styles/utils/mixins';
+
+@font-face {
+    font-family: "Lato-Bold";
+    src: local("Lato-Bold"),
+        url("../../../assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+    font-weight: 700;
+};
+
+.Logout {
+    font-family: "Lato-Bold";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: center;
+    color: $text-button-color;
+    padding: 10px 22px;
+    background: $main-white;
+    border-radius: 60px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    &:hover {
+        color: $main-white;
+        background: $accent;
+    }
+    @include desktop {
+        transition: transform 0.2s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+            color: $text-button-color;
+            background: $main-white;
+        }
+    }
+};
+
+.IconLogout {
+    fill: $text-button-color;
+};
+
+.Logout:hover .IconLogout {
+    fill: $main-white;
+    @include desktop {
+        fill: $text-button-color;
+    }
+}

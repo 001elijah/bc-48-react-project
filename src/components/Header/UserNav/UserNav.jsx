@@ -1,20 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import s from './UserNav.module.scss';
 
-const navItems = [
-    { href: "plan", text: "Personal Plan" },
-    { href: "cash-flow", text: "Cashflow" },
-    { href: "dynamics", text: "Dynamics" },
-    { href: "statistics", text: "Statistics" },
-];
-
-const UserNav = () => {
+export const UserNav = () => {
     return (
-    <>
-        <nav>
-            {navItems.map(({ href, text }) => <NavLink className={s.NavItem} to={href} key={href}>{text}</NavLink>)}
-        </nav>
-    </>);
+        <div className={s.Container}>
+            <div className={s.ItemsContainer}>
+                <NavLink className={ ({ isActive }) => isActive ? s.Active : s.Item} to="/plan">
+                    Personal plan
+                </NavLink>
+                <NavLink className={ ({ isActive }) => isActive ? s.Active : s.Item} to="/cash-flow">
+                    Cashflow
+                </NavLink>
+                <NavLink className={ ({ isActive }) => isActive ? s.Active : s.Item} to="/dynamics">
+                    Dynamics
+                </NavLink>
+            </div>     
+        </div>
+    );
 };
-
-export default UserNav;
