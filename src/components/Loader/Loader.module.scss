@@ -1,0 +1,13 @@
+.LoaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.LoadingText {
+    color: #3A6AF5; 
+    // change to accent color
+}
+.Bars {
+    height: 3em;
+}

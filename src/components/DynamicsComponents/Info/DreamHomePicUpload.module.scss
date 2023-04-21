@@ -1,8 +1,29 @@
+@import 'assets/styles/utils/_vars';
+
 .fileUpload {
+  margin-top: 50px;
   height: 260px;
   width: 343px;
   border-radius: 16px;
   position: relative;
+
+  &:hover .icons,
+  &:focus .icons {
+    fill: $accent;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+    width: 224px;
+    height: 166px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 0;
+    margin-left: 45px;
+    width: 254px;
+    height: 209px;
+  }
 
   display: flex;
   justify-content: center;
@@ -21,5 +42,11 @@
     left: 0;
     opacity: 0;
     cursor: pointer;
+  }
+}
+
+.icons {
+  &:hover {
+    fill: $accent;
   }
 }

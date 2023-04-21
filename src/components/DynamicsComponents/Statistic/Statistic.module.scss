@@ -76,19 +76,34 @@
   gap: 4px;
 
   @media screen and (min-width: 768px) {
-    width: 78px;
+    min-width: 78px;
     height: 52px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    min-width: 88px;
+    height: 60px;
   }
 }
 
 .descr {
   font-size: 8px;
-  line-height: 18/8;
+  line-height: calc(18 / 8);
   color: rgba(243, 243, 243, 0.6);
+
+  @media screen and (min-width: 1280px) {
+    font-size: 12px;
+    line-height: calc(18 / 12);
+  }
 }
 
 .sum {
   font-size: 12px;
-  line-height: 16/12;
+  line-height: calc(16 / 12);
   color: $main-white;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 14px;
+    line-height: calc(18 / 14);
+  }
 }

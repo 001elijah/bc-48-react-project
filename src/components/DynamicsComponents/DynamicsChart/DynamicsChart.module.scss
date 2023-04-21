@@ -3,10 +3,28 @@
 .container {
   width: 375px;
   padding: 50px 16px 100px 16px;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: 768px) {
     width: 768px;
-    padding: 66px 32px 75px;
+    padding: 66px 32px 75px 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    padding: 66px 55px;
+    margin: 0 auto;
+  }
+}
+
+.chartContainer {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 58px;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    gap: 139px;
   }
 }
 
@@ -36,7 +54,7 @@
   gap: 7px;
   color: $main-white;
   font-size: 12px;
-  line-height: 14/12;
+  line-height: calc(14 / 12);
 }
 
 .dot {
@@ -60,12 +78,12 @@
   background-color: $main-white;
 }
 
-// canvas {
-//   height: 436px !important;
-//   width: 222px !important;
+.chart {
+  height: 219px;
+  width: 422px;
 
-//   @media screen and (min-width: 768px) {
-//     height: 219px !important;
-//     width: 422px !important;
-//   }
-// }
+  @media screen and (min-width: 1280px) {
+    height: 208px;
+    width: 440px;
+  }
+}

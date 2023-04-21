@@ -1,5 +1,4 @@
 import s from './DynamicsChart.module.scss';
-import MonthlyStats from '../Statistic/Statistic';
 import { useMediaQuery } from 'react-responsive';
 import {
   Chart as ChartJS,
@@ -196,12 +195,7 @@ const DynamicsChart = () => {
           <Bar data={data} options={optionsMobile} />
         </div>
       ) : (
-        <div
-          style={{
-            width: 422,
-            height: 219,
-          }}
-        >
+        <div className={s.chart}>
           <Bar data={data} options={optionsTablet} />
         </div>
       )}

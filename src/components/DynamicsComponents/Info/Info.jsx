@@ -2,12 +2,13 @@ import s from './Info.module.scss';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DreamHomePicUpload from './DreamHomePicUpload';
+import OneMoreSqMeter from './OneMoreSqMeter';
 
 const Info = () => {
   const now = 60;
   return (
-    <div>
-      <div className={s.infoBlock}>
+    <div className={s.info}>
+      <div>
         <p className={s.allPeriod}>After 4 years 1 month</p>
         <ul className={s.list}>
           <li className={s.item}>
@@ -24,7 +25,9 @@ const Info = () => {
           </li>
         </ul>
         <p className={s.acumulated}>22 out of 60 sq.m accumulated</p>
-        <ProgressBar style={{ height: '8px' }} now={now} />
+        <div className={s.progress}>
+          <ProgressBar style={{ height: '8px' }} now={now} />
+        </div>
       </div>
       <DreamHomePicUpload />
     </div>
