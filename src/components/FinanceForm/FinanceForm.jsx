@@ -75,7 +75,7 @@ const formik = useFormik({
                     hint={'Specify the percentage that you would like to accumulate per month from the total amount of income and you will see when you reach the goal'}
                 />
                 <FinanceDataBoard BoardTitle={"You will have apartment in:"} />
-                {/* <FinanceDataBoard /> */}
+                <FinanceDataBoard />
                     {/* <TextField
                         size="small"
                         id="name"
