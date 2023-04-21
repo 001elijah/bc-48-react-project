@@ -1,0 +1,106 @@
+@import 'assets/styles/utils/vars';
+@import 'assets/styles/utils/mixins';
+@font-face {
+    font-family: "Lato-Bold";
+    src: local("Lato-Bold"),
+        url("../../../assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+    font-weight: 700;
+};
+
+.Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    @include tablet {
+        gap: 24px;
+    }
+    @include desktop {
+        gap: 24px;
+        width: 325px;
+        justify-content: end;
+    }
+};
+
+.Stats {
+    background: $accent;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
+};
+
+.User {
+    font-family: "Lato-Bold";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: center;
+    color: $text-button-color;
+    background: $main-white;
+    border: 2px solid $accent;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
+
+.MenuButton {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
+};
+
+.CloseButton {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
+};
+
+.UserNav {
+    @include container;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    top: 71px;
+    background-color: $main-dark;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 768px;
+    height: calc(100vh - 70px);
+    background-color: $main-dark;
+    z-index: 999;
+
+    @include tablet {
+        top: 73px;
+        overflow: hidden;
+        background-image: url('../../../assets/img/bg-tablet.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: bottom;
+        height: calc(100vh - 72px);
+    }
+};
+
+.Logout {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+
+    @include tablet {
+        position: fixed;
+    }
+};
