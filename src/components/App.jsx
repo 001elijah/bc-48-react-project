@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
+//import { useDispatch, useSelector } from "react-redux";
 import { OwnPlanPage } from "pages/OwnPlanPage";
 import { CashflowPage } from "pages/CashflowPage";
 import { DynamicsPage } from "pages/DynamicsPage";
@@ -11,7 +11,7 @@ import { StatisticsPage } from "pages/StatisticsPage";
 import{ ExpensesList} from './StatisticsComponents/StatisticsBoard/StatisticsBoard'
 import {CategoriesList} from './StatisticsComponents/StatisticsBoard/CategoryBoard'
 
-// import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
+ //import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
 
 // const PrivateRoute = ({ component, redirectTo = "/" }) => {
 //   const isAuth = useSelector(selectorIsAuth);
@@ -26,7 +26,7 @@ import {CategoriesList} from './StatisticsComponents/StatisticsBoard/CategoryBoa
 // };
 
 export const App = () => {
-  // const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   return (
     <>
       {/* <button type="button"
@@ -98,7 +98,6 @@ export const App = () => {
         </Route>
         <Route />
         {/* <Route
->>>>>>> main
           path="/register"
           element={<RegisterPage />}
         />
