@@ -20,7 +20,7 @@ export const FinanceDataBoard = ({ BoardTitle = null }) => {
                     </div>
                 </div>
             </div>) :
-            (<div className={s.BoardWrapper}>
+            (<div className={s.DailyBoardWrapper}>
                 <span className={s.BoardTitle}>{BoardTitle}</span>
                 <div className={s.DailyFlexWrapper}>
                     <div className={s.DataFieldWrapper}>

@@ -73,7 +73,10 @@ export const App = () => {
         <Route
           path="/"
           element={<HomePage />}
-        />
+        >
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+        </Route>
         <Route
           path="/plan"
           element={<OwnPlanPage />}
@@ -88,20 +91,21 @@ export const App = () => {
         />
         <Route
           path="/statistics"
-          element={<StatisticsPage />}
-        >
+          element={<StatisticsPage />}>
         <Route path='/statistics/expenses' element={<ExpensesList/>}/>
         <Route path='/statistics/categories' element={<CategoriesList/>}/>
         <Route index element={<Navigate to='/statistics/expenses'  />} />
         </Route>
-        <Route
+        <Route />
+        {/* <Route
+>>>>>>> main
           path="/register"
           element={<RegisterPage />}
         />
         <Route
           path="/login"
           element={<LoginPage />}
-        />
+        /> */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
