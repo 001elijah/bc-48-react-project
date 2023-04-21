@@ -1,33 +1,29 @@
 @import '../../assets/styles/utils/mixins';
 @import '../../assets/styles/utils/vars';
 
-@font-face {
-    font-family: "Unbounded-Medium";
-    src: local("Unbounded-Medium"),
-        url("../../assets/fonts/Unbounded/Unbounded-Medium.ttf") format("truetype");
-    font-weight: 500;
-}
-
 .container{
-    padding-top: 60px;
+    height: 100%;
     position: relative;
+    padding-top: 60px;
+
     @include container;
     @include tablet{
+        height: 100%;
         padding-top: 72px;
     }
     @include desktop{
-        display: flex;
         padding-top: 142px;
+        height: calc(100vh - 72px);
     }
 }
 
 .title{
-    margin-bottom: 125px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     gap: 8px;
+    margin-bottom: 124px;
 
     font-family: 'Unbounded-Medium';
     font-style: normal;
@@ -47,6 +43,7 @@
         flex-wrap: wrap;
         gap: 10px;
         align-items: center;
+        margin-bottom: 124px;
 
         font-size: 44px;
         line-height: 1.27;
@@ -104,9 +101,10 @@
 
 .icon{
     position: relative;
-    right: 16px;
+    right: 17px;
+    bottom: 0;
     @include tablet{
-        position: static;
+        position: relative;
         margin-left: auto;
         margin-right: auto;
 
@@ -114,7 +112,7 @@
     }
     @include desktop{
         position: absolute;
-        top: 0;
+        bottom: 0;
         right: 0;
         content: url('../../assets/img/hero-bg-desktop.png');
     }
