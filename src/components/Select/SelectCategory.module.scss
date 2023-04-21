@@ -1,0 +1,26 @@
+.select {
+  width: 370px;
+  //   height: 74px;
+  border-radius: 16px;
+  // margin-left: 8px;
+  //   color: blue;
+
+  &-container {
+    background-color: red !important;
+  }
+  &__control {
+    background-color: red !important;
+  }
+}
+
+.select::before {
+  // content: url('./sprait.svg#icon-vector');
+  // background-image: url('./sprait.svg#icon-vector');
+}
+
+.SelectCategory_select {
+  width: 343px;
+}
+
+// Indicators Container
+//    контейнер индикаторов

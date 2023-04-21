@@ -1,0 +1,179 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  z-index: 1;
+  opacity: 1;
+  transition-property: opacity, visibility, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
+
+.modal_box {
+  position: absolute;
+  width: 315px;
+  height: 190px;
+  top: 50%;
+  left: 50%;
+  /* padding: 34px; */
+
+  border-radius: 16px;
+  box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14),
+    0px 9px 46px rgba(0, 0, 0, 0.12), 0px 11px 15px rgba(0, 0, 0, 0.2);
+  background: #191d28;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition-property: opacity, visibility, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+
+  @media screen and (min-width: 380px) {
+    width: 370px;
+    height: 210px;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 19px;
+  right: 19px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  // border-color: rgba(0, 0, 0, 0.1);
+  // border-radius: 50%;
+  cursor: pointer;
+  fill: #ffffff;
+}
+
+.boxInput {
+  display: block;
+  margin-top: 50px;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media screen and (min-width: 380px) {
+    // width: 370px;
+    // height: 210px;
+
+    margin-top: 58px;
+    padding-right: 34px;
+    padding-left: 34px;
+  }
+}
+
+.input {
+  display: flex;
+  width: 275px;
+  height: 40px;
+  margin-bottom: 32px;
+  background: inherit;
+  border: 1px solid rgba(108, 108, 108, 0.4);
+  border-radius: 28px;
+  padding-left: 24px;
+  color: #f3f3f3;
+
+  @media screen and (min-width: 380px) {
+    // width: 370px;
+    margin-bottom: 32px;
+    width: 302px;
+    height: 40px;
+  }
+}
+
+.input::placeholder {
+  color: #f3f3f3;
+}
+
+.buttonList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.buttonAdd {
+  display: block;
+  width: 138px;
+  height: 36px;
+  background: #3a6af5;
+  color: white;
+  border-radius: 60px;
+
+  padding: 8px 56px;
+  gap: 10px;
+  border: none;
+  margin-right: 14px;
+
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  &:hover {
+    background: #f3f3f3;
+    color: #242424;
+  }
+
+  @media screen and (min-width: 380px) {
+    // width: 370px;
+    margin-bottom: 32px;
+
+    padding: 10px 62px;
+    width: 150px;
+    height: 40px;
+  }
+}
+
+.buttonCancel {
+  display: block;
+  cursor: pointer;
+
+  width: 124px;
+  height: 36px;
+  background: #f3f3f3;
+  color: #191d28;
+  border-radius: 60px;
+
+  padding: 8px 41px;
+
+  gap: 10px;
+  border: none;
+
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: #3a6af5;
+    color: #f3f3f3;
+  }
+
+  @media screen and (min-width: 380px) {
+    // width: 370px;
+    margin-bottom: 32px;
+    padding: 10px 48px;
+    width: 138px;
+    height: 40px;
+  }
+}
+
+.iconClose {
+  fill: #ffffff;
+  // transition-property: fill;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
