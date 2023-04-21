@@ -17,6 +17,8 @@
     }
     @include desktop {
         gap: 24px;
+        width: 325px;
+        justify-content: end;
     }
 };
 
@@ -24,6 +26,10 @@
     background: $accent;
     border-radius: 8px;
     text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
 };
 
 .User {
@@ -46,39 +52,43 @@
 
 .MenuButton {
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
 };
 
 .CloseButton {
     padding: 0;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
 };
 
 .UserNav {
+    @include container;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    top: 75px;
+    top: 71px;
     background-color: $main-dark;
-    padding: 16px 20px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
-    height: calc(100vh - 107px);
-    @include mobile {
-        width: 335px;
-        height: calc(100vh - 107px);
-    }
+    height: calc(100vh - 70px);
+    background-color: $main-dark;
+    z-index: 999;
 
     @include tablet {
-        width: 728px;
-        height: calc(100vh - 107px);
+        top: 73px;
         overflow: hidden;
         background-image: url('../../../assets/img/bg-tablet.png');
         background-repeat: no-repeat;
-        background-size: auto;
+        background-size: 100%;
         background-position: bottom;
     }
 };
@@ -87,6 +97,7 @@
     position: absolute;
     left: 10px;
     bottom: 10px;
+
     @include tablet {
         position: fixed;
     }

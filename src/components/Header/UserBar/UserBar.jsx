@@ -13,11 +13,18 @@ export const UserBar = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
   const handleMenuClick = () => {
-    setIsOpen(!isOpen); 
+    setIsOpen(!isOpen);
+    document.body.classList.add('no-scroll')
+  //    if (!isOpen) {
+  //      document.body.classList.add('no-scroll')
+  //   } else {
+  //   document.body.classList.remove('no-scroll');
+  // }
   };
 
   const handleCloseClick = () => {
-    setIsOpen(false); 
+    setIsOpen(false);
+    document.body.classList.remove('no-scroll');
   };
 
   return (
@@ -51,7 +58,7 @@ export const UserBar = () => {
               <div className={s.Logout} onClick={handleCloseClick}>              
                   <LogoutButton />
               </div>
-            </div>  
+              </div> 
           </>
           ) : (
           <div className={s.MenuButton}  onClick={handleMenuClick}>

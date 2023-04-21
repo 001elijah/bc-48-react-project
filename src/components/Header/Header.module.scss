@@ -18,7 +18,6 @@
     @include desktop {
         padding-top: 16px;
         padding-bottom: 16px;
-        padding-left: 40px;
     }
 };
 
@@ -41,9 +40,9 @@
         padding-bottom: 16px;
     }
 }
-.Logo {
-    @include desktop {
-        position: absolute;
-        right: 571px;
-    }
-}
+// .Logo {
+//     @include desktop {
+//         position: absolute;
+//         right: 590px;
+//     }
+// }

@@ -13,7 +13,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    
 };
 
 .ItemsContainer {
@@ -24,6 +23,8 @@
     @include desktop {
         flex-direction: row;
         gap: 32px;
+        width: 325px;
+        justify-content: flex-start;
     }
 };
 

@@ -22,9 +22,7 @@ export const Header = () => {
             {(isAuthorized && isBigScreen)&&
                 <div className={s.AuthHeaderBox}>
                     <UserNav />
-                    <div className={s.Logo}>
-                        <Logo />
-                    </div>
+                    <Logo />
                     <Navigation />
                 </div>
             }

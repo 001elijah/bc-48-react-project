@@ -1,4 +1,6 @@
 @import 'assets/styles/utils/vars';
+@import 'assets/styles/utils/mixins';
+
 @font-face {
     font-family: "Lato-Bold";
     src: local("Lato-Bold"),
@@ -23,8 +25,28 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    transition: transform 0.2s ease-in-out;
+
     &:hover {
-        transform: scale(1.1);
+        color: $main-white;
+        background: $accent;
+    }
+    @include desktop {
+        transition: transform 0.2s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+            color: $text-button-color;
+            background: $main-white;
+        }
     }
 };
+
+.IconLogout {
+    fill: $text-button-color;
+};
+
+.Logout:hover .IconLogout {
+    fill: $main-white;
+    @include desktop {
+        fill: $text-button-color;
+    }
+}

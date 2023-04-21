@@ -9,7 +9,7 @@ export const LogoutButton = () => {
     return (
         <button className={s.Logout} type="button" onClick={() => dispatch(logout())}>
             Log out 
-            <svg width="14" height="14">
+            <svg width="14" height="14" className={s.IconLogout}>
                 <use xlinkHref={`${svg}#icon-log-out`} />
             </svg>
         </button>
