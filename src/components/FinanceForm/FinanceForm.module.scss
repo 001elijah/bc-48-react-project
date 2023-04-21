@@ -1,0 +1,39 @@
+@import '../../assets/styles/utils/mixins';
+
+.Container {
+    @include container;
+}
+
+.Form {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 18px;
+    margin: 50px auto 66px auto;
+    @include tablet {
+        column-gap: 32px;
+        margin: 100px auto 220px auto;
+    }
+    @include desktop {
+        column-gap: 30px;
+        width: 770px;
+        margin: 66px auto 66px auto;
+    }
+}
+
+.PlanFormWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 18px;
+    margin: 50px auto 66px auto;
+
+    @include tablet {
+        column-gap: 32px;
+        margin: 100px auto 122px auto;
+    }
+
+    @include desktop {
+        column-gap: 30px;
+        width: 770px;
+        margin: 66px auto 66px auto;
+    }
+}

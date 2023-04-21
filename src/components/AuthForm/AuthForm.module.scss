@@ -1,0 +1,258 @@
+@import '../../assets/styles/utils/mixins';
+@import '../../assets/styles/utils/vars';
+
+@font-face {
+    font-family: "Lato-Regular";
+    src: local("Lato-Regular"),
+        url("../../assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Lato-Bold";
+    src: local("Lato-Bold"),
+        url("../../assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Lato-Semibold";
+    src: local("Lato-Semibold"),
+        url("../../assets/fonts/Lato/Lato-Semibold.ttf") format("truetype");
+    font-weight: 600;
+}
+
+.modal{
+    padding-top: 100px;
+    background-color: $main-dark;
+    width: 100%;
+
+    @include mobile{
+        position: absolute;
+        top: 70px;
+    }
+
+    @include tablet{
+        padding: 32px 50px;
+        width: 400px;
+
+        border-radius: 18px;
+    }
+    @include desktop{
+        padding: 32px 50px;
+        width: 400px;
+    
+        border-radius: 18px;
+    }
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 44px;
+
+    font-family: 'Lato-Semibold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1;
+
+    color: $main-white;
+    @include tablet {
+        font-size: 20px;
+        line-height: 1;
+    }
+    @include desktop{
+        font-size: 20px;
+        line-height: 1;
+    }
+}
+
+.card{
+    display: flex;
+    height: 574px;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 40px;
+    padding-top: 64px;
+
+    border-radius: 40px 40px 0px 0px;
+    background-color: $accent;
+    @include tablet{
+        margin: 0;
+        padding: 0;
+        border: none;
+        height: 100%;
+
+        background-color: $main-dark;
+    }
+    @include desktop{
+        margin: 0;
+        padding: 0;
+        border: none;
+        height: 100%;
+    
+        background-color: $main-dark;
+    }
+
+}
+
+.block{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 18px;
+
+    @include tablet{
+        gap: 24px;
+    }
+    @include desktop{
+        gap: 24px;
+    }
+}
+
+.label{
+    position: relative;
+}
+
+.eye{
+    position: absolute;
+    bottom: 8px;
+    right: 24px;
+
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    height: 24px;
+}
+
+.error{
+    position: absolute;
+    bottom: -22px;
+
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    color: #FF2E00;
+}
+
+.text{
+    margin-bottom: 6px;
+
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+
+    display: flex;
+    align-items: center;
+
+    color: rgba(243, 243, 243, 0.8);
+    @include tablet{
+        color: #6C6C6C;
+    }
+    @include desktop{
+        color: #6C6C6C;
+    }
+}
+
+.input{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 24px;
+    gap: 10px;
+    width: 300px;
+
+    font-family: 'Lato-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+
+    background-color: transparent;
+    color: $main-white;
+
+    border: 1px solid rgba(243, 243, 243, 0.4);
+    border-radius: 28px;
+
+    &::placeholder{
+        font-family: 'Lato-Regular';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.29;
+
+        color: rgba(243, 243, 243, 0.8);
+    }
+
+    &:focus-visible{
+        outline: none;
+    }
+
+    @include tablet{
+        border-color: rgba(108, 108, 108, 0.4);
+        &::placeholder {
+            color: $main-white;
+        }
+    }
+    @include desktop{
+        border-color: rgba(108, 108, 108, 0.4);
+        
+        &::placeholder {
+            color: $main-white;
+        }
+    }
+}
+
+.btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0px;
+    width: 300px;
+
+    font-family: 'Lato-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: center;
+    font-feature-settings: 'liga' off;
+
+    color: $accent;
+    background: $main-white;
+    border-radius: 60px;
+    border: none;
+
+    &:hover,
+    &:focus{
+        background-color: $accent;
+        color: $main-white;
+        border: 1px solid $main-white;
+    }
+    @include tablet{
+        background-color: $accent;
+        color: $main-white;
+    }
+    @include desktop{
+        background-color: $accent;
+        color: $main-white;
+    }
+}
+
+.hiden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.invalid{
+    color: #FF2E00;
+    border-color: #FF2E00;
+}

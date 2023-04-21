@@ -1,0 +1,48 @@
+@import 'assets/styles/utils/mixins';
+
+
+.HeaderBox {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    @include tablet {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    @include desktop {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+};
+
+.AuthHeaderBox {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    @include tablet {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    @include desktop {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+}
+// .Logo {
+//     @include desktop {
+//         position: absolute;
+//         right: 590px;
+//     }
+// }

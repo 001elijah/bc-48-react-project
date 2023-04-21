@@ -1,0 +1,85 @@
+@import 'assets/styles/utils/vars';
+@import 'assets/styles/utils/mixins';
+@font-face {
+    font-family: "Lato-Bold";
+    src: local("Lato-Bold"),
+        url("../../../assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+    font-weight: 700;
+};
+
+.Container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    @include tablet {
+        gap: 12px;
+    }
+    @include desktop {
+        gap: 12px;
+    }
+};
+
+.Login {
+    font-family: "Lato-Bold";
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    color: $text-button-color;
+    display: block;
+    font-size: 12px;
+    line-height: 1.17;
+    padding: 8px 18px;
+    background: $main-white;
+    border-radius: 60px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    @include tablet {
+        font-size: 14px;
+        line-height: 1.43;
+        padding: 10px 24px;
+    }
+    @include desktop {
+        font-size: 14px;
+        line-height: 1.43;
+        padding: 10px 24px;
+    }
+};
+
+.Register {
+    font-family: "Lato-Bold";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    text-align: center;
+    color: $main-white;
+    display: block;
+    padding: 8px 18px;
+    background: $accent;
+    border-radius: 60px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    @include tablet {
+        font-size: 14px;
+        line-height: 1.43;
+        padding: 10px 24px;
+    }
+
+    @include desktop {
+        font-size: 14px;
+        line-height: 1.43;
+        padding: 10px 24px;
+    }
+};
