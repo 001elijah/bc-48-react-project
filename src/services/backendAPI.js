@@ -292,12 +292,7 @@ export const getCashflowStatApi = ({ month, year }) => {
 
 export const getCustomerSavingsForChartApi = () => {
   return axios
-    .get('/api/dynamics', {
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2VjNDU5MmE5MTlhMWIxYWVkNjk2NyIsImlhdCI6MTY4MjA4NTY3M30.-iQRilLD7vyW_4uebeqyaqtk_eYrSK3XnNfDMC1WtEM',
-      },
-    })
+    .get('/api/dynamics')
     .then(
       ({
         data: {
@@ -324,12 +319,7 @@ export const getCustomerSavingsForChartApi = () => {
 
 export const getCustomerSavingsForStatisticApi = ({ year, month }) => {
   return axios
-    .get(`/api/dynamics/by-month?year=${year}&month=${month}`, {
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2VjNDU5MmE5MTlhMWIxYWVkNjk2NyIsImlhdCI6MTY4MjA4NTY3M30.-iQRilLD7vyW_4uebeqyaqtk_eYrSK3XnNfDMC1WtEM',
-      },
-    })
+    .get(`/api/dynamics/by-month?year=${year}&month=${month}`)
     .then(
       ({ data: { income, expense, accumulated, plan, planInProcent } }) => ({
         income,
@@ -347,12 +337,7 @@ export const addOrChangeImageOfFlatApi = imageFile => {
     .patch('/api/dynamics/flatImage', imageFile, {
       headers: {
         'Content-Type': 'multipart/form-data',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2VjNDU5MmE5MTlhMWIxYWVkNjk2NyIsImlhdCI6MTY4MjA4NTY3M30.-iQRilLD7vyW_4uebeqyaqtk_eYrSK3XnNfDMC1WtEM',
       },
     })
-    .then(({ data: { imageURL } }) => {
-      // Add instruction!!!
-      console.log(imageURL);
-    });
+    .then(({ data: { imageURL } }) => imageURL);
 };

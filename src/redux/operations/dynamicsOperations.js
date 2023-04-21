@@ -49,11 +49,10 @@ export const getCustomerSavingsForStatistic = createAsyncThunk(
 export const addOrChangeImageOfFlat = createAsyncThunk(
   'dynamics/addOrChangeImageOfFlat',
   async (imageFile, { getState, rejectWithValue }) => {
-    // const { token } = getState().authorized;
-    // axiosHeaderToken.set(token);
+    const { token } = getState().authorized;
+    axiosHeaderToken.set(token);
     try {
       const imageUrl = await addOrChangeImageOfFlatApi(imageFile);
-      console.log(imageUrl);
       return imageUrl;
     } catch (error) {
       rejectWithValue(error.message);

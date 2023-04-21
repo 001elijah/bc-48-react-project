@@ -11,6 +11,8 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
+import { selectStatByYear } from 'redux/selectors/dynamicsDataSelectors';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(
   CategoryScale,
@@ -21,7 +23,7 @@ ChartJS.register(
   Legend
 );
 
-export const optionsMobile = {
+const optionsMobile = {
   chartArea: {
     bottom: 5,
   },
@@ -80,7 +82,7 @@ export const optionsMobile = {
     },
   },
 };
-export const optionsTablet = {
+const optionsTablet = {
   maintainAspectRatio: false,
   categoryPersentage: 0.5,
   barPersentage: 0.5,
@@ -147,30 +149,30 @@ const labels = [
   'Dec',
 ];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
-      backgroundColor: '#6359e9',
-    },
-    {
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
-      backgroundColor: '#3a6af5',
-    },
-    {
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
-      backgroundColor: '#f3f3f3',
-    },
-  ],
-};
-
 ChartJS.defaults.color = '#fff';
 ChartJS.defaults.font.size = 12;
 ChartJS.defaults.font.lineHeight = 1.16;
 
 const DynamicsChart = () => {
   const isMobileSize = useMediaQuery({ query: '(max-width: 767px)' });
+  const stats = useSelector(selectStatByYear);
+  const data = {
+    labels,
+    datasets: [
+      {
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+        backgroundColor: '#6359e9',
+      },
+      {
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+        backgroundColor: '#3a6af5',
+      },
+      {
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+        backgroundColor: '#f3f3f3',
+      },
+    ],
+  };
   return (
     <div>
       <h2 className={s.title}>Dynamics of expenses and savings</h2>

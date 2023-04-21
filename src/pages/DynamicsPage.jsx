@@ -11,9 +11,9 @@ import { getCustomerSavingsForChart } from 'redux/operations/dynamicsOperations'
 export const DynamicsPage = () => {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getCustomerSavingsForChart());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getCustomerSavingsForChart());
+  }, [dispatch]);
 
   const isMobileTabletSize = useMediaQuery({ query: '(max-width: 1279px)' });
   const isDesktopSize = useMediaQuery({ query: '(min-width: 1280px)' });

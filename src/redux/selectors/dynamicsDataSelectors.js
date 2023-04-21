@@ -7,3 +7,4 @@ export const selectAccumulatedUah = state => state.dynamicsData.accumulatedUah;
 export const selectSquareMeters = state => state.dynamicsData.squareMeters;
 export const selectAccumToOneMoreMeters = state =>
   state.dynamicsData.accumToOneMoreMeters;
+export const selectImage = state => state.dynamicsData.imageUrl;
