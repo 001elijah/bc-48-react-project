@@ -17,7 +17,7 @@ const DreamHomePicUpload = () => {
     const formData = new FormData();
     formData.append('image', selectedFile);
     dispatch(addOrChangeImageOfFlat(formData));
-  }, [selectedFile]);
+  }, [selectedFile, dispatch]);
 
   return (
     <>

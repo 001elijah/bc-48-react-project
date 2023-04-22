@@ -11,8 +11,8 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
-import { selectStatByYear } from 'redux/selectors/dynamicsDataSelectors';
-import { useSelector } from 'react-redux';
+// import { selectStatByYear } from 'redux/selectors/dynamicsDataSelectors';
+// import { useSelector } from 'react-redux';
 
 ChartJS.register(
   CategoryScale,
@@ -155,7 +155,7 @@ ChartJS.defaults.font.lineHeight = 1.16;
 
 const DynamicsChart = () => {
   const isMobileSize = useMediaQuery({ query: '(max-width: 767px)' });
-  const stats = useSelector(selectStatByYear);
+  // const stats = useSelector(selectStatByYear);
   const data = {
     labels,
     datasets: [

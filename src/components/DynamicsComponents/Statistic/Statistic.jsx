@@ -27,8 +27,12 @@ const monthNames = [
 
 const MonthlyStats = () => {
   const [statistics, setStatistics] = useState(initState);
-  const [month, setMonth] = useState(monthNames[new Date().getMonth()]);
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [month,
+    // setMonth
+  ] = useState(monthNames[new Date().getMonth()]);
+  const [year,
+    // setYear
+  ] = useState(new Date().getFullYear());
 
   useEffect(() => {
     getCustomerSavingsForStatisticApi({ year, month })
@@ -37,7 +41,7 @@ const MonthlyStats = () => {
         setStatistics({ income, expense, accumulated, plan, planInProcent });
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [month, year]);
   return (
     <>
       <div className={s.select}>

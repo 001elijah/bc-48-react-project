@@ -5,7 +5,10 @@ import OneMoreSqMeter from '../components/DynamicsComponents/Info/OneMoreSqMeter
 import s from '../components/DynamicsComponents/DynamicsChart/DynamicsChart.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch,
+  // useSelector
+} from 'react-redux';
 import { getCustomerSavingsForChart } from 'redux/operations/dynamicsOperations';
 
 export const DynamicsPage = () => {
