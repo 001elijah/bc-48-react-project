@@ -7,7 +7,6 @@ export const FinanceModalForm = ({ title, handleToggle, getModal }) => {
   // getModal це пропс для передачі запиту по кліку на кнопку Add
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   return (
-    <div className={s.backdrop}>
       <div className={s.modal_box}>
         {isMobile &&
             <div onClick={handleToggle} className={s.close}>
@@ -39,6 +38,5 @@ export const FinanceModalForm = ({ title, handleToggle, getModal }) => {
           </ul>
         </div>
       </div>
-    </div>
   );
 };

@@ -67,9 +67,10 @@ export const FinanceDataBoard = ({
               >
                 Ready
               </button>
-              <button className={s.AddIncomeBtn} type="button">
+              <button className={s.AddIncomeBtn} onClick={handleModalWindowOpen} type="button">
                 Add income
-              </button>
+                  </button>
+              {showModalWindow && <Modal closeModal={handleModalWindowClose}><FinanceModalForm handleToggle={handleModalWindowClose} title={'Enter income'} /></Modal>}
             </div>
           </div>
         </div>)}
