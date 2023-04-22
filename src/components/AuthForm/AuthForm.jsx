@@ -1,6 +1,7 @@
 import s from './AuthForm.module.scss';
 import sprite from '../../assets/icons/sprite.svg'
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const AuthForm = ({ onSubmit, nameForm }) => {
     const [form, setForm] = useState({
@@ -10,7 +11,7 @@ const AuthForm = ({ onSubmit, nameForm }) => {
     })
     const [passwordShow, setPasswordShow] = useState(false);
 
-    const error = '';
+    const error = useSelector(state => state.authorized.error);
 
     const hanelChange = (e) => {
         const { name, value } = e.target;
@@ -42,13 +43,13 @@ const AuthForm = ({ onSubmit, nameForm }) => {
                         </label>
                         <label className={s.label}>
                             <p className={s.text}>Password</p>
-                            <input className={error.length > 0 ? `${s.input} ${s.invalid}`: s.input} type={passwordShow ? 'text' : 'password'} name='password' placeholder={nameForm === 'login' ?'Create password':'Enter your password'} value={form.password} onChange={hanelChange} />
+                            <input className={error ? `${s.input} ${s.invalid}`: s.input} type={passwordShow ? 'text' : 'password'} name='password' placeholder={nameForm === 'login' ?'Create password':'Enter your password'} value={form.password} onChange={hanelChange} />
                             <button onClick={togglePasssword} type='button' className={s.eye}>
                                 <svg className={s.icon} width="24" height="24">
                                     <use href={sprite + '#icon-toggle-invisible'}></use>
                                 </svg>
                             </button>
-                            {error.length > 0 ? <p className={s.error}>Invalid password!</p>: null}
+                            {error ? <p className={s.error}>Invalid password!</p>: null}
                         </label>
                     </div>
                     <button className={s.btn} type='Submit'>
