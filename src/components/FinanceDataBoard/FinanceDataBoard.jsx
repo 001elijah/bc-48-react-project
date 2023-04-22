@@ -1,6 +1,6 @@
 import s from './FinanceDataBoard.module.scss';
 
-export const FinanceDataBoard = ({ BoardTitle = null, yearValue = 0, monthValue = 0 }) => {
+export const FinanceDataBoard = ({ BoardTitle = null, yearValue = 0, monthValue = 0, onSubmit, dailyLimit, monthLimit }) => {
     return (
         <>
             {BoardTitle ? (<div className={s.BoardWrapper}>
@@ -19,24 +19,46 @@ export const FinanceDataBoard = ({ BoardTitle = null, yearValue = 0, monthValue 
                         <button className={s.AddBalanceBtn} type='button'>Add Balance</button>
                     </div>
                 </div>
-            </div>) :
-            (<div className={s.DailyBoardWrapper}>
-                <span className={s.BoardTitle}>{BoardTitle}</span>
-                <div className={s.DailyFlexWrapper}>
-                    <div className={s.DataFieldWrapper}>
-                            <input className={s.DataDisplayField} type="text" placeholder="-600$" readOnly />
-                            <label><span className={s.DataLabelDaily}>Daily limit</span></label>
-                    </div>
-                    <div className={s.DataFieldWrapper}>
-                            <input className={s.DataDisplayField} type="text" placeholder="-5000$" readOnly />
-                            <label><span className={s.DataLabelDaily}>Monthly Limit</span></label>
-                    </div>
-                    <div className={s.DailyBoardButtonsWrapper}>
-                        <button className={s.ReadyBtn} type='submit'>Ready</button>
-                        <button className={s.AddIncomeBtn} type='button'>Add income</button>
-                    </div>
-                </div>
-            </div>)}
+            </div>) : (
+        <div className={s.DailyBoardWrapper}>
+          <span className={s.BoardTitle}>{BoardTitle}</span>
+          <div className={s.DailyFlexWrapper}>
+            <div className={s.DataFieldWrapper}>
+              <input
+                className={s.DataDisplayField}
+                type="text"
+                placeholder={`-${dailyLimit}$`}
+                readOnly
+              />
+              <label>
+                <span className={s.DataLabelDaily}>Daily limit</span>
+              </label>
+            </div>
+            <div className={s.DataFieldWrapper}>
+              <input
+                className={s.DataDisplayField}
+                type="text"
+                placeholder={`-${monthLimit}$`}
+                readOnly
+              />
+              <label>
+                <span className={s.DataLabelDaily}>Monthly Limit</span>
+              </label>
+            </div>
+            <div className={s.DailyBoardButtonsWrapper}>
+              <button
+                className={s.ReadyBtn}
+                type="submit"
+                onClick={onSubmit}
+              >
+                Ready
+              </button>
+              <button className={s.AddIncomeBtn} type="button">
+                Add income
+              </button>
+            </div>
+          </div>
+        </div>)}
         </>
     );
 }

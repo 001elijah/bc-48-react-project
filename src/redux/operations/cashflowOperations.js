@@ -1,38 +1,40 @@
-import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import {
-    getDailyLimitAPI,
-    // getListOfCategoryApi,
-    // getLimitsAndTotalsApi,
-    // postTransactionApi,
-    // getListOfTransactionsApi,
-    // deleteOneTransactionApi,
-    // putOneTransactionApi,
-    // getCashflowStatApi
-} from "../../services/backendAPI";
+  getDailyLimitAPI,
+  postTransactionApi,
+  // getListOfCategoryApi,
+  // getLimitsAndTotalsApi,
+  // postTransactionApi,
+  // getListOfTransactionsApi,
+  // deleteOneTransactionApi,
+  // putOneTransactionApi,
+  // getCashflowStatApi
+} from '../../services/backendAPI';
 
 const axiosHeaderToken = {
-    set(token) {
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    },
-    unset() {
-        axios.defaults.headers.common.Authorization = '';
-    }
-}
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
 
-export const getDailyLimit = createAsyncThunk('cashflow/getDailyLimit',
-    async (_, { getState, rejectWithValue }) => {
-        const { token } = getState().authorized;
-        axiosHeaderToken.set(token);
-        try {
-            const dailyLimit = await getDailyLimitAPI();
-            return dailyLimit;
-        } catch (error) {
-            rejectWithValue(error.message);
-        }
+export const getDailyLimit = createAsyncThunk(
+  'cashflow/getDailyLimit',
+  async (_, { getState, rejectWithValue }) => {
+    const { token } = getState().authorized;
+    axiosHeaderToken.set(token);
+    try {
+      const dailyLimit = await getDailyLimitAPI();
+      return dailyLimit;
+    } catch (error) {
+      rejectWithValue(error.message);
     }
-)
+  }
+);
 
 // export const getListOfCategory = createAsyncThunk('cashflow/getListOfCategory',
 //     async (_, { getState, rejectWithValue }) => {
@@ -60,18 +62,19 @@ export const getDailyLimit = createAsyncThunk('cashflow/getDailyLimit',
 //     }
 // )
 
-// export const postTransaction = createAsyncThunk('cashflow/postTransaction',
-//     async ( transactionData, { getState, rejectWithValue }) => {
-//         const { token } = getState().authorized;
-//         axiosHeaderToken.set(token);
-//         try {
-//             const transaction = await postTransactionApi(transactionData);
-//             return transaction;
-//         } catch (error) {
-//             rejectWithValue(error.message)
-//         }
-//     }
-// )
+export const postTransaction = createAsyncThunk(
+  'cashflow/postTransaction',
+  async (transactionData, { getState, rejectWithValue }) => {
+    const { token } = getState().authorized;
+    axiosHeaderToken.set(token);
+    try {
+      const transaction = await postTransactionApi(transactionData);
+      return transaction;
+    } catch (error) {
+      rejectWithValue(error.message);
+    }
+  }
+);
 
 // export const getListOfTransactions = createAsyncThunk('cashflow/getListOfTransactions',
 //     async ( periodData, { getState, rejectWithValue }) => {
