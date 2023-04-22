@@ -11,7 +11,7 @@ export const LoginPage = () => {
 
 
     const handleLoginUser = (dataForm) => {
-        dispatch(login(dataForm));
+        dispatch(login(dataForm))
     }
 
     const closeModal = () => {
