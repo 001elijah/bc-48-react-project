@@ -78,7 +78,7 @@ export const FinanceForm = () => {
             footage,
             procent
         } = formik.values;
-        authorized && salary && passiveIncome && savings &&
+        authorized && formik.touched && salary && passiveIncome && savings &&
             cost && footage && procent &&
             dispatch(prePostPlan({
                 salary: +salary,
@@ -90,7 +90,7 @@ export const FinanceForm = () => {
             }));
     }, 1000);
     getPrePlan();
-    // console.log(formik.values);
+    console.log(formik.touched);
     return (
         <div className={s.Container}>
             <form
