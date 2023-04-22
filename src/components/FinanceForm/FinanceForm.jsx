@@ -11,9 +11,10 @@ import * as Yup from 'yup';
 import s from './FinanceForm.module.scss';
 import { FinanceDataBoard } from "components/FinanceDataBoard/FinanceDataBoard";
 import { selectCost, selectFootage, selectMonth, selectPassiveIncome, selectProcent, selectSalary, selectSavings, selectYear } from "redux/selectors/personalPlanSelectors";
-import { postPlan, prePostPlan } from '../../redux/operations/personalPlanOperations';
+import { getPlan, postPlan, prePostPlan } from '../../redux/operations/personalPlanOperations';
 import { selectAuthorized } from "redux/selectors/authSelectors";
 import _ from "lodash";
+import { useEffect } from "react";
 
 const OwnPlanSchema = Yup.object().shape({
    salary: Yup.string().required('Required').matches(/^[1-9][0-9]*$/, {message: 'Must be greater than 0 and start from 1'}),
@@ -36,6 +37,11 @@ export const FinanceForm = () => {
     const year = useSelector(selectYear);
     const month = useSelector(selectMonth);
 
+    useEffect(() => {
+      authorized && dispatch(getPlan())
+    }, [authorized, dispatch])
+    
+
     const formik = useFormik({
         initialValues: {
             salary,
@@ -45,15 +51,16 @@ export const FinanceForm = () => {
             footage,
             procent,
         },
+        enableReinitialize: true,
         onSubmit: values => {
             console.log(values);
             dispatch(postPlan({
-                salary: +salary,
-                passiveIncome: +passiveIncome,
-                savings: +savings,
-                cost: +cost,
-                footage: +footage,
-                procent: +procent
+                salary: +values.salary,
+                passiveIncome: +values.passiveIncome,
+                savings: +values.savings,
+                cost: +values.cost,
+                footage: +values.footage,
+                procent: +values.procent
             }));
         },
         // onBlur: values => {

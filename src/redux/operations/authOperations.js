@@ -8,6 +8,7 @@ import {
     currentUserLogoutApi,
     addBalanceApi
 } from "../../services/backendAPI";
+import { getPlan } from "./personalPlanOperations";
 
 const axiosHeaderToken = {
     set(token) {
@@ -43,11 +44,14 @@ export const login = createAsyncThunk('auth/login',
 });
 
 export const getCurrentUserInfo = createAsyncThunk('auth/getCurrentUserInfo',
-    async (_, {getState, rejectWithValue}) => {
+    async (_, {getState, rejectWithValue, dispatch}) => {
         const { token } = getState().authorized;
         axiosHeaderToken.set(token);
         try {
             const userInfo = await getUserDataApi();
+            setTimeout(() => {
+                dispatch(getPlan());
+            }, 0);
             return userInfo;
         } catch (error) {
             return rejectWithValue(error.message);
