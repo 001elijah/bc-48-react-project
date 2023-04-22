@@ -1,10 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { UserNav } from 'components/Header/UserNav/UserNav';
 import { LogoutButton } from 'components/Header/LogoutButton/LogoutButton';
-import { getCurrentUserInfo } from 'redux/operations/authOperations';
 import { selectUser } from 'redux/selectors/authSelectors';
 import svg from 'assets/icons/sprite.svg';
 import s from './UserBar.module.scss';
@@ -15,13 +14,10 @@ export const UserBar = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
   const user = useSelector(selectUser);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCurrentUserInfo());
-  }, [dispatch]);
-
+  
   const firstLetter = user.name?.charAt(0).toUpperCase();
+
+  
 
   const handleMenuClick = () => {
     setIsOpen(!isOpen);
@@ -37,7 +33,7 @@ export const UserBar = () => {
     <>
       {!isBigScreen && (
         <div className={s.Container}>
-          <NavLink className={s.Stats} to="/statistics/transactions" onClick={handleCloseClick}>
+          <NavLink className={s.Stats} to="/statistics" onClick={handleCloseClick}>
             {isMobile &&
               <svg width="38" height="35" fill="#fff">
                 <use xlinkHref={`${svg}#icon-stats`} />
@@ -77,12 +73,12 @@ export const UserBar = () => {
       )}
       {isBigScreen && (
         <div className={s.Container}>
-          <NavLink className={s.Stats} to="/statistics/transactions">
+          <NavLink className={s.Stats} to="/statistics">
             <svg width="40" height="37" fill="#fff">
               <use xlinkHref={`${svg}#icon-stats`} />
             </svg>
           </NavLink>
-          <span className={s.User}>N</span>
+          <span className={s.User}>{firstLetter}</span>
           <LogoutButton />
         </div>
       )}

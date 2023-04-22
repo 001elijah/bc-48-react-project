@@ -1,0 +1,89 @@
+@import '../../../assets/styles/utils/vars';
+
+.container {
+  width: 375px;
+  padding: 50px 16px 100px 16px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 66px 32px 75px 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    padding: 66px 55px;
+  }
+}
+
+.chartContainer {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 58px;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    gap: 139px;
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+  color: $main-white;
+  margin-bottom: 32px;
+}
+
+.list {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 34px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: $main-white;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+}
+
+.dot {
+  display: flex;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+}
+
+.accumulatedDot {
+  @extend .dot;
+  background-color: $main-violet;
+}
+.expensesDot {
+  @extend .dot;
+  background-color: $accent;
+}
+
+.incomeDot {
+  @extend .dot;
+  background-color: $main-white;
+}
+
+.chart {
+  height: 219px;
+  width: 422px;
+
+  @media screen and (min-width: 1280px) {
+    height: 208px;
+    width: 440px;
+  }
+}

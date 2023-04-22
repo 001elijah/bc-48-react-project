@@ -187,6 +187,11 @@
     background: $main-white;
     border: transparent;
     border-radius: 60px;
+    color: $accent;
+    font-family: 'Lato-Regular';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.43;
 
     @include tablet {
         margin-top: 14px;

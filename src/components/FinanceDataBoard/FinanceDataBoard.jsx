@@ -1,51 +1,25 @@
 import s from './FinanceDataBoard.module.scss';
 
-export const FinanceDataBoard = ({
-  BoardTitle = null,
-  onSubmit,
-  dailyLimit,
-  monthLimit,
-}) => {
-  //   console.log(onClick);
-  return (
-    <>
-      {BoardTitle ? (
-        <div className={s.BoardWrapper}>
-          <span className={s.BoardTitle}>{BoardTitle}</span>
-          <div className={s.FlexWrapper}>
-            <div className={s.DataFieldWrapper}>
-              <label>
-                <span className={s.DataLabel}>Number of years</span>
-              </label>
-              <input
-                className={s.DataDisplayField}
-                type="text"
-                placeholder="0 years"
-                readOnly
-              />
-            </div>
-            <div className={s.DataFieldWrapper}>
-              <label>
-                <span className={s.DataLabel}>Number of months</span>
-              </label>
-              <input
-                className={s.DataDisplayField}
-                type="text"
-                placeholder="0 months"
-                readOnly
-              />
-            </div>
-            <div className={s.BoardButtonsWrapper}>
-              <button className={s.FitsBtn} type="submit">
-                Fits
-              </button>
-              <button className={s.AddBalanceBtn} type="button">
-                Add Balance
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : (
+export const FinanceDataBoard = ({ BoardTitle = null, yearValue = 0, monthValue = 0, onSubmit, dailyLimit, monthLimit }) => {
+    return (
+        <>
+            {BoardTitle ? (<div className={s.BoardWrapper}>
+                <span className={s.BoardTitle}>{BoardTitle}</span>
+                <div className={s.FlexWrapper}>
+                    <div className={s.DataFieldWrapper}>
+                        <label><span className={s.DataLabel}>Number of years</span></label>
+                        <input className={s.DataDisplayField} type="text" value={yearValue && `${yearValue} years`} readOnly/>
+                    </div>
+                    <div className={s.DataFieldWrapper}>
+                        <label><span className={s.DataLabel}>Number of months</span></label>
+                        <input className={s.DataDisplayField} type="text" value={monthValue && `${monthValue} months`} readOnly/>
+                    </div>
+                    <div className={s.BoardButtonsWrapper}>
+                        <button className={s.FitsBtn} type='submit'>Fits</button>
+                        <button className={s.AddBalanceBtn} type='button'>Add Balance</button>
+                    </div>
+                </div>
+            </div>) : (
         <div className={s.DailyBoardWrapper}>
           <span className={s.BoardTitle}>{BoardTitle}</span>
           <div className={s.DailyFlexWrapper}>
@@ -75,7 +49,6 @@ export const FinanceDataBoard = ({
               <button
                 className={s.ReadyBtn}
                 type="submit"
-                // on
                 onClick={onSubmit}
               >
                 Ready
@@ -85,8 +58,7 @@ export const FinanceDataBoard = ({
               </button>
             </div>
           </div>
-        </div>
-      )}
-    </>
-  );
-};
+        </div>)}
+        </>
+    );
+}

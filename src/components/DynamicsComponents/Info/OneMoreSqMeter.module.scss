@@ -1,0 +1,66 @@
+@import 'assets/styles/utils/_vars.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f2534;
+  border-radius: 16px;
+  margin-top: 64px;
+  padding: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 672px;
+    margin: 0 auto;
+    margin-top: 72px;
+
+    flex-direction: row;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 570px;
+  }
+}
+
+.info {
+  width: 226px;
+  margin-right: 59px;
+}
+
+.text {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: calc(24 / 20);
+  color: $main-white;
+
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
+}
+
+.accent {
+  color: $accent;
+}
+
+.sum {
+  text-align: center;
+  margin-top: 28px;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: calc(43 / 36);
+  color: $main-white;
+
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
+}
+
+.img {
+  margin-top: 37px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+}
