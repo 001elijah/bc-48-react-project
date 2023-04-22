@@ -8,7 +8,6 @@ const authSlice = createSlice({
         token: null,
         authorized: false,
         error: null,
-        isLoading: null
     },
     extraReducers: (builder) => {
         builder
@@ -38,12 +37,6 @@ const authSlice = createSlice({
                 state.token = null;
             })
             .addMatcher(
-                action => action.type.endsWith('/pending'),
-                state => {
-                    state.isLoading = true;
-                }
-            )
-            .addMatcher(
                 action => action.type.endsWith('/fulfilled'),
                 state => {
                     state.error = null;
@@ -58,7 +51,6 @@ const authSlice = createSlice({
                     action.type.startsWith('auth')) &&
                     action.type.endsWith('/rejected'),
                 (state, { payload }) => {
-                    state.isLoading = false;
                     state.error = payload;
                 }
         )

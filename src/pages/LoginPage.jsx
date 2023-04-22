@@ -11,6 +11,9 @@ export const LoginPage = () => {
 
     const handleLoginUser = (dataForm) => {
         dispatch(login(dataForm))
+            .then(result => {
+                navigate('/plan');
+        })
     }
 
     const closeModal = () => {
