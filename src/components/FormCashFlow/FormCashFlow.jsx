@@ -6,12 +6,15 @@ import { TextDataInput } from 'components/TextDataInput/TextDataInput';
 import { FinanceDataBoard } from 'components/FinanceDataBoard/FinanceDataBoard';
 import SelectCategory from 'components/Select/SelectCategory';
 import './FormCashFlow.scss';
-import { useEffect, useState } from 'react';
+import {
+  // useEffect,
+  useState
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { dailyLimit, monthLimit } from 'redux/selectors/cashFlowSelector';
+// import { dailyLimit, monthLimit } from 'redux/selectors/cashFlowSelector';
 
 export const FormCashFlow = () => {
-  const [sum, setSum] = useState(null);
+  const [sum, setSum] = useState(0);
   const [coment, setComent] = useState('');
   const [categories, setCategories] = useState(null);
   const balance = useSelector(state => state.authorized.user.balance);
@@ -29,7 +32,7 @@ export const FormCashFlow = () => {
       sum,
       date: Date.now(),
     };
-    console.log(form);
+    // console.log(form);
     dispatch(postTransaction(form));
     dispatch(getDailyLimit());
   };
@@ -46,6 +49,7 @@ export const FormCashFlow = () => {
           // value={`Account balance: UAN ${balance}`}
           placeholder={'75 000'}
           value={balance}
+          isReadOnly={true}
         />
 
         <label className="labelForm">
@@ -59,7 +63,7 @@ export const FormCashFlow = () => {
           // value={`Account balance: UAN ${balance}`}
           placeholder={'00.00'}
           // getChange={e => console.log(e.target.value)}
-          value={sum}
+          value={sum === 0 ? '' : sum}
         />
 
         <TextDataInput

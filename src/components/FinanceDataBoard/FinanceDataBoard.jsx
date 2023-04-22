@@ -75,7 +75,7 @@ export const FinanceDataBoard = ({
               <button
                 className={s.ReadyBtn}
                 type="submit"
-                on
+                // on
                 onClick={onSubmit}
               >
                 Ready

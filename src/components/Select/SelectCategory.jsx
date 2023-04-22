@@ -20,9 +20,9 @@ export default function SelectCategory({ getChange }) {
   });
 
   useEffect(() => {
-    console.log('CashflowPage');
+    // console.log('CashflowPage');
     dispatch(getListOfCategory());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Select

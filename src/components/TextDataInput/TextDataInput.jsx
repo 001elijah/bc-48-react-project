@@ -1,7 +1,7 @@
 import s from './TextDataInput.module.scss';
 
 export const TextDataInput = ({ ...props }) => {
-    const { label, htmlFor, placeholder, hint = null, id, name, onChange, onBlur, value, fieldError, isFieldTouched } = props;
+    const { label, htmlFor, placeholder, hint = null, id, name, onChange, onBlur, value, fieldError, isFieldTouched, isReadOnly = null } = props;
 
     return (
         <>
@@ -15,6 +15,7 @@ export const TextDataInput = ({ ...props }) => {
                     className={s.TextDataInput}
                     type="text"
                     placeholder={placeholder}
+                    readOnly={isReadOnly}
                 />
                 <label htmlFor={htmlFor}><span className={s.TextDataInputTitle}>{label}</span></label>
                 { isFieldTouched && fieldError && <p className={s.Error}>{fieldError}</p> }

@@ -4,7 +4,7 @@ import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/o
 const authSlice = createSlice({
     name: 'authorized',
     initialState: {
-        user: { name: null, email: null, balance: null },
+        user: { name: null, email: null, balance: 0 },
         token: null,
         authorized: false,
     },
