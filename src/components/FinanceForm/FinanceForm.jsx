@@ -11,9 +11,10 @@ import * as Yup from 'yup';
 import s from './FinanceForm.module.scss';
 import { FinanceDataBoard } from "components/FinanceDataBoard/FinanceDataBoard";
 import { selectCost, selectFootage, selectMonth, selectPassiveIncome, selectProcent, selectSalary, selectSavings, selectYear } from "redux/selectors/personalPlanSelectors";
-import { prePostPlan } from '../../redux/operations/personalPlanOperations';
+import { getPlan, postPlan, prePostPlan } from '../../redux/operations/personalPlanOperations';
 import { selectAuthorized } from "redux/selectors/authSelectors";
 import _ from "lodash";
+import { useEffect } from "react";
 
 const OwnPlanSchema = Yup.object().shape({
    salary: Yup.string().required('Required').matches(/^[1-9][0-9]*$/, {message: 'Must be greater than 0 and start from 1'}),
@@ -36,6 +37,11 @@ export const FinanceForm = () => {
     const year = useSelector(selectYear);
     const month = useSelector(selectMonth);
 
+    useEffect(() => {
+      authorized && dispatch(getPlan())
+    }, [authorized, dispatch])
+    
+
     const formik = useFormik({
         initialValues: {
             salary,
@@ -45,8 +51,17 @@ export const FinanceForm = () => {
             footage,
             procent,
         },
+        enableReinitialize: true,
         onSubmit: values => {
             console.log(values);
+            dispatch(postPlan({
+                salary: +values.salary,
+                passiveIncome: +values.passiveIncome,
+                savings: +values.savings,
+                cost: +values.cost,
+                footage: +values.footage,
+                procent: +values.procent
+            }));
         },
         // onBlur: values => {
             // console.log(values);
@@ -90,7 +105,7 @@ export const FinanceForm = () => {
                     name={'salary'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.salary}
+                    value={formik.values.salary === 0 ? '' : formik.values.salary}
                     fieldError={formik.errors.salary}
                     isFieldTouched={formik.touched.salary}
                 />
@@ -102,7 +117,7 @@ export const FinanceForm = () => {
                     name={'passiveIncome'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.passiveIncome}
+                    value={formik.values.passiveIncome === 0 ? '' : formik.values.passiveIncome}
                     fieldError={formik.errors.passiveIncome}
                     isFieldTouched={formik.touched.passiveIncome}
                 />
@@ -115,7 +130,7 @@ export const FinanceForm = () => {
                     name={'savings'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.savings}
+                    value={formik.values.savings === 0 ? '' : formik.values.savings}
                     fieldError={formik.errors.savings}
                     isFieldTouched={formik.touched.savings}
                 />
@@ -128,7 +143,7 @@ export const FinanceForm = () => {
                     name={'cost'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.cost}
+                    value={formik.values.cost === 0 ? '' : formik.values.cost}
                     fieldError={formik.errors.cost}
                     isFieldTouched={formik.touched.cost}
                 />
@@ -141,7 +156,7 @@ export const FinanceForm = () => {
                     name={'footage'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.footage}
+                    value={formik.values.footage === 0 ? '' : formik.values.footage}
                     fieldError={formik.errors.footage}
                     isFieldTouched={formik.touched.footage}
                 />
@@ -155,12 +170,12 @@ export const FinanceForm = () => {
                     name={'procent'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.procent}
+                    value={formik.values.procent === 0 ? '' : formik.values.procent}
                     fieldError={formik.errors.procent}
                     isFieldTouched={formik.touched.procent}
                 />
                 
-                <FinanceDataBoard BoardTitle={"You will have apartment in:"} yearValue={year} monthValue={month}/>
+                <FinanceDataBoard BoardTitle={"You will have apartment in:"} yearValue={year === 0 ? '' : year} monthValue={month === 0 ? '' : month}/>
                 {/* <FinanceDataBoard /> */}
                     {/* <TextField
                         size="small"
