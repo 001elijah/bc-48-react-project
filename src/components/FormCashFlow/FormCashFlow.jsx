@@ -8,33 +8,36 @@ import SelectCategory from 'components/Select/SelectCategory';
 import './FormCashFlow.scss';
 import {
   // useEffect,
-  useState
+  useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'redux/selectors/authSelectors';
 // import { dailyLimit, monthLimit } from 'redux/selectors/cashFlowSelector';
 
 export const FormCashFlow = () => {
   const [sum, setSum] = useState(0);
   const [coment, setComent] = useState('');
   const [categories, setCategories] = useState(null);
-  const balance = useSelector(state => state.authorized.user.balance);
-
+  const balance = useSelector(selectUser).balance;
+  // console.log()
   const dispatch = useDispatch();
   const monthLimit = useSelector(state => state.cashflow.monthLimit);
   const dailyLimit = useSelector(state => state.cashflow.dailyLimit);
 
   const handleGetModal = () => {
-    console.log(123312132);
-    const form = {
-      type: 'expense',
-      category: `${categories.value}`,
-      comment: coment ? coment : 'comment',
-      sum,
-      date: Date.now(),
-    };
-    // console.log(form);
-    dispatch(postTransaction(form));
-    dispatch(getDailyLimit());
+    if (sum === 0 && categories === null) {
+      alert('asdasdasdasd');
+    } else {
+      const form = {
+        type: 'expense',
+        category: `${categories.value}`,
+        comment: coment ? coment : 'comment',
+        sum,
+      };
+
+      dispatch(postTransaction(form));
+      dispatch(getDailyLimit());
+    }
   };
 
   //   useEffect(() => {
