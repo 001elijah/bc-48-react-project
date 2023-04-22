@@ -8,11 +8,11 @@ export const FinanceDataBoard = ({ BoardTitle = null, yearValue = 0, monthValue 
                 <div className={s.FlexWrapper}>
                     <div className={s.DataFieldWrapper}>
                         <label><span className={s.DataLabel}>Number of years</span></label>
-                        <input className={s.DataDisplayField} type="text" value={`${yearValue} years`} readOnly/>
+                        <input className={s.DataDisplayField} type="text" value={yearValue && `${yearValue} years`} readOnly/>
                     </div>
                     <div className={s.DataFieldWrapper}>
                         <label><span className={s.DataLabel}>Number of months</span></label>
-                        <input className={s.DataDisplayField} type="text" value={`${monthValue} months`} readOnly/>
+                        <input className={s.DataDisplayField} type="text" value={monthValue && `${monthValue} months`} readOnly/>
                     </div>
                     <div className={s.BoardButtonsWrapper}>
                         <button className={s.FitsBtn} type='submit'>Fits</button>

@@ -11,7 +11,7 @@ import * as Yup from 'yup';
 import s from './FinanceForm.module.scss';
 import { FinanceDataBoard } from "components/FinanceDataBoard/FinanceDataBoard";
 import { selectCost, selectFootage, selectMonth, selectPassiveIncome, selectProcent, selectSalary, selectSavings, selectYear } from "redux/selectors/personalPlanSelectors";
-import { prePostPlan } from '../../redux/operations/personalPlanOperations';
+import { postPlan, prePostPlan } from '../../redux/operations/personalPlanOperations';
 import { selectAuthorized } from "redux/selectors/authSelectors";
 import _ from "lodash";
 
@@ -47,6 +47,14 @@ export const FinanceForm = () => {
         },
         onSubmit: values => {
             console.log(values);
+            dispatch(postPlan({
+                salary: +salary,
+                passiveIncome: +passiveIncome,
+                savings: +savings,
+                cost: +cost,
+                footage: +footage,
+                procent: +procent
+            }));
         },
         // onBlur: values => {
             // console.log(values);
@@ -90,7 +98,7 @@ export const FinanceForm = () => {
                     name={'salary'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.salary}
+                    value={formik.values.salary === 0 ? '' : formik.values.salary}
                     fieldError={formik.errors.salary}
                     isFieldTouched={formik.touched.salary}
                 />
@@ -102,7 +110,7 @@ export const FinanceForm = () => {
                     name={'passiveIncome'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.passiveIncome}
+                    value={formik.values.passiveIncome === 0 ? '' : formik.values.passiveIncome}
                     fieldError={formik.errors.passiveIncome}
                     isFieldTouched={formik.touched.passiveIncome}
                 />
@@ -115,7 +123,7 @@ export const FinanceForm = () => {
                     name={'savings'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.savings}
+                    value={formik.values.savings === 0 ? '' : formik.values.savings}
                     fieldError={formik.errors.savings}
                     isFieldTouched={formik.touched.savings}
                 />
@@ -128,7 +136,7 @@ export const FinanceForm = () => {
                     name={'cost'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.cost}
+                    value={formik.values.cost === 0 ? '' : formik.values.cost}
                     fieldError={formik.errors.cost}
                     isFieldTouched={formik.touched.cost}
                 />
@@ -141,7 +149,7 @@ export const FinanceForm = () => {
                     name={'footage'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.footage}
+                    value={formik.values.footage === 0 ? '' : formik.values.footage}
                     fieldError={formik.errors.footage}
                     isFieldTouched={formik.touched.footage}
                 />
@@ -155,12 +163,12 @@ export const FinanceForm = () => {
                     name={'procent'}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.procent}
+                    value={formik.values.procent === 0 ? '' : formik.values.procent}
                     fieldError={formik.errors.procent}
                     isFieldTouched={formik.touched.procent}
                 />
                 
-                <FinanceDataBoard BoardTitle={"You will have apartment in:"} yearValue={year} monthValue={month}/>
+                <FinanceDataBoard BoardTitle={"You will have apartment in:"} yearValue={year === 0 ? '' : year} monthValue={month === 0 ? '' : month}/>
                 {/* <FinanceDataBoard /> */}
                     {/* <TextField
                         size="small"

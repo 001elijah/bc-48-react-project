@@ -10,8 +10,8 @@ const personalPlanSlice = createSlice({
         cost: 0,
         footage: 0,
         procent: 0,
-        year: null,
-        month: null
+        year: 0,
+        month: 0
     },
     extraReducers: (builder) => {
         builder
