@@ -1,19 +1,60 @@
-// .react-select {
-//   width: 370px;
-//   border-radius: 16px;
-//   // margin-left: 8px;
-//   //   color: blue;
+.react-select {
+  &-container {
+    // background-color: red !important;
+    &:active {
+      border-color: transparent;
+    }
+  }
+  &__control {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    padding-left: 8px;
 
-//   &-container {
-//     background-color: red !important;
-//     height: 74px;
-//     width: 370px;
-//   }
-//   &__control {
-//     background-color: red !important;
-//   }
-// }
+    &--is-focused {
+      border-color: transparent !important ;
 
-// .SelectCategory_select {
-//   width: 343px;
-// }
+      &:focus {
+        border-color: transparent !important;
+      }
+      &:active {
+        border-color: transparent !important;
+      }
+    }
+    &--menu-is-open {
+      border-color: transparent !important ;
+
+      &:focus {
+        border-color: transparent !important;
+      }
+      &:active {
+        border-color: transparent !important;
+      }
+    }
+  }
+  &__value-container {
+    padding: 0;
+    // padding-left: 18px;
+  }
+  &__option {
+    color: black !important;
+    &:hover {
+      background: #3a6af5 !important;
+      border-radius: 10px;
+    }
+  }
+  &__single-value {
+    color: wheat !important;
+  }
+
+  &__indicator-separator {
+    display: none;
+  }
+
+  &__indicator {
+    margin-top: -20px;
+  }
+  &__menu {
+    // background: red !important;
+    border-radius: 10px;
+  }
+}
