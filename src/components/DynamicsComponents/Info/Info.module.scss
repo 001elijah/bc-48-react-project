@@ -1,0 +1,70 @@
+@import '../../../assets/styles/utils/vars';
+
+.info {
+  padding-top: 50px;
+  @media screen and (min-width: 768px) {
+    padding-top: 0;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+  }
+}
+
+.allPeriod {
+  font-size: 12px;
+  line-height: 1;
+  color: $main-white;
+}
+
+.list {
+  margin-top: 32px;
+  width: 269px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 50px;
+    width: 224px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 61px;
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  color: rgba(243, 243, 243, 0.4);
+}
+
+.value {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  color: $main-white;
+}
+
+.acumulated {
+  margin-top: 28px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: calc(19 / 16);
+  color: $main-white;
+}
+
+.progress {
+  width: 343px;
+
+  @media screen and (min-width: 768px) {
+    width: 224px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 270px;
+  }
+}

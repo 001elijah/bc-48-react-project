@@ -1,0 +1,90 @@
+@import 'assets/styles/utils/_vars';
+
+.fileUpload {
+  margin-top: 50px;
+  height: 260px;
+  width: 343px;
+  border-radius: 16px;
+  position: relative;
+
+  &:hover .icons,
+  &:focus .icons {
+    fill: $accent;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+    width: 224px;
+    height: 166px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 0;
+    margin-left: 45px;
+    width: 254px;
+    height: 209px;
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #1f2534 50%, #ffffff 50%);
+  background-size: 100% 200%;
+  color: #ffffff;
+
+  input[type='file'] {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.icons {
+  &:hover {
+    fill: $accent;
+  }
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  text-decoration-line: underline;
+
+  color: $main-white;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  color: $accent;
+}
+
+.inputfile + label {
+  cursor: pointer;
+}
+
+.inputChangeContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
