@@ -11,6 +11,9 @@ import { StatisticsPage } from "pages/StatisticsPage";
 import { selectAuthorized } from "redux/selectors/authSelectors";
 import { useSelector } from "react-redux";
 
+import { useState } from 'react';
+import { GreetingCard } from 'components/GreetingCard/GreetingCard';
+
 
 const PrivateRoute = ({ component, redirectTo = "/login" }) => {
   const isAuth = useSelector(selectAuthorized);
@@ -40,8 +43,18 @@ const PublicRoute = ({ component, redirectTo = "/plan" }) => {
 
 export const App = () => {
   //const dispatch = useDispatch();
+
+  const [showCard, setShowCard] = useState(false);
+  const handleCardOpen = () => setShowCard(true);
+  const handleCardClose = () => setShowCard(false);
+
   return (
     <>
+      <div>
+      <button onClick={handleCardOpen}>Open Greeting Card</button>
+
+      {showCard && <GreetingCard onClose={handleCardClose} />}
+    </div>
       {/* <button type="button"
         onClick={() =>
           dispatch(register({
