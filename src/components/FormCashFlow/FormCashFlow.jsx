@@ -6,22 +6,23 @@ import { TextDataInput } from 'components/TextDataInput/TextDataInput';
 import { FinanceDataBoard } from 'components/FinanceDataBoard/FinanceDataBoard';
 import SelectCategory from 'components/Select/SelectCategory';
 import './FormCashFlow.scss';
-import {
-  // useEffect,
-  useState
-} from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentUserInfo } from 'redux/operations/authOperations';
 // import { dailyLimit, monthLimit } from 'redux/selectors/cashFlowSelector';
 
-export const FormCashFlow = () => {
+export const FormCashFlow = ({ handleToggle }) => {
   const [sum, setSum] = useState(0);
   const [coment, setComent] = useState('');
   const [categories, setCategories] = useState(null);
   const balance = useSelector(state => state.authorized.user.balance);
+  console.log(balance);
 
   const dispatch = useDispatch();
   const monthLimit = useSelector(state => state.cashflow.monthLimit);
   const dailyLimit = useSelector(state => state.cashflow.dailyLimit);
+
+  const isModal = () => {};
 
   const handleGetModal = () => {
     console.log(123312132);
@@ -32,14 +33,16 @@ export const FormCashFlow = () => {
       sum,
       date: Date.now(),
     };
-    // console.log(form);
+    console.log(form);
     dispatch(postTransaction(form));
     dispatch(getDailyLimit());
   };
 
-  //   useEffect(() => {
-  //     console.log('FormCashFlow');
-  //   }, [dispatch]);
+  useEffect(() => {
+    console.log('FormCashFlow');
+    dispatch(getDailyLimit());
+    dispatch(getCurrentUserInfo());
+  }, [dispatch]);
 
   return (
     <>
@@ -75,6 +78,7 @@ export const FormCashFlow = () => {
         />
       </form>
       <FinanceDataBoard
+        isModal={handleToggle}
         onSubmit={handleGetModal}
         dailyLimit={!dailyLimit ? 600 : dailyLimit}
         monthLimit={!monthLimit ? 1600 : monthLimit}

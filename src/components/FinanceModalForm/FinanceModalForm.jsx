@@ -1,9 +1,20 @@
+import { useDispatch } from 'react-redux';
 import s from './FinanceModalForm.module.scss';
 import svg from 'assets/icons/sprite.svg';
+import { useState } from 'react';
+import { postTransaction } from 'redux/operations/cashflowOperations';
 
 // import sprite from '../../assets/icons/sprite.svg';
-export const FinanceModalForm = ({ title, handleToggle, getModal }) => {
-  // getModal це пропс для передачі запиту по кліку на кнопку Add
+export const FinanceModalForm = ({ title, handleToggle }) => {
+  const [sum, setSum] = useState(0);
+  const dispatch = useDispatch();
+
+  const handleGetModal = () => {
+    const form = { sum, type: 'income' };
+    dispatch(postTransaction(form));
+    handleToggle();
+  };
+
   return (
     <div className={s.backdrop}>
       <div className={s.modal_box}>
@@ -13,10 +24,15 @@ export const FinanceModalForm = ({ title, handleToggle, getModal }) => {
           </svg>
         </button>
         <div className={s.boxInput}>
-          <input type="text" placeholder={title} className={s.input} />
+          <input
+            type="text"
+            placeholder={title}
+            className={s.input}
+            onChange={e => setSum(e.target.value)}
+          />
           <ul className={s.buttonList}>
             <li>
-              <button className={s.buttonAdd} onClick={getModal}>
+              <button className={s.buttonAdd} onClick={handleGetModal}>
                 Add
               </button>
             </li>
