@@ -10,7 +10,7 @@ export const GreetingCard = ({ onClose }) => {
         <div className={s.card}>
             {isMobile &&
             <div onClick={onClose} className={s.close}>
-                <svg width="18" height="18" fill="#F3F3F3">
+                <svg width="14" height="14" fill="#F3F3F3">
                     <use xlinkHref={`${svg}#icon-close`} />
                 </svg> 
             </div> 

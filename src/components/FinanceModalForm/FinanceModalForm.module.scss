@@ -1,3 +1,5 @@
+@import '../../assets/styles/utils/vars';
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -37,22 +39,18 @@
   }
 }
 
-.closeButton {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  top: 19px;
-  right: 19px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: transparent;
-  // border-color: rgba(0, 0, 0, 0.1);
-  // border-radius: 50%;
-  cursor: pointer;
-  fill: #ffffff;
+.close {
+  padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    position: absolute;
+    top: 14px;
+    right: 15px;
+  
+    &:hover {
+      transform: scale(1.1);
+    }
 }
 
 .boxInput {
@@ -81,6 +79,11 @@
   border-radius: 28px;
   padding-left: 24px;
   color: #f3f3f3;
+
+  &:focus {
+      outline: none;
+      border: 1px solid $accent;
+  }
 
   @media screen and (min-width: 380px) {
     // width: 370px;
@@ -171,9 +174,9 @@
   }
 }
 
-.iconClose {
-  fill: #ffffff;
-  // transition-property: fill;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 250ms;
-}
+// .iconClose {
+//   fill: #ffffff;
+//   // transition-property: fill;
+//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+//   transition-duration: 250ms;
+// }

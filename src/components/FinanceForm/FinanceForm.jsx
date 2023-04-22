@@ -35,7 +35,7 @@ export const FinanceForm = () => {
     
 
     const formik = useFormik({
-        initialValues: plan,
+        initialValues: plan || '',
         enableReinitialize: true,
         onSubmit: values => {
             console.log(values);
@@ -50,6 +50,7 @@ export const FinanceForm = () => {
         },
         validationSchema: OwnPlanSchema,
     });
+
     const getPrePlan = _.debounce(() => {
         const {
             salary,
@@ -64,8 +65,8 @@ export const FinanceForm = () => {
             formik.touched.savings ||
             formik.touched.passiveIncome ||
             formik.touched.salary) &&
-            salary && passiveIncome && savings &&
-            cost && footage && procent &&
+            (salary && passiveIncome && savings &&
+            cost && footage && procent) &&
             dispatch(prePostPlan({
                 salary: +salary,
                 passiveIncome: +passiveIncome,
@@ -161,7 +162,11 @@ export const FinanceForm = () => {
                     isFieldTouched={formik.touched.procent}
                 />
                 
-                <FinanceDataBoard BoardTitle={"You will have apartment in:"} yearValue={year === 0 ? '' : year} monthValue={month === 0 ? '' : month}/>
+                <FinanceDataBoard
+                    BoardTitle={"You will have apartment in:"}
+                    yearValue={year === 0 ? '' : year}
+                    monthValue={month === 0 ? '' : month}
+                />
             </form>
         </div>
     );

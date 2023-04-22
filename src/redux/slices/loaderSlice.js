@@ -23,11 +23,6 @@ export const loaderSlice = createSlice({
             )
             .addMatcher(
                 action => (
-                    action.type.startsWith('cashflow') ||
-                    action.type.startsWith('categories') ||
-                    action.type.startsWith('dynamics') ||
-                    action.type.startsWith('personalPlan') ||
-                    action.type.startsWith('auth')) && (
                     action.type.endsWith('/rejected') ||
                     action.type.endsWith('/fulfilled')),
                 (state) => {

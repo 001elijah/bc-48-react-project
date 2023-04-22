@@ -1,6 +1,19 @@
+import { useState } from 'react';
 import s from './FinanceDataBoard.module.scss';
+import Modal from 'components/Modal/Modal';
+import { FinanceModalForm } from 'components/FinanceModalForm/FinanceModalForm';
 
-export const FinanceDataBoard = ({ BoardTitle = null, yearValue = 0, monthValue = 0, onSubmit, dailyLimit, monthLimit }) => {
+export const FinanceDataBoard = ({
+      BoardTitle = null,
+      yearValue = 0,
+      monthValue = 0,
+      onSubmit,
+      dailyLimit,
+      monthLimit}) =>
+{
+  const [showModalWindow, setShowModalWindow] = useState(false);
+  const handleModalWindowOpen = () => setShowModalWindow(true);
+  const handleModalWindowClose = () => setShowModalWindow(false);
     return (
         <>
             {BoardTitle ? (<div className={s.BoardWrapper}>
@@ -16,7 +29,8 @@ export const FinanceDataBoard = ({ BoardTitle = null, yearValue = 0, monthValue 
                     </div>
                     <div className={s.BoardButtonsWrapper}>
                         <button className={s.FitsBtn} type='submit'>Fits</button>
-                        <button className={s.AddBalanceBtn} type='button'>Add Balance</button>
+              <button className={s.AddBalanceBtn} onClick={handleModalWindowOpen} type='button'>Add Balance</button>
+              {showModalWindow && <Modal closeModal={handleModalWindowClose}><FinanceModalForm handleToggle={handleModalWindowClose} title={'Enter balance'} /></Modal>}
                     </div>
                 </div>
             </div>) : (

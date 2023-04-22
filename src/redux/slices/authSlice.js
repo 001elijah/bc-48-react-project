@@ -39,18 +39,11 @@ const authSlice = createSlice({
             .addMatcher(
                 action => action.type.endsWith('/fulfilled'),
                 state => {
-                    state.isLoading = false;
                     state.error = null;
                 }
             )
             .addMatcher(
-                action => (
-                    action.type.startsWith('cashflow') ||
-                    action.type.startsWith('categories') ||
-                    action.type.startsWith('dynamics') ||
-                    action.type.startsWith('personalPlan') ||
-                    action.type.startsWith('auth')) &&
-                    action.type.endsWith('/rejected'),
+                action => action.type.endsWith('/rejected'),
                 (state, { payload }) => {
                     state.error = payload;
                 }
