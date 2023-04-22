@@ -37,7 +37,7 @@ export const UserBar = () => {
     <>
       {!isBigScreen && (
         <div className={s.Container}>
-          <NavLink className={s.Stats} to="/statistics/transactions" onClick={handleCloseClick}>
+          <NavLink className={s.Stats} to="/statistics" onClick={handleCloseClick}>
             {isMobile &&
               <svg width="38" height="35" fill="#fff">
                 <use xlinkHref={`${svg}#icon-stats`} />
@@ -77,7 +77,7 @@ export const UserBar = () => {
       )}
       {isBigScreen && (
         <div className={s.Container}>
-          <NavLink className={s.Stats} to="/statistics/transactions">
+          <NavLink className={s.Stats} to="/statistics">
             <svg width="40" height="37" fill="#fff">
               <use xlinkHref={`${svg}#icon-stats`} />
             </svg>

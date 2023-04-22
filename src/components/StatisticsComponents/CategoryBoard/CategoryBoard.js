@@ -1,5 +1,5 @@
 import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
-import s from './StatisticsBoard.module.scss';
+import s from './CategoryBoard.module.scss';
 
 const data = [
   {

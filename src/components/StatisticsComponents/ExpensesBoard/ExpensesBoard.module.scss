@@ -1,0 +1,167 @@
+@import 'src/assets/styles/utils/mixins';
+@import 'src/assets/styles/utils/vars';
+
+.container {
+  @include container;
+}
+
+.wrapper_category,
+.wrapper_expense {
+  padding: 16px;
+  width: 343px;
+
+  background: $text-input-color;
+  &:not(:last-child){
+    border-bottom: 1px solid $border-color;
+  } 
+  &:last-child {
+    border-radius: 0px 0px 16px 16px;
+  }
+  @include tablet {
+    height: 70px;
+    width: 704px;
+    display: flex;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include desktop {
+    width: 769px;
+    display: flex;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.wrapper_category {
+  height: 83px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include tablet {
+    height: 70px;
+    padding: 22px 150px 22px 32px;
+    flex-direction: row;
+  }
+  @include desktop {
+    height: 70px;
+    padding: 22px 150px 22px 32px;
+    flex-direction: row;
+  }
+}
+.wrapper_expense {
+  height: 104px;
+  @include tablet {
+    height: 70px;
+  }
+  @include desktop {
+    height: 70px;
+  }
+}
+.expenses_items {
+  display: flex;
+  justify-content: space-between;
+
+  @include tablet {
+    width: 70%;
+  }
+  @include desktop {
+    width: 70%;
+  }
+}
+.expense_date {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: $input-hint-color;
+  ;
+  margin-bottom: 3px;
+}
+.expense_comment,
+.expense_category {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: $text-color;
+}
+.expense_comment {
+  margin-bottom: 13px;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
+}
+.expense_category {
+}
+.expense_sum {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: $text-color;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
+  @include desktop {
+    margin-bottom: 0;
+  }
+}
+
+.react-datepicker__month-wrapper {
+  margin-bottom: 15px;
+}
+.icon_block {
+}
+.comment_block,
+.category_block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include tablet {
+    width: 50%;
+  }
+  @include desktop {
+    width: 50%;
+  }
+}
+.comment_block {
+  @media screen and (min-width: 768px) {
+    margin-right: 24px;
+    &::after {
+      content: '';
+      height: 41px;
+      left: 373px;
+      top: 14px;
+
+      border: 1px solid $border-color;
+      flex: none;
+      order: 3;
+      flex-grow: 0;
+      z-index: 3;
+    }
+  }
+}
+
+.expense_percent {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: left;
+  margin-top: 8px;
+  color: $text-color1 ;
+}
+.positions {
+  position: relative;
+  background-color: black;
+}
+

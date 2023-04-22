@@ -8,8 +8,8 @@ import { LoginPage } from "pages/LoginPage";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { HomePage } from "pages/HomePage";
 import { StatisticsPage } from "pages/StatisticsPage";
-import{ ExpensesList} from './StatisticsComponents/StatisticsBoard/StatisticsBoard'
-import {CategoriesList} from './StatisticsComponents/StatisticsBoard/CategoryBoard'
+import{ ExpensesList} from './StatisticsComponents/ExpensesBoard/ExpensesBoard'
+import {CategoriesList} from './StatisticsComponents/CategoryBoard/CategoryBoard'
 
  //import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
 

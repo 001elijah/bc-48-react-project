@@ -1,57 +1,68 @@
-import { FormInput } from './ModalItem';
-// import { Alert, TextField } from "@mui/material";
+import { FormInput } from './PopUpItem';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import s from './Popup.module.scss';
 import iconSvg from '../Svg';
 import clsx from 'clsx';
-import { putOneTransaction } from '../../../redux/operations/cashflowOperations';
-import { putOneTransactionApi } from '../../../services/backendAPI';
-
+// import { putOneTransaction } from '../../../redux/operations/cashflowOperations';
+import { getListOfCategoryApi } from '../../../services/backendAPI';
 import { useFormik } from 'formik';
-
-
 import shortid from 'shortid';
 
-export const PopUp = ({ isActive, setActive, id }) => {
- 
+export const PopUp = ({ isActive, setActive, setData }) => {
+  const { id, date, comment, category, sum } = setData;
   const [incomeData, setIncomeData] = useState();
+  const [categoryList, setCategoryList] = useState();
 
-  setIncomeData(putOneTransactionApi(id))
-  console.log(incomeData)
+  // setIncomeData(putOneTransactionApi(id))
+  // console.log(category)
   const formik = useFormik({
     initialValues: {
-      category: '',
-      comment: '',
-      sum: '',
+      category,
+      comment,
+      sum,
     },
     onSubmit: values => {
-      console.log(values);
+      console.log('submit', values);
     },
-    // validationSchema: OwnPlanSchema,
+    // validationSchema: //,
   });
 
+  useEffect(() => {
+    getListOfCategoryApi().then(data => {
+      console.log('1');
+      setCategoryList(data);
+    });
+  }, []);
 
+  console.log(categoryList);
+
+  const options = [
+    { value: 'Products', label: 'Products' },
+    { value: 'Clothing and footwear', label: 'Clothing and footwear' },
+    { value: 'Cafes and restaurants', label: 'Cafes and restaurants' },
+    { value: 'Beauty and medicine', label: 'Beauty and medicine' },
+    { value: 'Health', label: 'Health' },
+    { value: 'Transport', label: 'Transport' },
+    { value: 'House', label: 'House' },
+    { value: 'Other', label: 'Other' },
+  ];
 
   const getBackdropClass = () => clsx(s.backdrop, isActive && s.active);
-
 
   const PopUpForm = [
     {
       label: 'Per category',
       htmlFor: 'category',
       placeholder: '',
-      hint: null,
       id: 'category',
       name: 'category',
       onChange: formik.handleChange,
-      value: formik.values.category,
+      value:formik.values.comment,
     },
     {
       label: 'Expense comment',
       htmlFor: 'comment',
       placeholder: '',
-      hint: null,
       id: 'comment',
       name: 'comment',
       onChange: formik.handleChange,
@@ -61,7 +72,6 @@ export const PopUp = ({ isActive, setActive, id }) => {
       label: 'Sum',
       htmlFor: 'sum',
       placeholder: '',
-      hint: null,
       id: 'sum',
       name: 'sum',
       onChange: formik.handleChange,
@@ -88,11 +98,11 @@ export const PopUp = ({ isActive, setActive, id }) => {
               label,
               htmlFor,
               placeholder,
-              hint,
               id,
               name,
               onChange,
               value,
+              select,
             }) => (
               <FormInput
                 key={shortid.generate()}
@@ -103,7 +113,7 @@ export const PopUp = ({ isActive, setActive, id }) => {
                 label={label}
                 htmlFor={htmlFor}
                 placeholder={placeholder}
-                hint={hint}
+                select={options}
               />
             )
           )}

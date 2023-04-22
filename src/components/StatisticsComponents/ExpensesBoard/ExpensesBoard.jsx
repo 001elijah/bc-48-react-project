@@ -1,9 +1,9 @@
-import s from './StatisticsBoard.module.scss';
+import s from './ExpensesBoard.module.scss';
 import iconSvg from '../Svg';
 import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
 import { deleteOneTransaction } from '../../../redux/operations/cashflowOperations';
 import { useDispatch } from 'react-redux';
-import { PopUp } from '../Modal/Modal';
+import { PopUp } from '../PopUp/PopUp';
 import { useState } from 'react';
 
 const data = [
@@ -45,12 +45,12 @@ export const Item = ({
   category,
   sum,
   setActive,
-  setTransID,
+  setData,
 }) => {
   const dispatch = useDispatch();
-  const getPopUp = id => {
+  const getPopUp =(setTransData) => {
     setActive(true);
-    setTransID(id);
+    setData(setTransData);
   };
   return (
     <>
@@ -65,7 +65,7 @@ export const Item = ({
         <div className={s.category_block}>
           <p className={s.expense_category}> {category}</p>
           <div className={s.icon_block}>
-            {iconSvg('edit', '#3A6AF5', '20', () => getPopUp(id))}
+            {iconSvg('edit', '#3A6AF5', '20', () => getPopUp({id, date, comment, category, sum}))}
             {iconSvg('delete', 'white', '20', () =>
               dispatch(deleteOneTransaction(id))
             )}
@@ -78,7 +78,7 @@ export const Item = ({
 
 export const ExpensesList = () => {
   const [popupActive, setPopupActive] = useState(false);
-  const [transID, setTransID] = useState('');
+  const [dataIn, setDataIn] = useState('');
   return (
     <div className={s.container}>
       <StatisticsNav />
@@ -88,12 +88,12 @@ export const ExpensesList = () => {
             key={item.id}
             {...item}
             setActive={setPopupActive}
-            setTransID={setTransID}
+            setData={setDataIn}
           />
         ))}
       </ul>
       {popupActive && (
-        <PopUp isActive={popupActive} setActive={setPopupActive} id={transID} />
+        <PopUp isActive={popupActive} setActive={setPopupActive} setData={dataIn} />
       )}
     </div>
   );
