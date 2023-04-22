@@ -1,16 +1,13 @@
 import { TextDataInput } from "components/TextDataInput/TextDataInput";
 
 import { useFormik } from "formik";
-import {
-    useDispatch,
-    useSelector
-} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as Yup from 'yup';
 
 import s from './FinanceForm.module.scss';
 import { FinanceDataBoard } from "components/FinanceDataBoard/FinanceDataBoard";
-import { selectCost, selectFootage, selectMonth, selectPassiveIncome, selectProcent, selectSalary, selectSavings, selectYear } from "redux/selectors/personalPlanSelectors";
+import { selectMonth, selectPlan, selectYear } from "redux/selectors/personalPlanSelectors";
 import { getPlan, postPlan, prePostPlan } from '../../redux/operations/personalPlanOperations';
 import { selectAuthorized } from "redux/selectors/authSelectors";
 import _ from "lodash";
@@ -27,13 +24,8 @@ const OwnPlanSchema = Yup.object().shape({
 
 export const FinanceForm = () => {
     const dispatch = useDispatch();
+    const plan = useSelector(selectPlan);
     const authorized = useSelector(selectAuthorized);
-    const salary = useSelector(selectSalary);
-    const passiveIncome = useSelector(selectPassiveIncome);
-    const savings = useSelector(selectSavings);
-    const cost = useSelector(selectCost);
-    const footage = useSelector(selectFootage);
-    const procent = useSelector(selectProcent);
     const year = useSelector(selectYear);
     const month = useSelector(selectMonth);
 
@@ -43,14 +35,7 @@ export const FinanceForm = () => {
     
 
     const formik = useFormik({
-        initialValues: {
-            salary,
-            passiveIncome,
-            savings,
-            cost,
-            footage,
-            procent,
-        },
+        initialValues: plan,
         enableReinitialize: true,
         onSubmit: values => {
             console.log(values);
@@ -63,10 +48,6 @@ export const FinanceForm = () => {
                 procent: +values.procent
             }));
         },
-        // onBlur: values => {
-            // console.log(values);
-        //     dispatch(prePostPlan(values));
-        // },
         validationSchema: OwnPlanSchema,
     });
     const getPrePlan = _.debounce(() => {
@@ -78,7 +59,12 @@ export const FinanceForm = () => {
             footage,
             procent
         } = formik.values;
-        authorized && formik.touched && salary && passiveIncome && savings &&
+        authorized && (formik.touched.procent ||
+            formik.touched.cost ||
+            formik.touched.savings ||
+            formik.touched.passiveIncome ||
+            formik.touched.salary) &&
+            salary && passiveIncome && savings &&
             cost && footage && procent &&
             dispatch(prePostPlan({
                 salary: +salary,
@@ -90,7 +76,7 @@ export const FinanceForm = () => {
             }));
     }, 1000);
     getPrePlan();
-    console.log(formik.touched);
+    // console.log(formik);
     return (
         <div className={s.Container}>
             <form
@@ -176,36 +162,6 @@ export const FinanceForm = () => {
                 />
                 
                 <FinanceDataBoard BoardTitle={"You will have apartment in:"} yearValue={year === 0 ? '' : year} monthValue={month === 0 ? '' : month}/>
-                {/* <FinanceDataBoard /> */}
-                    {/* <TextField
-                        size="small"
-                        id="name"
-                        name="name"
-                        type="text"
-                        placeholder="Type contact name"
-                        onChange={formik.handleChange}
-                        value={formik.values.name}
-                        sx={{
-                            width: '100%',
-                          }}
-                    /> */}
-                    {/* { formik.errors.name && formik.touched.name && <Alert variant="filled" severity="warning">{formik.errors.name}</Alert> } */}
-                    {/* <TextField
-                        size="small"
-                        id="number"
-                        name="number"
-                        type="text"
-                        placeholder="Type contact number"
-                        onChange={formik.handleChange}
-                        value={formik.values.number}
-                        sx={{
-                            width: '100%',
-                          }}
-                    /> */}
-                {/* {formik.errors.number && formik.touched.number && <Alert variant="filled" severity="warning">{formik.errors.number}</Alert>} */}
-                {/* <button disabled={!(formik.isValid && formik.dirty)}
-                    // className={s.Button}
-                    type="submit">Submit</button> */}
             </form>
         </div>
     );
