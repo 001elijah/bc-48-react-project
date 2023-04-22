@@ -233,9 +233,8 @@
 
     &:hover,
     &:focus{
-        background-color: $accent;
-        color: $main-white;
-        border: 1px solid $main-white;
+        background-color: $main-white;
+        color: $text-button-color;
     }
     @include tablet{
         background-color: $accent;

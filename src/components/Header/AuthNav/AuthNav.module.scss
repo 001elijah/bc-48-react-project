@@ -35,8 +35,11 @@
     outline: none;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    &:hover {
+    &:hover,
+    &:focus {
         transform: scale(1.1);
+        text-decoration: none;
+        color: $text-button-color;
     }
 
     @include tablet {
@@ -67,8 +70,11 @@
     outline: none;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    &:hover {
+    &:hover,
+    &:focus {
         transform: scale(1.1);
+        color: $main-white;
+        text-decoration: none;
     }
 
     @include tablet {
