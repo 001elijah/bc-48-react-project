@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bc-48-react-project/static/css/main.7775bfb0.css",
-    "main.js": "/bc-48-react-project/static/js/main.93f534a2.js",
+    "main.js": "/bc-48-react-project/static/js/main.620a96d2.js",
     "static/media/Lato-Semibold.ttf": "/bc-48-react-project/static/media/Lato-Semibold.dab63590f439194ec956.ttf",
     "static/media/Lato-Bold.ttf": "/bc-48-react-project/static/media/Lato-Bold.9cfae71062337c38b44f.ttf",
     "static/media/Lato-Regular.ttf": "/bc-48-react-project/static/media/Lato-Regular.cbcf73593dd54516d4b3.ttf",
@@ -22,10 +22,10 @@
     "static/media/one-more-sq-meter.png": "/bc-48-react-project/static/media/one-more-sq-meter.c6ba8f676ec0d61d1520.png",
     "index.html": "/bc-48-react-project/index.html",
     "main.7775bfb0.css.map": "/bc-48-react-project/static/css/main.7775bfb0.css.map",
-    "main.93f534a2.js.map": "/bc-48-react-project/static/js/main.93f534a2.js.map"
+    "main.620a96d2.js.map": "/bc-48-react-project/static/js/main.620a96d2.js.map"
   },
   "entrypoints": [
     "static/css/main.7775bfb0.css",
-    "static/js/main.93f534a2.js"
+    "static/js/main.620a96d2.js"
   ]
 }
