@@ -1,83 +1,88 @@
-import { FormInput } from './PopUpItem';
 import { useEffect, useState } from 'react';
 import s from './Popup.module.scss';
 import iconSvg from '../Svg';
 import clsx from 'clsx';
-// import { putOneTransaction } from '../../../redux/operations/cashflowOperations';
-import { getListOfCategoryApi } from '../../../services/backendAPI';
-import { useFormik } from 'formik';
-import shortid from 'shortid';
+import {
+  getListOfCategoryApi,
+  putOneTransactionApi,
+} from '../../../services/backendAPI';
+import SelectCategory from './Select';
+import { Notify } from 'notiflix';
 
+const options = [
+  { value: 'Products', label: 'Products' },
+  { value: 'Clothing and footwear', label: 'Clothing and footwear' },
+  { value: 'Cafes and restaurants', label: 'Cafes and restaurants' },
+  { value: 'Beauty and medicine', label: 'Beauty and medicine' },
+  { value: 'Health', label: 'Health' },
+  { value: 'Transport', label: 'Transport' },
+  { value: 'House', label: 'House' },
+  { value: 'Other', label: 'Other' },
+];
+// const options = [
+//   { name: 'products', title: 'Products' },
+//   { name: 'clothing', title: 'Clothing and footwear' },
+//   { name: 'cafes', title: 'Cafes and restaurants' },
+//   { name: 'beauty', title: 'Beauty and medicine' },
+//   { name: 'health', title: 'Health' },
+//   { name: 'transport', title: 'Transport' },
+//   { name: 'house', title: 'House' },
+//   { name: 'other', title: 'Other' },
+// ];
 export const PopUp = ({ isActive, setActive, setData }) => {
   const { id, date, comment, category, sum } = setData;
-  const [incomeData, setIncomeData] = useState();
-  const [categoryList, setCategoryList] = useState();
+  // const [options, setOptions] = useState([]);
+  const initialValues = {
+    category,
+    comment,
+    sum,
+  };
+  const [form, setForm] = useState(initialValues);
 
-  // setIncomeData(putOneTransactionApi(id))
-  // console.log(category)
-  const formik = useFormik({
-    initialValues: {
-      category,
-      comment,
-      sum,
-    },
-    onSubmit: values => {
-      console.log('submit', values);
-    },
-    // validationSchema: //,
-  });
+  // useEffect(() => {
+  //   getOptions();
+  // }, []);
 
-  useEffect(() => {
-    getListOfCategoryApi().then(data => {
-      console.log('1');
-      setCategoryList(data);
-    });
-  }, []);
-
-  console.log(categoryList);
-
-  const options = [
-    { value: 'Products', label: 'Products' },
-    { value: 'Clothing and footwear', label: 'Clothing and footwear' },
-    { value: 'Cafes and restaurants', label: 'Cafes and restaurants' },
-    { value: 'Beauty and medicine', label: 'Beauty and medicine' },
-    { value: 'Health', label: 'Health' },
-    { value: 'Transport', label: 'Transport' },
-    { value: 'House', label: 'House' },
-    { value: 'Other', label: 'Other' },
-  ];
+  // const getOptions = () => {
+  //   getListOfCategoryApi().then(data => {
+  //     console.log(JSON.stringify(data));
+  //     setOptions(JSON.stringify(data));
+  //   });
+  // };
+  // if (options.length === 0) return;
+  // console.log(JSON.stringify(options));
 
   const getBackdropClass = () => clsx(s.backdrop, isActive && s.active);
 
-  const PopUpForm = [
-    {
-      label: 'Per category',
-      htmlFor: 'category',
-      placeholder: '',
-      id: 'category',
-      name: 'category',
-      onChange: formik.handleChange,
-      value:formik.values.comment,
-    },
-    {
-      label: 'Expense comment',
-      htmlFor: 'comment',
-      placeholder: '',
-      id: 'comment',
-      name: 'comment',
-      onChange: formik.handleChange,
-      value: formik.values.comment,
-    },
-    {
-      label: 'Sum',
-      htmlFor: 'sum',
-      placeholder: '',
-      id: 'sum',
-      name: 'sum',
-      onChange: formik.handleChange,
-      value: formik.values.sum,
-    },
-  ];
+  const handleChange = e => {
+    const { name, value } = e.target;
+    if (Boolean(Number(value)) === false) {
+      Notify.warning('Please, input number');
+      return;
+    }
+    setForm(prevForm => {
+      return {
+        ...prevForm,
+        [name]: Number(value),
+      };
+    });
+  };
+
+  const handleSelect = data => {
+    const { label, value } = data;
+    setForm(prevForm => {
+      return {
+        ...prevForm,
+        [label]: value,
+      };
+    });
+  };
+
+  const handleSubmit = e => {
+    // e.preventDefault();
+    putOneTransactionApi({ id, date, ...form, type: 'expense' });
+    setActive(false);
+  };
 
   return (
     <div
@@ -92,31 +97,43 @@ export const PopUp = ({ isActive, setActive, setData }) => {
             setActive(false);
           })}
         </button>
-        <form className={s.form} onSubmit={formik.handleSubmit}>
-          {PopUpForm.map(
-            ({
-              label,
-              htmlFor,
-              placeholder,
-              id,
-              name,
-              onChange,
-              value,
-              select,
-            }) => (
-              <FormInput
-                key={shortid.generate()}
-                id={id}
-                name={name}
-                onChange={onChange}
-                value={value}
-                label={label}
-                htmlFor={htmlFor}
-                placeholder={placeholder}
-                select={options}
+        <form className={s.form} onSubmit={handleSubmit}>
+          <div className={s.inputField}>
+            <label>
+              <span className={s.labelTitle}>Per category</span>
+              <SelectCategory
+                options={options}
+                category={category}
+                onSelect={handleSelect}
               />
-            )
-          )}
+            </label>
+          </div>
+          <div className={s.inputField}>
+            <label>
+              <span className={s.labelTitle}>Expense comment</span>
+              <input
+                name="comment"
+                onChange={handleChange}
+                value={form.comment}
+                className={s.inputText}
+                type="text"
+                placeholder="Expense comment"
+              />
+            </label>
+          </div>
+          <div className={s.inputField}>
+            <label>
+              <span className={s.labelTitle}>Sum</span>
+              <input
+                name="sum"
+                onChange={handleChange}
+                value={form.sum}
+                className={s.inputText}
+                type="text"
+                placeholder="Sum"
+              />
+            </label>
+          </div>
           <button type="submit" className={s.button}>
             Edit
           </button>

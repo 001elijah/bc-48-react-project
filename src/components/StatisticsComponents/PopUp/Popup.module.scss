@@ -59,26 +59,18 @@
   color: rgba(243, 243, 243, 0.4);
 }
 .inputText {
-
-
   width: 275px;
   height: 74px;
   outline: none;
   border: none;
   padding: 34px 18px 24px;
   margin-bottom: 18px;
-
-  background: rgba(37, 44, 65, 0.5);
   border-radius: 16px;
   background: rgba(37, 44, 65, 0.5);
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-
-
-
-  /* white */
   color: #f3f3f3;
 }
 .button {
@@ -87,13 +79,7 @@
   align-items: flex-start;
   padding: 8px 56px;
   gap: 10px;
-
-  //   position: absolute;
   height: 36px;
-  //   left: 6.35%;
-  //   right: 50.16%;
-  //   top: calc(50% - 36px / 2 + 141px);
-
   background: #3a6af5;
   border-radius: 60px;
   outline: none;
@@ -111,4 +97,8 @@
   font-feature-settings: 'liga' off;
 
   color: #f3f3f3;
+}
+.selectData{
+  width: 100%;
+  background: rgba(37, 44, 65, 0.5);
 }
