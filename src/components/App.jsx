@@ -12,8 +12,8 @@ import { selectAuthorized } from "redux/selectors/authSelectors";
 import { useSelector } from "react-redux";
 
 // на модалку з поздоровленням
-// import { useState } from 'react';
-// import { GreetingCard } from 'components/GreetingCard/GreetingCard';
+import { useState } from 'react';
+import { GreetingCard } from 'components/GreetingCard/GreetingCard';
 
 
 const PrivateRoute = ({ component, redirectTo = "/login" }) => {
@@ -46,18 +46,18 @@ export const App = () => {
   //const dispatch = useDispatch();
 
   // на модалку з поздоровленням
-  // const [showCard, setShowCard] = useState(false);
-  // const handleCardOpen = () => setShowCard(true);
-  // const handleCardClose = () => setShowCard(false);
+  const [showCard, setShowCard] = useState(false);
+  const handleCardOpen = () => setShowCard(true);
+  const handleCardClose = () => setShowCard(false);
 
   return (
     <>
       {/* на модалку з поздоровленням */}
-      {/* <div>
+      <div>
       <button onClick={handleCardOpen}>Open Greeting Card</button>
 
       {showCard && <GreetingCard onClose={handleCardClose} />}
-      </div> */}
+      </div>
       
       {/* <button type="button"
         onClick={() =>
