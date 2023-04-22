@@ -1,6 +1,6 @@
 import s from './FinanceDataBoard.module.scss';
 
-export const FinanceDataBoard = ({ BoardTitle = null }) => {
+export const FinanceDataBoard = ({ BoardTitle = null, yearValue = 0, monthValue = 0 }) => {
     return (
         <>
             {BoardTitle ? (<div className={s.BoardWrapper}>
@@ -8,11 +8,11 @@ export const FinanceDataBoard = ({ BoardTitle = null }) => {
                 <div className={s.FlexWrapper}>
                     <div className={s.DataFieldWrapper}>
                         <label><span className={s.DataLabel}>Number of years</span></label>
-                        <input className={s.DataDisplayField} type="text" placeholder="0 years" readOnly/>
+                        <input className={s.DataDisplayField} type="text" value={`${yearValue} years`} readOnly/>
                     </div>
                     <div className={s.DataFieldWrapper}>
                         <label><span className={s.DataLabel}>Number of months</span></label>
-                        <input className={s.DataDisplayField} type="text" placeholder="0 months" readOnly />
+                        <input className={s.DataDisplayField} type="text" value={`${monthValue} months`} readOnly/>
                     </div>
                     <div className={s.BoardButtonsWrapper}>
                         <button className={s.FitsBtn} type='submit'>Fits</button>

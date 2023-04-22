@@ -7,6 +7,8 @@ const authSlice = createSlice({
         user: { name: null, email: null, balance: null },
         token: null,
         authorized: false,
+        error: null,
+        isLoading: null
     },
     extraReducers: (builder) => {
         builder
@@ -35,6 +37,31 @@ const authSlice = createSlice({
             .addCase(getCurrentUserInfo.rejected, state => {
                 state.token = null;
             })
+            .addMatcher(
+                action => action.type.endsWith('/pending'),
+                state => {
+                    state.isLoading = true;
+                }
+            )
+            .addMatcher(
+                action => action.type.endsWith('/fulfilled'),
+                state => {
+                    state.error = null;
+                }
+            )
+            .addMatcher(
+                action => (
+                    action.type.startsWith('cashflow') ||
+                    action.type.startsWith('categories') ||
+                    action.type.startsWith('dynamics') ||
+                    action.type.startsWith('personalPlan') ||
+                    action.type.startsWith('auth')) &&
+                    action.type.endsWith('/rejected'),
+                (state, { payload }) => {
+                    state.isLoading = false;
+                    state.error = payload;
+                }
+        )
     }
 });
 

@@ -2,7 +2,7 @@ import { TextDataInput } from "components/TextDataInput/TextDataInput";
 
 import { useFormik } from "formik";
 import {
-    // useDispatch,
+    useDispatch,
     useSelector
 } from "react-redux";
 
@@ -10,8 +10,10 @@ import * as Yup from 'yup';
 
 import s from './FinanceForm.module.scss';
 import { FinanceDataBoard } from "components/FinanceDataBoard/FinanceDataBoard";
-import { selectCost, selectFootage, selectPassiveIncome, selectProcent, selectSalary, selectSavings } from "redux/selectors/personalPlanSelectors";
-// import { prePostPlan } from '../../redux/operations/personalPlanOperations';
+import { selectCost, selectFootage, selectMonth, selectPassiveIncome, selectProcent, selectSalary, selectSavings, selectYear } from "redux/selectors/personalPlanSelectors";
+import { prePostPlan } from '../../redux/operations/personalPlanOperations';
+import { selectAuthorized } from "redux/selectors/authSelectors";
+import _ from "lodash";
 
 const OwnPlanSchema = Yup.object().shape({
    salary: Yup.string().required('Required').matches(/^[1-9][0-9]*$/, {message: 'Must be greater than 0 and start from 1'}),
@@ -23,13 +25,16 @@ const OwnPlanSchema = Yup.object().shape({
 });
 
 export const FinanceForm = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const authorized = useSelector(selectAuthorized);
     const salary = useSelector(selectSalary);
     const passiveIncome = useSelector(selectPassiveIncome);
     const savings = useSelector(selectSavings);
     const cost = useSelector(selectCost);
     const footage = useSelector(selectFootage);
     const procent = useSelector(selectProcent);
+    const year = useSelector(selectYear);
+    const month = useSelector(selectMonth);
 
     const formik = useFormik({
         initialValues: {
@@ -49,7 +54,28 @@ export const FinanceForm = () => {
         // },
         validationSchema: OwnPlanSchema,
     });
-    // console.log(formik);
+    const getPrePlan = _.debounce(() => {
+        const {
+            salary,
+            passiveIncome,
+            savings,
+            cost,
+            footage,
+            procent
+        } = formik.values;
+        authorized && salary && passiveIncome && savings &&
+            cost && footage && procent &&
+            dispatch(prePostPlan({
+                salary: +salary,
+                passiveIncome: +passiveIncome,
+                savings: +savings,
+                cost: +cost,
+                footage: +footage,
+                procent: +procent
+            }));
+    }, 1000);
+    getPrePlan();
+    // console.log(formik.values);
     return (
         <div className={s.Container}>
             <form
@@ -134,7 +160,7 @@ export const FinanceForm = () => {
                     isFieldTouched={formik.touched.procent}
                 />
                 
-                <FinanceDataBoard BoardTitle={"You will have apartment in:"} />
+                <FinanceDataBoard BoardTitle={"You will have apartment in:"} yearValue={year} monthValue={month}/>
                 {/* <FinanceDataBoard /> */}
                     {/* <TextField
                         size="small"
