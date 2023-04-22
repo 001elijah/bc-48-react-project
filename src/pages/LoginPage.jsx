@@ -9,8 +9,9 @@ export const LoginPage = () => {
     const dispatch = useDispatch();
     const widthWindow = window.innerWidth;
 
+
     const handleLoginUser = (dataForm) => {
-        dispatch(login(dataForm))
+        dispatch(login(dataForm));
     }
 
     const closeModal = () => {

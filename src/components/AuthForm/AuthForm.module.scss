@@ -30,6 +30,7 @@
     @include mobile{
         position: absolute;
         top: 70px;
+        height: 100%;
     }
 
     @include tablet{
