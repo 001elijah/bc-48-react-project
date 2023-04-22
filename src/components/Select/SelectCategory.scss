@@ -1,0 +1,60 @@
+.react-select {
+  &-container {
+    // background-color: red !important;
+    &:active {
+      border-color: transparent;
+    }
+  }
+  &__control {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    padding-left: 8px;
+
+    &--is-focused {
+      border-color: transparent !important ;
+
+      &:focus {
+        border-color: transparent !important;
+      }
+      &:active {
+        border-color: transparent !important;
+      }
+    }
+    &--menu-is-open {
+      border-color: transparent !important ;
+
+      &:focus {
+        border-color: transparent !important;
+      }
+      &:active {
+        border-color: transparent !important;
+      }
+    }
+  }
+  &__value-container {
+    padding: 0;
+    // padding-left: 18px;
+  }
+  &__option {
+    color: black !important;
+    &:hover {
+      background: #3a6af5 !important;
+      border-radius: 10px;
+    }
+  }
+  &__single-value {
+    color: wheat !important;
+  }
+
+  &__indicator-separator {
+    display: none;
+  }
+
+  &__indicator {
+    margin-top: -20px;
+  }
+  &__menu {
+    // background: red !important;
+    border-radius: 10px;
+  }
+}

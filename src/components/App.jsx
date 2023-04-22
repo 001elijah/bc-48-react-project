@@ -28,7 +28,7 @@ const PublicRoute = ({ component, redirectTo = "/plan" }) => {
   return !isAuth ? component : <Navigate to={redirectTo} />;
 };
 
- //import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
+//import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
 
 // const PrivateRoute = ({ component, redirectTo = "/" }) => {
 //   const isAuth = useSelector(selectorIsAuth);
