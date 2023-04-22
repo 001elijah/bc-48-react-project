@@ -233,9 +233,11 @@
 
     &:hover,
     &:focus{
-        background-color: $accent;
-        color: $main-white;
-        border: 1px solid $main-white;
+        // background-color: $accent;
+        // color: $main-white;
+        // border: 1px solid $main-white;
+        background-color: $main-white; //Halyna changed styles to match figma design
+        color: $text-button-color;
     }
     @include tablet{
         background-color: $accent;
