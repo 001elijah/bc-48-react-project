@@ -1,6 +1,8 @@
 import s from './AuthForm.module.scss';
 import sprite from '../../assets/icons/sprite.svg'
 import { useState } from 'react';
+import { selectError } from 'redux/selectors/authSelectors';
+import { useSelector } from 'react-redux';
 
 const AuthForm = ({ onSubmit, nameForm }) => {
     const [form, setForm] = useState({
@@ -11,7 +13,7 @@ const AuthForm = ({ onSubmit, nameForm }) => {
     const [passwordShow, setPasswordShow] = useState(false);
 
     const error = '';
-
+    const registrationError = useSelector(selectError);
     const hanelChange = (e) => {
         const { name, value } = e.target;
         setForm((p) => ({ ...p, [name]: value }));
@@ -51,6 +53,7 @@ const AuthForm = ({ onSubmit, nameForm }) => {
                             {error.length > 0 ? <p className={s.error}>Invalid password!</p>: null}
                         </label>
                     </div>
+                {registrationError && <div className={s.invalid}>{registrationError}</div>}
                     <button className={s.btn} type='Submit'>
                         {nameForm === 'login' ? 'Log In' : 'Sign Up' }
                     </button>

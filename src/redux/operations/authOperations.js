@@ -25,7 +25,7 @@ export const register = createAsyncThunk('auth/register',
             const userData = await registerUserApi(newUserData);
             return userData;
         } catch (error) {
-            return rejectWithValue(error.message);
+            return rejectWithValue(error?.response?.data?.message ?? error.message);
         }
 });
 

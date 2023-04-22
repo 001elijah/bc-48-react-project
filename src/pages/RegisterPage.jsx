@@ -10,7 +10,7 @@ export const RegisterPage = () => {
     const widthWindow = window.innerWidth;
 
     const handleRegisterUser = (dataForm) => {
-        dispatch(register(dataForm))
+        dispatch(register(dataForm))  
     }
 
     const closeModal = () => {
