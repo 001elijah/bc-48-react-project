@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/bc-48-react-project/static/css/main.f4aea4fe.css",
-    "main.js": "/bc-48-react-project/static/js/main.23061baf.js",
+    "main.css": "/bc-48-react-project/static/css/main.ad6bb3e6.css",
+    "main.js": "/bc-48-react-project/static/js/main.cb4c937d.js",
     "static/media/Lato-Semibold.ttf": "/bc-48-react-project/static/media/Lato-Semibold.dab63590f439194ec956.ttf",
     "static/media/Lato-Bold.ttf": "/bc-48-react-project/static/media/Lato-Bold.9cfae71062337c38b44f.ttf",
     "static/media/Lato-Regular.ttf": "/bc-48-react-project/static/media/Lato-Regular.cbcf73593dd54516d4b3.ttf",
@@ -12,14 +12,20 @@
     "static/media/Unbounded-Medium.ttf": "/bc-48-react-project/static/media/Unbounded-Medium.7c175c8bf950f747caf2.ttf",
     "static/media/hero-bg-mobile.png": "/bc-48-react-project/static/media/hero-bg-mobile.16e294de17fc8d0b8405.png",
     "static/media/Roboto-Regular.ttf": "/bc-48-react-project/static/media/Roboto-Regular.160d7a6ac26376e5e977.ttf",
+    "static/media/glyphicons-halflings-regular.svg": "/bc-48-react-project/static/media/glyphicons-halflings-regular.060b2710bdbbe3dfe48b.svg",
     "static/media/bg-tablet.png": "/bc-48-react-project/static/media/bg-tablet.3fc6c1c515420d40ec4b.png",
+    "static/media/glyphicons-halflings-regular.ttf": "/bc-48-react-project/static/media/glyphicons-halflings-regular.4692b9ec53fd5972caa2.ttf",
+    "static/media/glyphicons-halflings-regular.woff": "/bc-48-react-project/static/media/glyphicons-halflings-regular.82b1212e45a2bc35dd73.woff",
+    "static/media/glyphicons-halflings-regular.eot": "/bc-48-react-project/static/media/glyphicons-halflings-regular.5be1347c682810f199c7.eot",
+    "static/media/glyphicons-halflings-regular.woff2": "/bc-48-react-project/static/media/glyphicons-halflings-regular.be810be3a3e14c682a25.woff2",
     "static/media/sprite.svg": "/bc-48-react-project/static/media/sprite.03ee50865cb635cec594ffa1bba33f13.svg",
+    "static/media/one-more-sq-meter.png": "/bc-48-react-project/static/media/one-more-sq-meter.c6ba8f676ec0d61d1520.png",
     "index.html": "/bc-48-react-project/index.html",
-    "main.f4aea4fe.css.map": "/bc-48-react-project/static/css/main.f4aea4fe.css.map",
-    "main.23061baf.js.map": "/bc-48-react-project/static/js/main.23061baf.js.map"
+    "main.ad6bb3e6.css.map": "/bc-48-react-project/static/css/main.ad6bb3e6.css.map",
+    "main.cb4c937d.js.map": "/bc-48-react-project/static/js/main.cb4c937d.js.map"
   },
   "entrypoints": [
-    "static/css/main.f4aea4fe.css",
-    "static/js/main.23061baf.js"
+    "static/css/main.ad6bb3e6.css",
+    "static/js/main.cb4c937d.js"
   ]
 }
