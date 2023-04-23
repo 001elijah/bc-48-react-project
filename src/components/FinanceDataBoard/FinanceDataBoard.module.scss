@@ -246,6 +246,11 @@
     &:hover {
         cursor: pointer;
     }
+    
+    &:disabled {
+        color: rgb(173, 168, 168);
+        cursor: default;
+    }
 
     @include tablet {
         margin-top: 0;

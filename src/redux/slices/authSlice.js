@@ -9,6 +9,14 @@ const authSlice = createSlice({
         authorized: false,
         error: null,
     },
+    reducers: {
+        refreshError(state) {
+            state.error = null;
+        },
+    },
+    refreshError(state) {
+            state.error = null;
+        },
     extraReducers: (builder) => {
         builder
             .addCase(register.fulfilled, (state, { payload }) => {
@@ -50,5 +58,6 @@ const authSlice = createSlice({
         )
     }
 });
+export const { refreshError } = authSlice.actions;
 
 export default authSlice.reducer;

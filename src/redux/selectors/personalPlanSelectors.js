@@ -8,6 +8,7 @@ export const selectFootage = state => state.personalPlan.footage;
 export const selectProcent = state => state.personalPlan.procent;
 export const selectYear = state => state.personalPlan.year;
 export const selectMonth = state => state.personalPlan.month;
+export const selectIsPersonalPlanExists = state => state.personalPlan.isPersonalPlanExists;
 
 export const selectPlan = createSelector([selectSalary, selectPassiveIncome, selectSavings, selectCost, selectFootage, selectProcent],
 (salary,

@@ -15,9 +15,7 @@ export const UserBar = () => {
 
   const user = useSelector(selectUser);
   
-  const firstLetter = user.name?.charAt(0).toUpperCase();
-
-  
+  const firstLetter = user?.name?.charAt(0).toUpperCase() ?? "?";
 
   const handleMenuClick = () => {
     setIsOpen(!isOpen);
