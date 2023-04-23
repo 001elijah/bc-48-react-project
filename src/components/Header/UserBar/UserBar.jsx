@@ -60,7 +60,7 @@ export const UserBar = () => {
               <div className={s.Logout} onClick={handleCloseClick}>              
                   <LogoutButton />
               </div>
-              </div> 
+            </div> 
           </>
           ) : (
           <div className={s.MenuButton}  onClick={handleMenuClick}>
