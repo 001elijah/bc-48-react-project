@@ -37,6 +37,15 @@ input:-webkit-autofill{
     padding-top: 100px;
     background-color: $main-dark;
     width: 100%;
+    @include mobileSmall {
+        position: absolute;
+        top: 70px;
+        @include container;
+        padding-left: 0;
+        padding-right: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
     @include mobile{
         position: absolute;
