@@ -52,7 +52,7 @@ export const getPlan = createAsyncThunk('personalPlan/get',
         try {
             const plan = await getPlanAPI();
             const isPersonalPlanExists = Object.values(plan).every(value => +value !== 0);
-            return { plan, isPersonalPlanExists };
+            return { ...plan, isPersonalPlanExists };
         } catch (error) {
             rejectWithValue(error.message);
         }

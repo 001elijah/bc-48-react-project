@@ -42,21 +42,9 @@ const personalPlanSlice = createSlice({
         state.month = payload.month;
       })
       .addCase(getPlan.fulfilled, (state, { payload }) => {
-        // { plan: { salary, passiveIncome, savings, cost, footage, procent, year = 0, month = 0 },
-        //   isPersonalPlanExists } }) => {
         return {
           ...state,
           ...payload
-        
-        // state.salary = salary;
-        // state.passiveIncome = passiveIncome;
-        // state.savings = savings;
-        // state.cost = cost;
-        // state.footage = footage;
-        // state.procent = procent;
-        // state.year = year;
-        // state.month = month;
-        // state.isPersonalPlanExists = isPersonalPlanExists;
       }
       })
       .addCase(putPlan.fulfilled, (state, { payload }) => {
