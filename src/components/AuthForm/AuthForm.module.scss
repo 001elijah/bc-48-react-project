@@ -291,3 +291,6 @@ input:-webkit-autofill{
         color: #FF2E00;
     }
 }
+.input[type="text"] {
+    color: $main-white;
+}

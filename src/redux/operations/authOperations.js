@@ -26,10 +26,17 @@ export const register = createAsyncThunk(
       const userData = await registerUserApi(newUserData);
       return userData;
     } catch (error) {
-      return rejectWithValue(error?.response?.data?.message ?? error.message);
+      if (error?.response?.status === 409) {
+        return rejectWithValue('User already exists');
+      } else if (error?.response?.status === 500) {
+        return rejectWithValue('Oops! Something went wrong on the server. Please refresh page and try again');
+      } else {
+        return rejectWithValue(error?.response?.data?.message ?? error.message);
+      }
     }
   }
 );
+
 
 export const login = createAsyncThunk(
   'auth/login',
@@ -42,7 +49,7 @@ export const login = createAsyncThunk(
       axiosHeaderToken.set(token);
       return token;
     } catch (error) {
-      return rejectWithValue(error?.response?.data?.message ?? error.message);
+      return rejectWithValue('Email or password is wrong');
     }
   }
 );
