@@ -117,7 +117,6 @@ function isObject(object) {
   const getPrePlan = _.debounce(() => {
     const { salary, passiveIncome, savings, cost, footage, procent } =
       formik.values;
-    console.log(!deepEqual(formik.values, formik.initialValues));
     authorized &&
       !deepEqual(formik.values, formik.initialValues) &&
       (formik.touched.procent ||

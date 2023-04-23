@@ -17,6 +17,7 @@ const personalPlanSlice = createSlice({
     procent: 0,
     year: 0,
     month: 0,
+    isPersonalPlanExists: false
   },
   extraReducers: builder => {
     builder
@@ -40,15 +41,18 @@ const personalPlanSlice = createSlice({
         state.year = payload.year;
         state.month = payload.month;
       })
-      .addCase(getPlan.fulfilled, (state, { payload }) => {
-        state.salary = payload.salary;
-        state.passiveIncome = payload.passiveIncome;
-        state.savings = payload.savings;
-        state.cost = payload.cost;
-        state.footage = payload.footage;
-        state.procent = payload.procent;
-        state.year = payload.year;
-        state.month = payload.month;
+      .addCase(getPlan.fulfilled, (state, { payload:
+        { plan: { salary, passiveIncome, savings, cost, footage, procent, year = 0, month = 0 },
+          isPersonalPlanExists } }) => {
+        state.salary = salary;
+        state.passiveIncome = passiveIncome;
+        state.savings = savings;
+        state.cost = cost;
+        state.footage = footage;
+        state.procent = procent;
+        state.year = year;
+        state.month = month;
+        state.isPersonalPlanExists = isPersonalPlanExists;
       })
       .addCase(putPlan.fulfilled, (state, { payload }) => {
         state.salary = payload.salary;

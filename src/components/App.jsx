@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-//import { useDispatch, useSelector } from "react-redux";
 import { OwnPlanPage } from "pages/OwnPlanPage";
 import { CashflowPage } from "pages/CashflowPage";
 import { DynamicsPage } from "pages/DynamicsPage";
@@ -14,6 +13,8 @@ import { useSelector } from "react-redux";
 // на модалку з поздоровленням
 import { useState } from 'react';
 import { GreetingCard } from 'components/GreetingCard/GreetingCard';
+import { selectIsPersonalPlanExists } from "redux/selectors/personalPlanSelectors";
+import { Notify } from "notiflix";
 
 
 const PrivateRoute = ({ component, redirectTo = "/login" }) => {
@@ -28,19 +29,12 @@ const PublicRoute = ({ component, redirectTo = "/plan" }) => {
   return !isAuth ? component : <Navigate to={redirectTo} />;
 };
 
-//import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
-
-// const PrivateRoute = ({ component, redirectTo = "/" }) => {
-//   const isAuth = useSelector(selectorIsAuth);
-
-//   return isAuth ? component : <Navigate to={redirectTo} />;
-// };
-
-// const PublicRoute = ({ component, redirectTo = "/" }) => {
-//   const isAuth = useSelector(selectorIsAuth);
-
-//   return !isAuth ? component : <Navigate to={redirectTo} />;
-// };
+const PrivateRouteAndHasPlan = ({ component, redirectTo = "/plan" }) => {
+  const isPersonalPlan = useSelector(selectIsPersonalPlanExists);
+  // const isPersonalPlan = false;
+  !isPersonalPlan && Notify.warning('Set your personal first');
+  return isPersonalPlan ? component : <Navigate to={redirectTo} />;
+}
 
 export const App = () => {
   //const dispatch = useDispatch();
@@ -49,6 +43,9 @@ export const App = () => {
   const [showCard, setShowCard] = useState(false);
   const handleCardOpen = () => setShowCard(true);
   const handleCardClose = () => setShowCard(false);
+  
+  // console.log(isPersonalPlan);
+
 
   return (
     <>
@@ -58,46 +55,6 @@ export const App = () => {
 
       {showCard && <GreetingCard onClose={handleCardClose} />}
       </div>
-      
-      {/* <button type="button"
-        onClick={() =>
-          dispatch(register({
-            "name": "jane",
-            "email": "jane1234@mail.com",
-            "password": "qwerty123"
-      }))}
-      >
-        register
-      </button>
-      <button type="button"
-        onClick={() =>
-        {
-          dispatch(login({
-            "email": "jane123@mail.com",
-            "password": "qwerty123"
-          }));
-}}
-      >
-        login
-      </button>
-      <button type="button"
-        onClick={() =>
-          dispatch(logout())}
-      >
-        logout
-      </button>
-      <button
-          type="button"
-        onClick={() => dispatch(addBalance({"balance": "10000"}))}
-      >
-        addBalance
-      </button>
-      <button
-          type="button"
-        onClick={() => dispatch(getCurrentUserInfo())}
-      >
-        getUserInfo
-      </button> */}
       <SharedLayout />
       <Routes>
         <Route
@@ -113,15 +70,15 @@ export const App = () => {
         />
         <Route
           path="/cash-flow"
-          element={ <PrivateRoute component={<CashflowPage />}/>}
+          element={<PrivateRoute component={<PrivateRouteAndHasPlan component={<CashflowPage />}/>}/>}
         />
         <Route
           path="/dynamics"
-          element={ <PrivateRoute component={<DynamicsPage />}/>}
+          element={ <PrivateRoute component={<PrivateRouteAndHasPlan component={<DynamicsPage />}/>}/>}
         />
         <Route
           path="/statistics"
-          element={ <PrivateRoute component={<StatisticsPage />}/>}
+          element={ <PrivateRoute component={<PrivateRouteAndHasPlan component={<StatisticsPage />}/>}/>}
         />
         {/* <Route
           path="/register"
