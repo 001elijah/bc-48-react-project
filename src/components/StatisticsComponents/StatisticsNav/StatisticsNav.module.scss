@@ -1,0 +1,46 @@
+@import 'src/assets/styles/utils/mixins';
+@import 'src/assets/styles/utils/vars';
+
+.static_nav {
+  display: flex;
+  position: relative;
+  margin-top: 125px;
+  @include tablet{
+    margin-top: 50px;
+  }
+  @include desktop{
+    margin-top: 38px;
+  }
+}
+
+.link {
+  width: 106px;
+  background: $main-backgroud;
+  border-radius: 16px 16px 0px 0px;
+  color:  $text-input-title-color;
+  cursor: pointer;
+
+  @include tablet{
+    width: 115px;
+  }
+}
+.active_link {
+  background: $text-input-color;
+  border-top: 1px solid  $accent;
+  color: $main-white;
+}
+.link__title {
+  display: flex;
+  justify-content: center;
+
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+
+  /* white */
+  color: currentColor;
+}

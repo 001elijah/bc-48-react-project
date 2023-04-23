@@ -7,6 +7,8 @@ import { LoginPage } from "pages/LoginPage";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { HomePage } from "pages/HomePage";
 import { StatisticsPage } from "pages/StatisticsPage";
+import{ ExpensesList} from './StatisticsComponents/ExpensesBoard/ExpensesBoard'
+import {CategoriesList} from './StatisticsComponents/CategoryBoard/CategoryBoard'
 import { selectAuthorized } from "redux/selectors/authSelectors";
 import { useSelector } from "react-redux";
 
@@ -78,8 +80,18 @@ export const App = () => {
         />
         <Route
           path="/statistics"
+
+        //   element={<StatisticsPage />}>
+        // <Route path='/statistics/expenses' element={<ExpensesList/>}/>
+        // <Route path='/statistics/categories' element={<CategoriesList/>}/>
+        // <Route index element={<Navigate to='/statistics/expenses'  />} />
+        // </Route>
+        // <Route />
+
+
           element={ <PrivateRoute component={<PrivateRouteAndHasPlan component={<StatisticsPage />}/>}/>}
         />
+
         {/* <Route
           path="/register"
           element={<RegisterPage />}

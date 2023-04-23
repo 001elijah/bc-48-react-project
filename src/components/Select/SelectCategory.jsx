@@ -18,7 +18,6 @@ export default function SelectCategory({ getChange }) {
       label: title,
     };
   });
-
   useEffect(() => {
     // console.log('CashflowPage');
     dispatch(getListOfCategory());
