@@ -1,0 +1,89 @@
+@import 'assets/styles/utils/vars';
+@import 'assets/styles/utils/mixins';
+
+@font-face {
+    font-family: "Lato-Regular";
+    src: local("Lato-Regular"),
+        url("../../assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
+    font-weight: 400;
+};
+
+@font-face {
+    font-family: "Lato-Bold";
+    src: local("Lato-Bold"),
+        url("../../assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+.card {
+    width: 315px;
+    height: 184px;
+    box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14),
+        0px 9px 46px rgba(0, 0, 0, 0.12), 
+        0px 11px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    background-color: $main-dark;
+    background-image: url('../../assets/img/greeting-bg-mobile.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 50px 24px;
+    position: relative;
+
+    @include tablet {
+        width: 370px;
+        height: 226px;
+        background-image: url('../../assets/img/greeting-bg-tablet.png');
+        padding: 67px 40px;
+    }
+
+    @include desktop {
+        width: 370px;
+        height: 227px;
+        background-image: url('../../assets/img/greeting-bg-desktop.png');
+        padding: 68px 40px;
+    }
+};
+
+.title {
+    font-family: "Lato-Bold";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.00;
+    text-align: center;
+    color: $greeting-title;
+    padding-bottom: 20px;
+};
+
+.desc {
+    font-family: "Lato-Regular";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    text-align: center;
+    color: $main-white;
+
+    @include tablet {
+        font-size: 14px;
+        line-height: 1.21;
+    }
+    @include desktop {
+        font-size: 14px;
+        line-height: 1.21;
+    }
+};
+
+.close {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    position: absolute;
+    top: 14px;
+    right: 15px;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+};

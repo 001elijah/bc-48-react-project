@@ -1,5 +1,27 @@
+import { useState } from 'react';
+// import { useDispatch } from 'react-redux';
+
+import { FinanceModalForm } from 'components/FinanceModalForm/FinanceModalForm';
+import { FormCashFlow } from 'components/FormCashFlow/FormCashFlow';
+
 export const CashflowPage = () => {
-    return (
-        <p>CashflowPage</p>
-    );
+  const [isModal, setIsModal] = useState(false);
+
+  const handleToggle = () => {
+    setIsModal(prev => !prev);
+  };
+
+  return (
+    <section>
+      {/* <p>CashflowPage</p> */}
+      <FormCashFlow />
+      {isModal ? (
+        <FinanceModalForm
+          // title="qweeqw"
+          handleToggle={handleToggle}
+          // getModal={handleGetModal}
+        />
+      ) : null}
+    </section>
+  );
 };

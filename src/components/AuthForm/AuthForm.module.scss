@@ -27,9 +27,26 @@
     background-color: $main-dark;
     width: 100%;
 
-    @include mobile{
+    @include mobileSmall {
+    position: absolute;
+    top: 70px;
+    // height: 100%;
+    @include container;
+    padding-left: 0;
+    padding-right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    }
+
+    @include mobile {
         position: absolute;
         top: 70px;
+        // height: 100%;
+        @include container;
+        padding-left: 0;
+        padding-right: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     @include tablet{
@@ -232,9 +249,11 @@
 
     &:hover,
     &:focus{
-        background-color: $accent;
-        color: $main-white;
-        border: 1px solid $main-white;
+        // background-color: $accent;
+        // color: $main-white;
+        // border: 1px solid $main-white;
+        background-color: $main-white; //Halyna changed styles to match figma design
+        color: $text-button-color;
     }
     @include tablet{
         background-color: $accent;

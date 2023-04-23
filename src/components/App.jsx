@@ -8,8 +8,27 @@ import { LoginPage } from "pages/LoginPage";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { HomePage } from "pages/HomePage";
 import { StatisticsPage } from "pages/StatisticsPage";
+import { selectAuthorized } from "redux/selectors/authSelectors";
+import { useSelector } from "react-redux";
 
- //import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
+// на модалку з поздоровленням
+import { useState } from 'react';
+import { GreetingCard } from 'components/GreetingCard/GreetingCard';
+
+
+const PrivateRoute = ({ component, redirectTo = "/login" }) => {
+  const isAuth = useSelector(selectAuthorized);
+
+  return isAuth ? component : <Navigate to={redirectTo} />;
+};
+
+const PublicRoute = ({ component, redirectTo = "/plan" }) => {
+  const isAuth = useSelector(selectAuthorized);
+
+  return !isAuth ? component : <Navigate to={redirectTo} />;
+};
+
+//import { addBalance, getCurrentUserInfo, login, logout, register } from "redux/operations/authOperations";
 
 // const PrivateRoute = ({ component, redirectTo = "/" }) => {
 //   const isAuth = useSelector(selectorIsAuth);
@@ -25,8 +44,21 @@ import { StatisticsPage } from "pages/StatisticsPage";
 
 export const App = () => {
   //const dispatch = useDispatch();
+
+  // на модалку з поздоровленням
+  const [showCard, setShowCard] = useState(false);
+  const handleCardOpen = () => setShowCard(true);
+  const handleCardClose = () => setShowCard(false);
+
   return (
     <>
+      {/* на модалку з поздоровленням */}
+      <div>
+      <button onClick={handleCardOpen}>Open Greeting Card</button>
+
+      {showCard && <GreetingCard onClose={handleCardClose} />}
+      </div>
+      
       {/* <button type="button"
         onClick={() =>
           dispatch(register({
@@ -72,24 +104,24 @@ export const App = () => {
           path="/"
           element={<HomePage />}
         >
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={ <PublicRoute component={<LoginPage />}/>} />
+          <Route path="register" element={<PublicRoute component={<RegisterPage />}/>} />
         </Route>
         <Route
           path="/plan"
-          element={<OwnPlanPage />}
+          element={ <PrivateRoute component={<OwnPlanPage />}/>}
         />
         <Route
           path="/cash-flow"
-          element={<CashflowPage />}
+          element={ <PrivateRoute component={<CashflowPage />}/>}
         />
         <Route
           path="/dynamics"
-          element={<DynamicsPage />}
+          element={ <PrivateRoute component={<DynamicsPage />}/>}
         />
         <Route
           path="/statistics"
-          element={<StatisticsPage />}
+          element={ <PrivateRoute component={<StatisticsPage />}/>}
         />
         {/* <Route
           path="/register"

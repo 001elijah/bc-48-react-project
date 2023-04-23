@@ -80,9 +80,16 @@
     justify-content: center;
     flex-direction: column;
     width: 768px;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 72px);
     background-color: $main-dark;
-    z-index: 999;
+    z-index: 1;
+    margin-top: 2px;
+
+    @include mobileSmall {
+        left: 0;
+        transform: none;
+        width: 100%;
+    }
 
     @include tablet {
         top: 73px;
@@ -97,10 +104,16 @@
 
 .Logout {
     position: absolute;
-    left: 10px;
-    bottom: 10px;
+    left: 16px;
+    bottom: 28px;
+
+    @include mobileSmall{
+        left: 10px;
+    }
 
     @include tablet {
         position: fixed;
+        bottom: 50px;
+        left: 32px;
     }
 };
