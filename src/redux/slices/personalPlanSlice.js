@@ -41,18 +41,23 @@ const personalPlanSlice = createSlice({
         state.year = payload.year;
         state.month = payload.month;
       })
-      .addCase(getPlan.fulfilled, (state, { payload:
-        { plan: { salary, passiveIncome, savings, cost, footage, procent, year = 0, month = 0 },
-          isPersonalPlanExists } }) => {
-        state.salary = salary;
-        state.passiveIncome = passiveIncome;
-        state.savings = savings;
-        state.cost = cost;
-        state.footage = footage;
-        state.procent = procent;
-        state.year = year;
-        state.month = month;
-        state.isPersonalPlanExists = isPersonalPlanExists;
+      .addCase(getPlan.fulfilled, (state, { payload }) => {
+        // { plan: { salary, passiveIncome, savings, cost, footage, procent, year = 0, month = 0 },
+        //   isPersonalPlanExists } }) => {
+        return {
+          ...state,
+          ...payload
+        
+        // state.salary = salary;
+        // state.passiveIncome = passiveIncome;
+        // state.savings = savings;
+        // state.cost = cost;
+        // state.footage = footage;
+        // state.procent = procent;
+        // state.year = year;
+        // state.month = month;
+        // state.isPersonalPlanExists = isPersonalPlanExists;
+      }
       })
       .addCase(putPlan.fulfilled, (state, { payload }) => {
         state.salary = payload.salary;
@@ -63,8 +68,7 @@ const personalPlanSlice = createSlice({
         state.procent = payload.procent;
         state.year = payload.year;
         state.month = payload.month;
-      });
-  },
+      })},
 });
 
 export default personalPlanSlice.reducer;

@@ -115,16 +115,14 @@ function isObject(object) {
 }
 
   const getPrePlan = _.debounce(() => {
-    const { salary, passiveIncome, savings, cost, footage, procent } =
-      formik.values;
-    authorized &&
-      !deepEqual(formik.values, formik.initialValues) &&
-      (formik.touched.procent ||
+    const { salary, passiveIncome, savings, cost, footage, procent } = formik.values;
+    authorized && !deepEqual(formik.values, formik.initialValues) && (
+        formik.touched.procent ||
         formik.touched.cost ||
         formik.touched.savings ||
         formik.touched.passiveIncome ||
-        formik.touched.salary) &&
-      dispatch(
+        formik.touched.salary
+      ) && dispatch(
         prePostPlan({
           salary: +salary,
           passiveIncome: +passiveIncome,
@@ -136,7 +134,11 @@ function isObject(object) {
       );
   }, 1000);
   getPrePlan();
-  // console.log(formik.initialValues.salary);
+  // console.log(formik.values.salary &&
+  //     formik.values.procent &&
+  //     formik.values.cost &&
+  //     formik.values.savings &&
+  //     formik.values.passiveIncome);
   return (
     <div className={s.Container}>
       <form className={s.PlanFormWrapper} onSubmit={formik.handleSubmit}>
@@ -148,7 +150,7 @@ function isObject(object) {
           name={'salary'}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.salary === 0 ? 10 : formik.values.salary}
+          value={formik.values.salary === 0 ? '' : formik.values.salary}
           fieldError={formik.errors.salary}
           isFieldTouched={formik.touched.salary}
         />
