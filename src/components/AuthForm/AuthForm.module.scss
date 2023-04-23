@@ -294,3 +294,6 @@ input:-webkit-autofill{
 .input[type="text"] {
     color: $main-white;
 }
+.input.invalid{
+    color: #FF2E00;
+}
