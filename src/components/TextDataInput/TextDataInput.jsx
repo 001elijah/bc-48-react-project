@@ -16,6 +16,7 @@ export const TextDataInput = ({ ...props }) => {
                     type="text"
                     placeholder={placeholder}
                     readOnly={isReadOnly}
+                    disabled={isReadOnly}
                 />
                 <label htmlFor={htmlFor}><span className={s.TextDataInputTitle}>{label}</span></label>
                 { isFieldTouched && fieldError && <p className={s.Error}>{fieldError}</p> }

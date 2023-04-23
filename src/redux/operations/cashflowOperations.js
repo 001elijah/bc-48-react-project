@@ -12,6 +12,7 @@ import {
   putOneTransactionApi,
   getCashflowStatApi
 } from '../../services/backendAPI';
+import { getCurrentUserInfo } from './authOperations';
 
 
 const axiosHeaderToken = {
@@ -65,11 +66,14 @@ export const getListOfCategory = createAsyncThunk('cashflow/getListOfCategory',
 
 export const postTransaction = createAsyncThunk(
   'cashflow/postTransaction',
-  async (transactionData, { getState, rejectWithValue }) => {
+  async (transactionData, { getState, rejectWithValue, dispatch }) => {
     const { token } = getState().authorized;
     axiosHeaderToken.set(token);
     try {
       const transaction = await postTransactionApi(transactionData);
+      setTimeout(() => {
+        dispatch(getCurrentUserInfo());
+      }, 0);
       return transaction;
     } catch (error) {
       rejectWithValue(error.message);

@@ -1,4 +1,5 @@
 @import 'assets/styles/utils/mixins';
+@import 'assets/styles/utils/vars';
 
 
 .HeaderBox {
@@ -8,7 +9,12 @@
     align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
+    position: relative;
+    background-color: $main-dark;
+    z-index: 9;
+    width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
 
     @include tablet {
         padding-top: 16px;
@@ -28,6 +34,10 @@
     align-items: center;
     padding-top: 16px;
     padding-bottom: 16px;
+    position: relative;
+    background-color: $main-dark;
+    z-index: 9;
+    width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
     @include tablet {
@@ -40,9 +50,3 @@
         padding-bottom: 16px;
     }
 }
-// .Logo {
-//     @include desktop {
-//         position: absolute;
-//         right: 590px;
-//     }
-// }

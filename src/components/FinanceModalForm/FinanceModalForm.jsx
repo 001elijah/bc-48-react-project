@@ -3,7 +3,13 @@ import s from './FinanceModalForm.module.scss';
 import svg from 'assets/icons/sprite.svg';
 
 // import sprite from '../../assets/icons/sprite.svg';
-export const FinanceModalForm = ({ title, handleToggle, handleGetModal }) => {
+export const FinanceModalForm = ({
+  title,
+  handleToggle,
+  handleAddIncome,
+  handleAddBalance,
+  handleInputChange,
+}) => {
   // getModal це пропс для передачі запиту по кліку на кнопку Add
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   return (
@@ -23,13 +29,27 @@ export const FinanceModalForm = ({ title, handleToggle, handleGetModal }) => {
         </div>
       )}
       <div className={s.boxInput}>
-        <input type="text" placeholder={title} className={s.input} />
+        <input
+          type="text"
+          placeholder={title}
+          className={s.input}
+          onChange={handleInputChange}
+        />
         <ul className={s.buttonList}>
-          <li>
-            <button className={s.buttonAdd} onClick={handleGetModal}>
-              Add
-            </button>
-          </li>
+          {title === 'Enter income' ? (
+            <li>
+              <button className={s.buttonAdd} onClick={handleAddIncome}>
+                Add
+              </button>
+            </li>
+          ) : (
+            <li>
+              <button className={s.buttonAdd} onClick={handleAddBalance}>
+                Add
+              </button>
+            </li>
+          )}
+
           <li>
             <button className={s.buttonCancel} onClick={handleToggle}>
               Cancel

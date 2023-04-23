@@ -34,6 +34,8 @@ export const postPlan = createAsyncThunk('personalPlan/post',
     async (planData, { getState, rejectWithValue }) => {
         const { token } = getState().authorized;
         axiosHeaderToken.set(token);
+        const plan = getState().personalPlan;
+        if (plan) throw new Error();
         try {
             const plan = await postPlanAPI(planData);
             return plan;
@@ -49,7 +51,8 @@ export const getPlan = createAsyncThunk('personalPlan/get',
         axiosHeaderToken.set(token);
         try {
             const plan = await getPlanAPI();
-            return plan;
+            const isPersonalPlanExists = Object.values(plan).every(value => value !== 0);
+            return { plan, isPersonalPlanExists };
         } catch (error) {
             rejectWithValue(error.message);
         }

@@ -243,6 +243,10 @@
     line-height: 20px;
     color: $main-white;
 
+    &:disabled {
+        color: rgb(173, 168, 168);
+    }
+
     &:hover {
         cursor: pointer;
     }

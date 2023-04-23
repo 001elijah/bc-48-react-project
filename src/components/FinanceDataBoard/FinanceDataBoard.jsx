@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from './FinanceDataBoard.module.scss';
 import Modal from 'components/Modal/Modal';
 import { FinanceModalForm } from 'components/FinanceModalForm/FinanceModalForm';
-import { postTransaction } from 'redux/operations/cashflowOperations';
-import { useDispatch } from 'react-redux';
+import {
+  postTransaction,
+  getDailyLimit,
+} from 'redux/operations/cashflowOperations';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBalance } from 'redux/operations/authOperations';
+import { selectUser } from 'redux/selectors/authSelectors';
 
 export const FinanceDataBoard = ({
   BoardTitle = null,
@@ -16,17 +21,35 @@ export const FinanceDataBoard = ({
   const [showModalWindow, setShowModalWindow] = useState(false);
   const handleModalWindowOpen = () => setShowModalWindow(true);
   const handleModalWindowClose = () => setShowModalWindow(false);
+  const { balance } = useSelector(selectUser);
 
   const [sum, setSum] = useState(0);
   const dispatch = useDispatch();
-  const handleGetModal = () => {
+
+  const handleInputChange = e => {
+    console.log(sum);
+    setSum(e.target.value);
+  };
+
+  const handleAddIncome = () => {
     const form = {
       sum,
       type: 'income',
     };
+    // console.log(sum);
     dispatch(postTransaction(form));
     handleModalWindowClose();
   };
+
+  const handleAddBalance = () => {
+    if (balance) console.log('You already have the balance');
+    // console.log('add balance');
+    dispatch(addBalance(sum));
+  };
+
+  useEffect(() => {
+    dispatch(getDailyLimit());
+  }, [dispatch]);
 
   return (
     <>
@@ -64,14 +87,17 @@ export const FinanceDataBoard = ({
                 className={s.AddBalanceBtn}
                 onClick={handleModalWindowOpen}
                 type="button"
+                disabled={Boolean(balance)}
               >
                 Add Balance
               </button>
               {showModalWindow && (
                 <Modal closeModal={handleModalWindowClose}>
                   <FinanceModalForm
+                    handleInputChange={handleInputChange}
                     handleToggle={handleModalWindowClose}
                     title={'Enter balance'}
+                    handleAddBalance={handleAddBalance}
                   />
                 </Modal>
               )}
@@ -99,7 +125,6 @@ export const FinanceDataBoard = ({
                 type="text"
                 placeholder={`-${monthLimit}$`}
                 readOnly
-                onChange={e => setSum(e.target.value)}
               />
               <label>
                 <span className={s.DataLabelDaily}>Monthly Limit</span>
@@ -119,9 +144,10 @@ export const FinanceDataBoard = ({
               {showModalWindow && (
                 <Modal closeModal={handleModalWindowClose}>
                   <FinanceModalForm
+                    handleInputChange={handleInputChange}
                     handleToggle={handleModalWindowClose}
                     title={'Enter income'}
-                    handleGetModal={handleGetModal}
+                    handleAddIncome={handleAddIncome}
                   />
                 </Modal>
               )}
