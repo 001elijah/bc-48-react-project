@@ -7,6 +7,7 @@ const cashflowSlice = createSlice({
     monthLimit: null,
     dailyLimit: null,
   },
+
   extraReducers: builder => {
     builder.addCase(getDailyLimit.fulfilled, (state, { payload }) => {
       state.monthLimit = payload.monthLimit;
