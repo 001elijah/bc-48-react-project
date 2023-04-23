@@ -36,17 +36,10 @@ const AuthForm = ({ onSubmit, nameForm }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [passwordShow, setPasswordShow] = useState(false);
     const registrationError = useSelector(selectError);
-    //const error = useSelector(selectError);
     const location = useLocation();
     const dispatch = useDispatch();
     
     const handleChange = (e) => {
-        setIsSubmitting(false);
-        const { name, value } = e.target;
-        setFormValues((p) => ({ ...p, [name]: value }));
-    }
-
-    const revalidate = (e) => {
         setIsSubmitting(false);
         const { name, value } = e.target;
         setFormValues((p) => ({ ...p, [name]: value }));
@@ -79,17 +72,17 @@ const AuthForm = ({ onSubmit, nameForm }) => {
                     {nameForm === 'login' ? null :
                     <label className={s.label}>
                         <p className={s.text}>Name</p>
-                        <input className={`${s.input} ${formErrors.name && s.invalid}`} type="text" name='name' placeholder='Enter your name' value={formValues.name} onChange={handleChange} onBlur={revalidate} />
+                        <input className={`${s.input} ${formErrors.name && s.invalid}`} type="text" name='name' placeholder='Enter your name' value={formValues.name} onChange={handleChange} />
                         {formErrors.name && (<span className={s.error}>{formErrors.name}</span>)}
                     </label>}
                     <label className={s.label}>
                         <p className={s.text}>Email</p>
-                        <input className={`${s.input} ${formErrors.email && s.invalid}`} type="text" name='email' placeholder={nameForm === 'login' ?'Enter email':'Enter your email'} value={formValues.email} onChange={handleChange} onBlur={revalidate} />
+                        <input className={`${s.input} ${formErrors.email && s.invalid}`} type="text" name='email' placeholder={nameForm === 'login' ?'Enter email':'Enter your email'} value={formValues.email} onChange={handleChange} />
                         {formErrors.email && (<span className={s.error}>{formErrors.email}</span>)}
                     </label>
                     <label className={s.label}>
                         <p className={s.text}>Password</p>
-                        <input className={`${s.input} ${formErrors.password && s.invalid}`} type={passwordShow ? 'text' : 'password'} name='password' autoComplete='new-password' placeholder={nameForm === 'login' ? 'Enter your password' : 'Create password'} value={formValues.password} onChange={handleChange} onBlur={revalidate} />
+                        <input className={`${s.input} ${formErrors.password && s.invalid}`} type={passwordShow ? 'text' : 'password'} name='password' autoComplete='new-password' placeholder={nameForm === 'login' ? 'Enter your password' : 'Create password'} value={formValues.password} onChange={handleChange} />
                         {!passwordShow &&
                             <button onClick={togglePasssword} type='button' className={s.eye}>
                                 <svg className={s.icon} width="24" height="24">
