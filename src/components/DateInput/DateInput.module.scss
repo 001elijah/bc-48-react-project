@@ -51,3 +51,50 @@
   width: 217px;
   height: 220px;
 }
+:global .react-datepicker{
+  border-radius: 15px;
+  width: 217px;
+}
+:global .react-datepicker__triangle{
+  display:none;
+}
+
+:global .react-datepicker__header {
+border-radius: 15px;
+outline: none;
+border: none;
+margin-left: auto;
+margin-right: auto;
+width: 215px;
+
+font-family: 'Lato';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+}
+
+ 
+:global .react-datepicker__month-container{
+  float: none;
+}
+
+:global .react-datepicker__header{
+  border-radius: 15px;
+}
+:global .react-datepicker__month{
+  font-family: 'Lato';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+
+color: #242424;
+}
+
+:global  .react-datepicker__month-wrapper{
+  margin-bottom: 15px;
+}
+:global  .global .react-datepicker-popper{
+  padding: 0;
+}

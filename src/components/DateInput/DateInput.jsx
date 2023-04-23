@@ -1,12 +1,11 @@
 import { forwardRef, useEffect, useState } from 'react';
-
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './DateInput.module.scss';
 import iconSvg from '../StatisticsComponents/Svg';
 
 // CSS Modules, react-datepicker-cssmodules.css
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 export const Calendar = ({onDate}) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -25,7 +24,6 @@ export const Calendar = ({onDate}) => {
   //   }
   // }
 
-
   useEffect(()=>{
       onDate({month, year})
   },[onDate, year, month])
@@ -35,13 +33,13 @@ export const Calendar = ({onDate}) => {
   return (
       <DatePicker
         dateFormat="MMMM, yyyy"
+        style={s.datePicker}
         // startDate= //додати початок
         selected={startDate}
         onChange={date => setStartDate(date)}
         showMonthYearPicker
         customInput={<ChangeInput />}
         wrapperClassName={s.calendar}
-        popperClassName={s.popper}
         />
   );
 };

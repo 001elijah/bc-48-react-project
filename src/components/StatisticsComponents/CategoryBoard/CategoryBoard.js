@@ -34,15 +34,15 @@ import { getCashflowStat } from '../../../redux/operations/cashflowOperations';
 // ];
 
 // const getExpensesList = getCashflowStatApi()
-export const Item = ({ id, date, category, sum }) => {
+export const Item = ({ id, amount, category, percentage }) => {
   return (
     <>
       <li key={id} className={s.wrapper_category}>
         <div className={s.expenses_items}>
           <p className={s.expense_category}> {category}</p>
-          <p className={s.expense_sum}> -{sum} UAH</p>
+          <p className={s.expense_sum}> -{amount} UAH</p>
         </div>
-        <p className={s.expense_percent}> 9%</p>
+        <p className={s.expense_percent}> {percentage}</p>
       </li>
     </>
   );
@@ -54,11 +54,10 @@ export const CategoriesList = () => {
   const [transactionData, setTransactionData] = useState([]); //отримання транзакцій
 
   useEffect(() => {
-    dispatch(getCashflowStat(dateFilter)).then(data =>{
-      if(typeof(data.payload)==='object')
-      setTransactionData(data.payload)
-      else setTransactionData([]) }
-    );
+    dispatch(getCashflowStat(dateFilter)).then(data => {
+      if (typeof data.payload === 'object') setTransactionData(data.payload);
+      else setTransactionData([]);
+    });
   }, [dateFilter, dispatch]);
 
   return (
@@ -67,9 +66,9 @@ export const CategoriesList = () => {
         <Calendar onDate={setDateFilter} />
         <StatisticsNav />
         <ul>
-        {(transactionData!==[]) ? (transactionData.map(item => (
-            <Item key={item.id} {...item} />
-            ))):('No transactions for this period')}       
+          {transactionData !== []
+            ? transactionData.map(item => <Item key={item.id} {...item} />)
+            : 'No transactions for this period'}
         </ul>
       </div>
     </div>
