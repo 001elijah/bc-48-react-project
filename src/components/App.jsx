@@ -51,7 +51,7 @@ export const App = () => {
     <>
       {/* на модалку з поздоровленням */}
       <div>
-      <button onClick={handleCardOpen}>Open Greeting Card</button>
+      {/* <button onClick={handleCardOpen}>Open Greeting Card</button> */}
 
       {showCard && <GreetingCard onClose={handleCardClose} />}
       </div>
