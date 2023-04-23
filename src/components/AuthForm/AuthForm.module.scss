@@ -164,6 +164,12 @@ input:-webkit-autofill{
     padding: 0px 4px;
     background: $main-dark;
     right: 19px;
+    @include mobileSmall {
+        background-color: $accent;
+    }
+    @include mobile {
+        background-color: $accent;
+    }
 }
 
 .text{
@@ -257,10 +263,9 @@ input:-webkit-autofill{
     border-radius: 60px;
     border: none;
 
-    &:hover,
-    &:focus{
-        background-color: $accent;
-        color: $main-white;
+    &:hover {
+        background-color: $main-white;
+        color: $text-button-color;
         border: 1px solid $main-white;
     }
     @include tablet{

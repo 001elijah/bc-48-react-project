@@ -18,8 +18,8 @@ const validate = (values, isLoginForm) => {
     }
     if (!values.password) {
       errors.password = "Cannot be blank";
-    } else if (values.password.length < 4) {
-      errors.password = "Password must be more than 4 characters";
+    } else if (values.password.length < 6) {
+      errors.password = "Password must be more than 6 characters";
     }
     return errors;
 };
@@ -82,7 +82,7 @@ const AuthForm = ({ onSubmit, nameForm }) => {
                         </label>
                         <label className={s.label}>
                             <p className={s.text}>Password</p>
-                            <input className={`${s.input} ${formErrors.password && s.invalid}`} type={passwordShow ? 'text' : 'password'} name='password' autocomplete='new-password' placeholder={nameForm === 'login' ?'Create password':'Enter your password'} value={formValues.password} onChange={handleChange} onBlur={revalidate} />
+                            <input className={`${s.input} ${formErrors.password && s.invalid}`} type={passwordShow ? 'text' : 'password'} name='password' autoComplete='new-password' placeholder={nameForm === 'login' ?'Create password':'Enter your password'} value={formValues.password} onChange={handleChange} onBlur={revalidate} />
                             <button onClick={togglePasssword} type='button' className={s.eye}>
                                 <svg className={s.icon} width="24" height="24">
                                     <use href={sprite + '#icon-toggle-invisible'}></use>
