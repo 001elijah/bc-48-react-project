@@ -5,7 +5,7 @@ import { FinanceModalForm } from 'components/FinanceModalForm/FinanceModalForm';
 import { FormCashFlow } from 'components/FormCashFlow/FormCashFlow';
 
 export const CashflowPage = () => {
-  const [isModal, setIsModal] = useState(true);
+  const [isModal, setIsModal] = useState(false);
 
   const handleToggle = () => {
     setIsModal(prev => !prev);
@@ -17,7 +17,7 @@ export const CashflowPage = () => {
       <FormCashFlow />
       {isModal ? (
         <FinanceModalForm
-          title="qweeqw"
+          // title="qweeqw"
           handleToggle={handleToggle}
           // getModal={handleGetModal}
         />
