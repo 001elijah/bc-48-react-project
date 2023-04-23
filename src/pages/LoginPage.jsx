@@ -8,12 +8,14 @@ import { useMediaQuery } from 'react-responsive';
 export const LoginPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    //const widthWindow = window.innerWidth;
     const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 768px)' });
-
 
     const handleLoginUser = (dataForm) => {
         dispatch(login(dataForm))
+            .then(result => {
+                if (!result.error)
+                    navigate('/');
+        })
     }
 
     const closeModal = () => {
@@ -22,11 +24,6 @@ export const LoginPage = () => {
 
     return (
         <>
-            {/* {widthWindow < 768 ? <AuthForm onSubmit={handleLoginUser} nameForm='login' /> :
-                <Modal closeModal={closeModal}>
-                    <AuthForm onSubmit={handleLoginUser} nameForm='login'/>
-                </Modal>
-            } */}
             {!isDesktopOrLaptop && <AuthForm onSubmit={handleLoginUser} nameForm='login' />}
             {isDesktopOrLaptop &&
                 <Modal closeModal={closeModal}>
