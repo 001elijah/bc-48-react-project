@@ -41,7 +41,7 @@ export const App = () => {
 
   // на модалку з поздоровленням
   const [showCard, setShowCard] = useState(false);
-  const handleCardOpen = () => setShowCard(true);
+  // const handleCardOpen = () => setShowCard(true);
   const handleCardClose = () => setShowCard(false);
   
   // console.log(isPersonalPlan);
