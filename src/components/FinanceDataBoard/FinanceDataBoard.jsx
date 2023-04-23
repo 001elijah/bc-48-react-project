@@ -6,8 +6,9 @@ import {
   postTransaction,
   getDailyLimit,
 } from 'redux/operations/cashflowOperations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBalance } from 'redux/operations/authOperations';
+import { selectUser } from 'redux/selectors/authSelectors';
 
 export const FinanceDataBoard = ({
   BoardTitle = null,
@@ -20,6 +21,7 @@ export const FinanceDataBoard = ({
   const [showModalWindow, setShowModalWindow] = useState(false);
   const handleModalWindowOpen = () => setShowModalWindow(true);
   const handleModalWindowClose = () => setShowModalWindow(false);
+  const { balance } = useSelector(selectUser);
 
   const [sum, setSum] = useState(0);
   const dispatch = useDispatch();
@@ -40,6 +42,7 @@ export const FinanceDataBoard = ({
   };
 
   const handleAddBalance = () => {
+    if (balance) console.log('You already have the balance');
     // console.log('add balance');
     dispatch(addBalance(sum));
   };
@@ -84,6 +87,7 @@ export const FinanceDataBoard = ({
                 className={s.AddBalanceBtn}
                 onClick={handleModalWindowOpen}
                 type="button"
+                disabled={Boolean(balance)}
               >
                 Add Balance
               </button>

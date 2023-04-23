@@ -89,6 +89,8 @@ export const addBalance = createAsyncThunk(
   async (userBalance, { rejectWithValue, getState }) => {
     const { token } = getState().authorized;
     axiosHeaderToken.set(token);
+    const { balance } = getState().authorized.user;
+    if (balance) throw new Error();
     try {
       await addBalanceApi(userBalance);
     } catch (error) {

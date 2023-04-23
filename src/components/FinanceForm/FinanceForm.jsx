@@ -10,6 +10,7 @@ import { FinanceDataBoard } from 'components/FinanceDataBoard/FinanceDataBoard';
 import {
   selectMonth,
   selectPlan,
+  selectSavings,
   selectYear,
 } from 'redux/selectors/personalPlanSelectors';
 import {
@@ -57,6 +58,7 @@ const OwnPlanSchema = Yup.object().shape({
 export const FinanceForm = () => {
   const dispatch = useDispatch();
   const plan = useSelector(selectPlan);
+  const savings = useSelector(selectSavings)
   const authorized = useSelector(selectAuthorized);
   const year = useSelector(selectYear);
   const month = useSelector(selectMonth);
@@ -70,6 +72,7 @@ export const FinanceForm = () => {
     enableReinitialize: true,
     onSubmit: values => {
       console.log(values);
+      if (plan) console.log('You have the plan');
       dispatch(
         postPlan({
           salary: +values.salary,
@@ -84,21 +87,44 @@ export const FinanceForm = () => {
     validationSchema: OwnPlanSchema,
   });
 
+  function deepEqual(values, initValues) {
+    const keysFromValues = Object.keys(values);
+    const keysFromInitValues = Object.keys(initValues);
+
+    if (keysFromValues.length !== keysFromInitValues.length) {
+      return false;
+    }
+
+    for (const key of keysFromValues) {
+      const value = +values[key];
+      const initValue = +initValues[key];
+      const areObjects = isObject(value) && isObject(initValue);
+      if (
+        (areObjects && !deepEqual(value, initValue)) ||
+        (!areObjects && value !== initValue)
+      ) {
+        return false;
+      }
+  }
+
+  return true;
+}
+
+function isObject(object) {
+  return object != null && typeof object === 'object';
+}
+
   const getPrePlan = _.debounce(() => {
     const { salary, passiveIncome, savings, cost, footage, procent } =
       formik.values;
+    console.log(!deepEqual(formik.values, formik.initialValues));
     authorized &&
+      !deepEqual(formik.values, formik.initialValues) &&
       (formik.touched.procent ||
         formik.touched.cost ||
         formik.touched.savings ||
         formik.touched.passiveIncome ||
         formik.touched.salary) &&
-      salary &&
-      passiveIncome &&
-      savings &&
-      cost &&
-      footage &&
-      procent &&
       dispatch(
         prePostPlan({
           salary: +salary,
@@ -111,7 +137,7 @@ export const FinanceForm = () => {
       );
   }, 1000);
   getPrePlan();
-  // console.log(formik);
+  // console.log(formik.initialValues.salary);
   return (
     <div className={s.Container}>
       <form className={s.PlanFormWrapper} onSubmit={formik.handleSubmit}>
@@ -153,6 +179,7 @@ export const FinanceForm = () => {
           value={formik.values.savings === 0 ? '' : formik.values.savings}
           fieldError={formik.errors.savings}
           isFieldTouched={formik.touched.savings}
+          isReadOnly={Boolean(savings)}
         />
 
         <TextDataInput

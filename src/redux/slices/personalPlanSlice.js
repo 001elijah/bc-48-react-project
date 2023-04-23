@@ -21,7 +21,6 @@ const personalPlanSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(prePostPlan.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.salary = payload.salary;
         state.passiveIncome = payload.passiveIncome;
         state.savings = payload.savings;

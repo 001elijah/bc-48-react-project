@@ -34,6 +34,8 @@ export const postPlan = createAsyncThunk('personalPlan/post',
     async (planData, { getState, rejectWithValue }) => {
         const { token } = getState().authorized;
         axiosHeaderToken.set(token);
+        const plan = getState().personalPlan;
+        if (plan) throw new Error();
         try {
             const plan = await postPlanAPI(planData);
             return plan;
