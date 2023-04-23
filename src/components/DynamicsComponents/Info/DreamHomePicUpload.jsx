@@ -20,7 +20,7 @@ const DreamHomePicUpload = () => {
   }, [selectedFile, dispatch]);
 
   return (
-    <>
+    <div className={s.inputBlock}>
       <div className={s.fileUpload}>
         {image ? (
           <img className={s.image} src={image} alt="My future home" />
@@ -53,10 +53,10 @@ const DreamHomePicUpload = () => {
             className={s.inputfile}
             onChange={e => setSelectedFile(e.target.files[0])}
           />
-          <label for="file">Change image</label>
+          <label htmlFor="file">Change image</label>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

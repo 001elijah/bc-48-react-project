@@ -10,9 +10,10 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
-// import { selectStatByYear } from 'redux/selectors/dynamicsDataSelectors';
-// import { useSelector } from 'react-redux';
+// import { faker } from '@faker-js/faker';
+import { selectStatByYear } from 'redux/selectors/dynamicsDataSelectors';
+import { selectProcent } from 'redux/selectors/personalPlanSelectors';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(
   CategoryScale,
@@ -155,20 +156,44 @@ ChartJS.defaults.font.lineHeight = 1.16;
 
 const DynamicsChart = () => {
   const isMobileSize = useMediaQuery({ query: '(max-width: 767px)' });
-  // const stats = useSelector(selectStatByYear);
+  const stats = useSelector(selectStatByYear);
+  const procent = useSelector(selectProcent);
+
   const data = {
     labels,
     datasets: [
       {
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+        data: labels.map((label, idx) => {
+          if (idx < 9) {
+            return (
+              '0' + (idx + 1) === stats.month && stats.income * (procent / 100)
+            );
+          } else {
+            return (
+              '' + (idx + 1) === stats.month && stats.income * (procent / 100)
+            );
+          }
+        }),
         backgroundColor: '#6359e9',
       },
       {
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+        data: labels.map((label, idx) => {
+          if (idx < 9) {
+            return '0' + (idx + 1) === stats.month && stats.expense;
+          } else {
+            return '' + (idx + 1) === stats.month && stats.expense;
+          }
+        }),
         backgroundColor: '#3a6af5',
       },
       {
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+        data: labels.map((label, idx) => {
+          if (idx < 9) {
+            return '0' + (idx + 1) === stats.month && stats.income;
+          } else {
+            return '' + (idx + 1) === stats.month && stats.income;
+          }
+        }),
         backgroundColor: '#f3f3f3',
       },
     ],
@@ -190,7 +215,7 @@ const DynamicsChart = () => {
       {isMobileSize ? (
         <div
           style={{
-            width: 222,
+            minWidth: 222,
             height: 434,
           }}
         >

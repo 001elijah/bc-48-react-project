@@ -10,6 +10,7 @@ import {
   selectAccumulatedUah,
   selectSquareMeters,
 } from 'redux/selectors/dynamicsDataSelectors';
+import { selectFootage } from 'redux/selectors/personalPlanSelectors';
 
 const Info = () => {
   const year = useSelector(selectYear);
@@ -17,6 +18,7 @@ const Info = () => {
   const accumulatedUah = useSelector(selectAccumulatedUah);
   const accumulatedProc = useSelector(selectAccumulatedProc);
   const squareMeters = useSelector(selectSquareMeters);
+  const footage = useSelector(selectFootage);
 
   return (
     <div className={s.info}>
@@ -39,10 +41,13 @@ const Info = () => {
           </li>
         </ul>
         <p className={s.acumulated}>
-          {squareMeters || 0} out of 60 sq.m accumulated
+          {squareMeters || 0} out of {footage} sq.m accumulated
         </p>
         <div className={s.progress}>
-          <ProgressBar style={{ height: '8px' }} now={60} />
+          <ProgressBar
+            style={{ height: '8px' }}
+            now={(squareMeters / footage) * 100}
+          />
         </div>
       </div>
       <DreamHomePicUpload />
