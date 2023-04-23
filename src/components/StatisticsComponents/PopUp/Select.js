@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
+import { getListOfCategory } from '../../../redux/operations/categoriesOperations';
+import '../../../components/Select/SelectCategory.scss';
 // import s from './Popup.module.scss';
 
 const colourStyles = {
@@ -31,26 +34,44 @@ const colourStyles = {
   },
 };
 
-export default function SelectCategory({ category, options }) {
+export default function SelectCategory({ currentCategory, changeCategory }) {
+  const [categoryValue, setCategoryValue] = useState('');
+  const dispatch = useDispatch();
 
-  const [fieldValue, setFieldValue] = useState();
+  const categories = useSelector(state => state?.categories?.categories);
+  useEffect(() => {
+    dispatch(getListOfCategory());
+  }, [dispatch]);
 
   useEffect(() => {
-    console.log('selrct',category)
-    setFieldValue(
-      options.find(categoryID => {
-        return categoryID.title === category;
+    changeCategory(categoryValue);
+  }, [categoryValue, changeCategory]);
+
+  const category = categories?.map(({ name, title }) => {
+    return {
+      value: name,
+      label: title,
+    };
+  });
+
+  useEffect(() => {
+    setCategoryValue(
+      category.find(categoryId => {
+        return categoryId.value === currentCategory;
       })
     );
-  }, [options, category]);
+  }, [currentCategory, category]);
 
   return (
     <Select
+      classNamePrefix="react-select"
+      className={'react-select-container'}
       styles={colourStyles}
       name="category"
-      onChange={setFieldValue}
-      options={options}
-      value={fieldValue}
+      onChange={setCategoryValue}
+      options={category}
+      value={categoryValue}
+      isSearchable={false}
     />
   );
 }

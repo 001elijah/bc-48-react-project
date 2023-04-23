@@ -4,13 +4,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getDailyLimitAPI,
   postTransactionApi,
-  // getListOfCategoryApi,
+  getListOfCategoryApi,
   // getLimitsAndTotalsApi,
   // postTransactionApi,
-  // getListOfTransactionsApi,
-  // deleteOneTransactionApi,
-  // putOneTransactionApi,
-  // getCashflowStatApi
+  getListOfTransactionsApi,
+  deleteOneTransactionApi,
+  putOneTransactionApi,
+  getCashflowStatApi
 } from '../../services/backendAPI';
 
 
@@ -37,18 +37,18 @@ export const getDailyLimit = createAsyncThunk(
   }
 );
 
-// export const getListOfCategory = createAsyncThunk('cashflow/getListOfCategory',
-//     async (_, { getState, rejectWithValue }) => {
-//         const { token } = getState().authorized;
-//         axiosHeaderToken.set(token);
-//         try {
-//             const listOfCategory = await getListOfCategoryApi();
-//             return listOfCategory;
-//         } catch (error) {
-//             rejectWithValue(error.message);
-//         }
-//     }
-// )
+export const getListOfCategory = createAsyncThunk('cashflow/getListOfCategory',
+    async (_, { getState, rejectWithValue }) => {
+        const { token } = getState().authorized;
+        axiosHeaderToken.set(token);
+        try {
+            const listOfCategory = await getListOfCategoryApi();
+            return listOfCategory;
+        } catch (error) {
+            rejectWithValue(error.message);
+        }
+    }
+)
 
 // export const getLimitsAndTotals = createAsyncThunk('cashflow/getLimitsAndTotals',
 //     async (_, { getState, rejectWithValue }) => {
@@ -77,18 +77,18 @@ export const postTransaction = createAsyncThunk(
   }
 );
 
-// export const getListOfTransactions = createAsyncThunk('cashflow/getListOfTransactions',
-//     async ( periodData, { getState, rejectWithValue }) => {
-//         const { token } = getState().authorized;
-//         axiosHeaderToken.set(token);
-//         try {
-//             const transactionsList = await getListOfTransactionsApi(periodData);
-//             return transactionsList;
-//         } catch (error) {
-//             rejectWithValue(error.message)
-//         }
-//     }
-// )
+export const getListOfTransactions = createAsyncThunk('cashflow/getListOfTransactions',
+    async ( periodData, { getState, rejectWithValue }) => {
+        const { token } = getState().authorized;
+        axiosHeaderToken.set(token);
+        try {
+            const transactionsList = await getListOfTransactionsApi(periodData);
+            return transactionsList;
+        } catch (error) {
+            rejectWithValue(error.message)
+        }
+    }
+)
 
 export const deleteOneTransaction = createAsyncThunk('cashflow/deleteOneTransaction',
     async ( transactionId, { getState, rejectWithValue }) => {
@@ -96,16 +96,18 @@ export const deleteOneTransaction = createAsyncThunk('cashflow/deleteOneTransact
         axiosHeaderToken.set(token);
         try {
             await deleteOneTransactionApi(transactionId);
-            return transactionId;
+            // return transactionId;
         } catch (error) {
             rejectWithValue(error.message)
         }
     }
 )
 
-export const putOneTransaction = ('cashflow/putOneTransaction',
-    async (transactionIdAndData, { getState }) => {
+export const putOneTransaction = createAsyncThunk('cashflow/putOneTransaction',
+console.log('tok'),
+    async (transactionIdAndData,  { getState, rejectWithValue }) => {
         const { token } = getState().authorized;
+        console.log('tok', transactionIdAndData)
         axiosHeaderToken.set(token);
         try {
             const transaction = await putOneTransactionApi(transactionIdAndData);
@@ -116,7 +118,6 @@ export const putOneTransaction = ('cashflow/putOneTransaction',
     }
 )
 
-<<<<<<< HEAD
 export const getCashflowStat = createAsyncThunk('cashflow/getCashflowStat',
     async (periodData, { getState, rejectWithValue }) => {
         const { token } = getState().authorized;
@@ -129,17 +130,4 @@ export const getCashflowStat = createAsyncThunk('cashflow/getCashflowStat',
         }
     }
 )
-=======
-// export const getCashflowStat = createAsyncThunk('cashflow/getCashflowStat',
-//     async (periodData, { getState, rejectWithValue }) => {
-//         const { token } = getState().authorized;
-//         axiosHeaderToken.set(token);
-//         try {
-//             const statistics = await getCashflowStatApi(periodData);
-//             return statistics;
-//         } catch (error) {
-//             rejectWithValue(error.message)
-//         }
-//     }
-// )
->>>>>>> main
+

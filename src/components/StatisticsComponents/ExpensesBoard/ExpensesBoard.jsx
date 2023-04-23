@@ -4,57 +4,29 @@ import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
 import { deleteOneTransaction } from '../../../redux/operations/cashflowOperations';
 import { useDispatch } from 'react-redux';
 import { PopUp } from '../PopUp/PopUp';
-import { useState } from 'react';
-
-const data = [
-  {
-    id: 1,
-    date: '30.01.2023',
-    comment: 'Cat food',
-    category: 'House',
-    sum: '200',
-  },
-  {
-    id: 2,
-    date: '25.01.2023',
-    comment: 'Gift for DB',
-    category: 'Other ',
-    sum: '7000',
-  },
-  {
-    id: 3,
-    date: '15.01.2023',
-    comment: 'Products',
-    category: 'Products ',
-    sum: '4000',
-  },
-  {
-    id: 4,
-    date: '08.01.2023',
-    comment: 'Hat',
-    category: 'Clothing and footwear',
-    sum: '800',
-  },
-  { id: 5, date: '05.01.2023', comment: 'Bag', category: 'Other', sum: '1500' },
-];
+import { useEffect, useState } from 'react';
+import { Calendar } from '../../DateInput/DateInput';
+import { getListOfTransactions } from '../../../redux/operations/cashflowOperations';
 
 export const Item = ({
-  id,
+  _id,
   date,
   comment,
   category,
   sum,
   setActive,
   setData,
+  type
 }) => {
   const dispatch = useDispatch();
-  const getPopUp =(setTransData) => {
+  const getPopUp = setTransData => {
     setActive(true);
     setData(setTransData);
   };
+
   return (
     <>
-      <li key={id} className={s.wrapper_expense}>
+      <li key={_id} className={s.wrapper_expense}>
         <div className={s.comment_block}>
           <div>
             <p className={s.expense_date}>{date}</p>
@@ -65,9 +37,11 @@ export const Item = ({
         <div className={s.category_block}>
           <p className={s.expense_category}> {category}</p>
           <div className={s.icon_block}>
-            {iconSvg('edit', '#3A6AF5', '20', () => getPopUp({id, date, comment, category, sum}))}
+            {iconSvg('edit', '#3A6AF5', '20', () =>
+              getPopUp({ _id, date, comment, category, sum, type })
+            )}
             {iconSvg('delete', 'white', '20', () =>
-              dispatch(deleteOneTransaction(id))
+              dispatch(deleteOneTransaction(_id))
             )}
           </div>
         </div>
@@ -77,24 +51,49 @@ export const Item = ({
 };
 
 export const ExpensesList = () => {
-  const [popupActive, setPopupActive] = useState(false);
-  const [dataIn, setDataIn] = useState('');
+  const [popupActive, setPopupActive] = useState(false); //активація модального
+  const [dataIn, setDataIn] = useState(''); //данні по обраній транзакції
+  const [dateFilter, setDateFilter] = useState(); //обрані дати
+  const [transactionData, setTransactionData] = useState([]); //отримання транзакцій
+  const[errorIn, setErrorIn] = useState()
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getListOfTransactions(dateFilter)).then(data =>{
+      console.log(data)
+      if(typeof(data.payload)==='object')
+      {setTransactionData(data.payload)
+        setErrorIn()}
+      else {
+        setErrorIn(data.payload)
+        setTransactionData([]) 
+      }}
+    );
+  }, [dateFilter, dispatch]);
+console.log(errorIn)
   return (
     <div className={s.container}>
-      <StatisticsNav />
-      <ul>
-        {data.map(item => (
-          <Item
-            key={item.id}
-            {...item}
+      <div className={s.wrapper}>
+        <Calendar onDate={setDateFilter} />
+        <StatisticsNav />
+        <ul>
+          {(transactionData!==[]) ? (transactionData.map(item => (
+            <Item
+              key={item._id}
+              {...item}
+              setActive={setPopupActive}
+              setData={setDataIn}
+            />
+          ))):('No transactions for this period')}
+        </ul>
+        {popupActive && (
+          <PopUp
+            isActive={popupActive}
             setActive={setPopupActive}
-            setData={setDataIn}
+            setData={dataIn}
           />
-        ))}
-      </ul>
-      {popupActive && (
-        <PopUp isActive={popupActive} setActive={setPopupActive} setData={dataIn} />
-      )}
+        )}
+      </div>
     </div>
   );
 };

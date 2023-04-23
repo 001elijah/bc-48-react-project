@@ -4,6 +4,9 @@
 .container {
   @include container;
 }
+.wrapper{
+  position: relative;
+}
 
 .wrapper_category,
 .wrapper_expense {

@@ -123,17 +123,13 @@ export const App = () => {
         />
         <Route
           path="/statistics"
-<<<<<<< HEAD
           element={<StatisticsPage />}>
         <Route path='/statistics/expenses' element={<ExpensesList/>}/>
         <Route path='/statistics/categories' element={<CategoriesList/>}/>
         <Route index element={<Navigate to='/statistics/expenses'  />} />
         </Route>
         <Route />
-=======
-          element={ <PrivateRoute component={<StatisticsPage />}/>}
-        />
->>>>>>> main
+
         {/* <Route
           path="/register"
           element={<RegisterPage />}

@@ -1,57 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import s from './Popup.module.scss';
 import iconSvg from '../Svg';
 import clsx from 'clsx';
-import {
-  getListOfCategoryApi,
-  putOneTransactionApi,
-} from '../../../services/backendAPI';
+import {putOneTransaction} from '../../../redux/operations/cashflowOperations'
 import SelectCategory from './Select';
 import { Notify } from 'notiflix';
+import { useDispatch } from 'react-redux';
 
-const options = [
-  { value: 'Products', label: 'Products' },
-  { value: 'Clothing and footwear', label: 'Clothing and footwear' },
-  { value: 'Cafes and restaurants', label: 'Cafes and restaurants' },
-  { value: 'Beauty and medicine', label: 'Beauty and medicine' },
-  { value: 'Health', label: 'Health' },
-  { value: 'Transport', label: 'Transport' },
-  { value: 'House', label: 'House' },
-  { value: 'Other', label: 'Other' },
-];
-// const options = [
-//   { name: 'products', title: 'Products' },
-//   { name: 'clothing', title: 'Clothing and footwear' },
-//   { name: 'cafes', title: 'Cafes and restaurants' },
-//   { name: 'beauty', title: 'Beauty and medicine' },
-//   { name: 'health', title: 'Health' },
-//   { name: 'transport', title: 'Transport' },
-//   { name: 'house', title: 'House' },
-//   { name: 'other', title: 'Other' },
-// ];
 export const PopUp = ({ isActive, setActive, setData }) => {
-  const { id, date, comment, category, sum } = setData;
+  const { _id, date, comment, category, sum, type} = setData;
+  const dispatch = useDispatch()
   // const [options, setOptions] = useState([]);
+  // console.log('data',setData)
   const initialValues = {
+    _id,
+    date,
     category,
     comment,
     sum,
+    type
   };
   const [form, setForm] = useState(initialValues);
 
-  // useEffect(() => {
-  //   getOptions();
-  // }, []);
-
-  // const getOptions = () => {
-  //   getListOfCategoryApi().then(data => {
-  //     console.log(JSON.stringify(data));
-  //     setOptions(JSON.stringify(data));
-  //   });
-  // };
-  // if (options.length === 0) return;
-  // console.log(JSON.stringify(options));
-
+  // console.log(categories);
   const getBackdropClass = () => clsx(s.backdrop, isActive && s.active);
 
   const handleChange = e => {
@@ -69,21 +40,23 @@ export const PopUp = ({ isActive, setActive, setData }) => {
   };
 
   const handleSelect = data => {
-    const { label, value } = data;
+    if (!data) return;
+    const { name, value } = data;
     setForm(prevForm => {
       return {
         ...prevForm,
-        [label]: value,
+        [name]: value,
       };
     });
   };
 
   const handleSubmit = e => {
-    // e.preventDefault();
-    putOneTransactionApi({ id, date, ...form, type: 'expense' });
+    e.preventDefault();
+
+    dispatch(putOneTransaction({form}));
+    console.log('form', form);
     setActive(false);
   };
-
   return (
     <div
       className={getBackdropClass()}
@@ -102,9 +75,8 @@ export const PopUp = ({ isActive, setActive, setData }) => {
             <label>
               <span className={s.labelTitle}>Per category</span>
               <SelectCategory
-                options={options}
-                category={category}
-                onSelect={handleSelect}
+                currentCategory={category}
+                changeCategory={handleSelect}
               />
             </label>
           </div>
