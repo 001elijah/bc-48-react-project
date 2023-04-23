@@ -22,31 +22,25 @@
     font-weight: 600;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: $main-white !important;
+}
+
 .modal{
     padding-top: 100px;
     background-color: $main-dark;
     width: 100%;
 
-    @include mobileSmall {
-    position: absolute;
-    top: 70px;
-    // height: 100%;
-    @include container;
-    padding-left: 0;
-    padding-right: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    }
-
-    @include mobile {
+    @include mobile{
         position: absolute;
         top: 70px;
-        // height: 100%;
-        @include container;
-        padding-left: 0;
-        padding-right: 0;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     @include tablet{
@@ -135,7 +129,7 @@
 
 .eye{
     position: absolute;
-    bottom: 8px;
+    top: 33px;
     right: 24px;
 
     background-color: transparent;
@@ -146,14 +140,16 @@
 
 .error{
     position: absolute;
-    bottom: -22px;
-
-    font-family: 'Lato-Regular';
+    bottom: 31px;
+    font-family: "Lato-Regular";
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.29;
     color: #FF2E00;
+    padding: 0px 4px;
+    background: $main-dark;
+    right: 19px;
 }
 
 .text{
@@ -249,11 +245,9 @@
 
     &:hover,
     &:focus{
-        // background-color: $accent;
-        // color: $main-white;
-        // border: 1px solid $main-white;
-        background-color: $main-white; //Halyna changed styles to match figma design
-        color: $text-button-color;
+        background-color: $accent;
+        color: $main-white;
+        border: 1px solid $main-white;
     }
     @include tablet{
         background-color: $accent;
@@ -274,4 +268,7 @@
 .invalid{
     color: #FF2E00;
     border-color: #FF2E00;
+    &::placeholder{
+        color: #FF2E00;
+    }
 }

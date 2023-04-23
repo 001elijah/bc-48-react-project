@@ -26,7 +26,7 @@ export const register = createAsyncThunk(
       const userData = await registerUserApi(newUserData);
       return userData;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error?.response?.data?.message ?? error.message);
     }
   }
 );
@@ -42,7 +42,7 @@ export const login = createAsyncThunk(
       axiosHeaderToken.set(token);
       return token;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error?.response?.data?.message ?? error.message);
     }
   }
 );
