@@ -7,8 +7,8 @@ import { LoginPage } from "pages/LoginPage";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { HomePage } from "pages/HomePage";
 import { StatisticsPage } from "pages/StatisticsPage";
-import{ ExpensesList} from './StatisticsComponents/ExpensesBoard/ExpensesBoard'
-import {CategoriesList} from './StatisticsComponents/CategoryBoard/CategoryBoard'
+// import{ ExpensesList} from './StatisticsComponents/ExpensesBoard/ExpensesBoard'
+// import {CategoriesList} from './StatisticsComponents/CategoryBoard/CategoryBoard'
 import { selectAuthorized } from "redux/selectors/authSelectors";
 import { useSelector } from "react-redux";
 
