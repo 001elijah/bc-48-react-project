@@ -1,6 +1,6 @@
 import s from './ExpensesBoard.module.scss';
 import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { PopUp } from '../PopUp/PopUp';
 import { useEffect, useState } from 'react';
 import { Calendar } from '../../DateInput/DateInput';
@@ -15,7 +15,6 @@ export const ExpensesList = () => {
   const [dataIn, setDataIn] = useState(''); //данні по обраній транзакції
   const [dateFilter, setDateFilter] = useState(''); //обрані дати
   const [transactionData, setTransactionData] = useState([]); //отримання транзакцій
-  const [form, setForm]= useState()
 
   const dispatch = useDispatch();
 
@@ -34,7 +33,8 @@ export const ExpensesList = () => {
 if (!transactionData || transactionData===[]) return;
 
   return (
-    <div className={s.container}>
+    <div className={s.background_img}>
+      <div className={s.container}>
       <div className={s.wrapper}>
         <Calendar onDate={setDateFilter} />
         <StatisticsNav />
@@ -53,10 +53,10 @@ if (!transactionData || transactionData===[]) return;
             isActive={popupActive}
             setActive={setPopupActive}
             setData={dataIn}
-            formChange={setForm}
           />
         )}
       </div>
+    </div>
     </div>
   );
 };

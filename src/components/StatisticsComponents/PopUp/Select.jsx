@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import '../../../components/Select/SelectCategory.scss';
 // import s from './Popup.module.scss';
@@ -9,7 +9,7 @@ const colourStyles = {
     ...styles,
     width: '275px',
     border: 'none',
-    boxShadow: "none",
+    boxShadow: 'none',
     backgroundColor: '#252C4180',
     height: '74px',
     outline: 'none',
@@ -35,8 +35,6 @@ const colourStyles = {
 
 export default function SelectCategory({ currentCategory, changeCategory }) {
   const [categoryValue, setCategoryValue] = useState('');
-  const dispatch = useDispatch();
-
   const categories = useSelector(state => state?.categories?.categories);
 
   useEffect(() => {
@@ -48,7 +46,7 @@ export default function SelectCategory({ currentCategory, changeCategory }) {
       value: name,
       label: title,
     };
-  });
+  }, );
 
   useEffect(() => {
     setCategoryValue(
@@ -56,7 +54,7 @@ export default function SelectCategory({ currentCategory, changeCategory }) {
         return categoryId.value === currentCategory;
       })
     );
-  }, []);
+  },[]);
 
   return (
     <Select
@@ -64,7 +62,7 @@ export default function SelectCategory({ currentCategory, changeCategory }) {
       className={'react-select-container'}
       styles={colourStyles}
       name="category"
-      onChange={setCategoryValue}
+      onChange={changeCategory}
       options={category}
       value={categoryValue}
       isSearchable={false}

@@ -35,14 +35,16 @@ export const CategoriesList = () => {
   }, [dateFilter, dispatch]);
 
   return (
-    <div className={s.container}>
+<div className={s.background_img}>
+<div className={s.container}>
       <div className={s.wrapper}>
         <Calendar onDate={setDateFilter} />
         <StatisticsNav />
-        <ul>
+        <ul  className={s.expense_block}>
           {transactionData?.map(item => <Item key={item.id} {...item} />)}
         </ul>
       </div>
     </div>
+</div>
   );
 };

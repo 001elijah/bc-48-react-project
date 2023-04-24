@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import s from './Popup.module.scss';
 import iconSvg from '../Svg';
 import clsx from 'clsx';
@@ -7,7 +7,7 @@ import SelectCategory from './Select';
 import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
 
-export const PopUp = ({ isActive, setActive, setData, formChange }) => {
+export const PopUp = ({ isActive, setActive, setData}) => {
   const { _id, date, comment, category, sum, type } = setData;
   const dispatch = useDispatch();
   const initialValues = {
@@ -47,10 +47,9 @@ export const PopUp = ({ isActive, setActive, setData, formChange }) => {
   };
 
   const handleSelect = data => {
-    // console.log(data)
     if (!data) return;
-    const { name, value } = data;
-    console.log(name, value);
+    const { value, label } = data;
+    console.log(value);
     setForm(prevForm => {
       return {
         ...prevForm,
@@ -63,7 +62,6 @@ export const PopUp = ({ isActive, setActive, setData, formChange }) => {
     e.preventDefault();
     console.log('form', form);
     dispatch(putOneTransaction(form));
-    formChange(form)
     setActive(false);
   };
   return (
