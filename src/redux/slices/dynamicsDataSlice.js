@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   getCustomerSavingsForChart,
   addOrChangeImageOfFlat,
+  getCustomerSavingsForStatistic,
 } from '../operations/dynamicsOperations';
+import { logout } from 'redux/operations/authOperations';
 
 const dynamicsDataSlice = createSlice({
   name: 'dynamicsData',
@@ -12,6 +14,13 @@ const dynamicsDataSlice = createSlice({
       expense: null,
       income: null,
       month: null,
+    },
+    savingStatistic: {
+      income: null,
+      expense: null,
+      accumulated: null,
+      plan: null,
+      planInProcent: null,
     },
     year: null,
     month: null,
@@ -26,23 +35,37 @@ const dynamicsDataSlice = createSlice({
     builder
       .addCase(getCustomerSavingsForChart.fulfilled, (state, { payload }) => {
         state.statByYear = {
-          expense: payload.statByYear.expense,
-          income: payload.statByYear.income,
-          month: payload.statByYear.month,
+          expense: payload.statByYear[0].expense,
+          income: payload.statByYear[0].income,
+          month: payload.statByYear[0].month,
         };
         state.year = payload.year;
         state.month = payload.month;
         state.accumulatedProc = payload.accumulatedProc;
         state.accumulatedUah = payload.accumulatedUah;
-        state.squareMeters = payload.squareMeters;
+        state.squareМeters = payload.squareМeters;
         state.accumToOneMoreMeters = payload.accumToOneMoreMeters;
       })
       .addCase(addOrChangeImageOfFlat.fulfilled, (state, { payload }) => {
-        console.log(payload);
         return {
           ...state,
           imageUrl: payload,
         };
+      })
+      .addCase(
+        getCustomerSavingsForStatistic.fulfilled,
+        (state, { payload }) => {
+          state.savingStatistic = {
+            income: payload.income,
+            expense: payload.expense,
+            accumulated: payload.accumulated,
+            plan: payload.plan,
+            planInProcent: payload.planInProcent,
+          };
+        }
+      )
+      .addCase(logout.fulfilled, state => {
+        state.imageUrl = null;
       })
       .addMatcher(
         action =>

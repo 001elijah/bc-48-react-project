@@ -2,15 +2,14 @@ import { useMediaQuery } from 'react-responsive';
 import s from './FinanceModalForm.module.scss';
 import svg from 'assets/icons/sprite.svg';
 
-// import sprite from '../../assets/icons/sprite.svg';
 export const FinanceModalForm = ({
   title,
   handleToggle,
   handleAddIncome,
   handleAddBalance,
   handleInputChange,
+  isSum,
 }) => {
-  // getModal це пропс для передачі запиту по кліку на кнопку Add
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   return (
     <div className={s.modal_box}>
@@ -35,16 +34,25 @@ export const FinanceModalForm = ({
           className={s.input}
           onChange={handleInputChange}
         />
+        {isSum ? <p className={s.TextSumInput_Error}>required field</p> : null}
         <ul className={s.buttonList}>
           {title === 'Enter income' ? (
             <li>
-              <button className={s.buttonAdd} onClick={handleAddIncome}>
+              <button
+                className={s.buttonAdd}
+                onClick={handleAddIncome}
+                type="button"
+              >
                 Add
               </button>
             </li>
           ) : (
             <li>
-              <button className={s.buttonAdd} onClick={handleAddBalance}>
+              <button
+                className={s.buttonAdd}
+                onClick={handleAddBalance}
+                type="button"
+              >
                 Add
               </button>
             </li>

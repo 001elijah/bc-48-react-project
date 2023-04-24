@@ -1,11 +1,13 @@
-@import '../../../assets/styles/utils/vars';
+@import 'assets/styles/utils/vars';
+@import 'assets/styles/utils/mixins';
 
 .info {
   padding-top: 50px;
-  @media screen and (min-width: 768px) {
+  @include tablet {
     padding-top: 0;
   }
-  @media screen and (min-width: 1280px) {
+  @include desktop {
+    padding-top: 0;
     display: flex;
   }
 }
@@ -23,11 +25,12 @@
   flex-direction: column;
   gap: 7px;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
     margin-top: 50px;
     width: 224px;
   }
-  @media screen and (min-width: 1280px) {
+  @include desktop {
+    width: 224px;
     margin-top: 61px;
   }
 }
@@ -61,10 +64,10 @@
 .progress {
   width: 343px;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
     width: 224px;
   }
-  @media screen and (min-width: 1280px) {
+  @include desktop {
     width: 270px;
   }
 }
