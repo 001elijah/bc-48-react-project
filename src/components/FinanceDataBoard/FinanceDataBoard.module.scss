@@ -202,6 +202,7 @@
 
     &:hover {
         cursor: pointer;
+        color: $text-button-color;
     }
 }
 .ReadyBtn {
@@ -213,6 +214,8 @@
     background: $main-white;
     border: transparent;
     border-radius: 60px;
+
+    color: $accent;
 
     @include tablet {
         // margin-top: 14px;

@@ -25,7 +25,7 @@ const personalPlanSlice = createSlice({
         return {...state, ...payload }
       })
       .addCase(postPlan.fulfilled, (state, { payload }) => {
-        return {...state, ...payload, isPersonalPlanExists: true }
+        return {...state, ...payload, isPersonalPlanExists: true, dateWhenPersonalPlanCreated: new Date().toJSON().slice(0, 10) }
       })
       .addCase(getPlan.fulfilled, (state, { payload }) => {
         return { ...state, ...payload }

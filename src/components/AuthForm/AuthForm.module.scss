@@ -39,7 +39,8 @@ input:-webkit-autofill{
     width: 100%;
     @include mobileSmall {
         position: absolute;
-        top: 70px;
+        // top: 70px;
+        bottom: 0;
         @include container;
         padding-left: 0;
         padding-right: 0;
@@ -49,7 +50,8 @@ input:-webkit-autofill{
 
     @include mobile{
         position: absolute;
-        top: 70px;
+        // top: 70px;
+        bottom: 0;
         @include container;
         padding-left: 0;
         padding-right: 0;
