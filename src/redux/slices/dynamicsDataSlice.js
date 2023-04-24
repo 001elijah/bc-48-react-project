@@ -5,6 +5,7 @@ import {
   addOrChangeImageOfFlat,
   getCustomerSavingsForStatistic,
 } from '../operations/dynamicsOperations';
+import { logout } from 'redux/operations/authOperations';
 
 const dynamicsDataSlice = createSlice({
   name: 'dynamicsData',
@@ -63,6 +64,9 @@ const dynamicsDataSlice = createSlice({
           };
         }
       )
+      .addCase(logout.fulfilled, state => {
+        state.imageUrl = null;
+      })
       .addMatcher(
         action =>
           action.type.startsWith('dynamics') &&

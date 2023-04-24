@@ -10,7 +10,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-// import { faker } from '@faker-js/faker';
 import { selectStatByYear } from 'redux/selectors/dynamicsDataSelectors';
 import { selectProcent } from 'redux/selectors/personalPlanSelectors';
 import { useSelector } from 'react-redux';

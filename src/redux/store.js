@@ -32,7 +32,13 @@ const dynamicsImageConfigs = {
 const personalPlanConfigs = {
   key: 'personalPlan',
   storage,
-  whitelist: ['footage', 'procent', 'cost'],
+  whitelist: [
+    'footage',
+    'procent',
+    'cost',
+    'isPersonalPlanExists',
+    'dateWhenPersonalPlanCreated',
+  ],
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfigs, authReducer);

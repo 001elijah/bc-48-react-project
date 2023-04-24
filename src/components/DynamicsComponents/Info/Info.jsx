@@ -3,6 +3,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DreamHomePicUpload from './DreamHomePicUpload';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import {
   selectYear,
   selectMonth,
@@ -11,6 +12,7 @@ import {
   selectSquareMeters,
 } from 'redux/selectors/dynamicsDataSelectors';
 import { selectFootage } from 'redux/selectors/personalPlanSelectors';
+import { GreetingCard } from 'components/GreetingCard/GreetingCard';
 
 const Info = () => {
   const year = useSelector(selectYear);
@@ -20,8 +22,18 @@ const Info = () => {
   const squareMeters = useSelector(selectSquareMeters);
   const footage = useSelector(selectFootage);
 
+  const [showCard, setShowCard] = useState(false);
+  const handleCardClose = () => setShowCard(false);
+
+  useEffect(() => {
+    if ((squareMeters / footage) * 100 >= 100) {
+      setShowCard(true);
+    }
+  }, []);
+
   return (
     <div className={s.info}>
+      {showCard && <GreetingCard onClose={handleCardClose} />}
       <div>
         <p className={s.allPeriod}>
           After {year || 0} years {month || 0} month

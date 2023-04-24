@@ -42,6 +42,10 @@ const MonthlyStats = () => {
   const dispatch = useDispatch();
   const selectDatepicker = document.querySelector('#datepicker');
 
+  // for select
+  const todayMonth = new Date().getMonth();
+  const todayYear = new Date().getFullYear();
+
   useEffect(() => {
     dispatch(
       getCustomerSavingsForStatistic({
@@ -103,11 +107,21 @@ const MonthlyStats = () => {
           </ul>
         ) : (
           <ul onClick={onSelectMonth} className={s.selectList}>
-            {monthNames.map((monthName, idx) => (
-              <li key={idx} className={s.selectItem}>
-                {monthName}
-              </li>
-            ))}
+            {monthNames.map((monthName, idx) => {
+              if (year === todayYear) {
+                return idx <= todayMonth ? (
+                  <li key={idx} className={s.selectItem}>
+                    {monthName}
+                  </li>
+                ) : null;
+              } else {
+                return (
+                  <li key={idx} className={s.selectItem}>
+                    {monthName}
+                  </li>
+                );
+              }
+            })}
           </ul>
         )}
       </div>
