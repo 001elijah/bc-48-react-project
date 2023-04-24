@@ -7,6 +7,7 @@ import {
     getPlanAPI,
     putPlanAPI,
 } from "../../services/backendAPI";
+import { Notify } from "notiflix";
 
 const axiosHeaderToken = {
     set(token) {
@@ -34,10 +35,10 @@ export const postPlan = createAsyncThunk('personalPlan/post',
     async (planData, { getState, rejectWithValue }) => {
         const { token } = getState().authorized;
         axiosHeaderToken.set(token);
-        const plan = getState().personalPlan;
-        if (plan) throw new Error();
+        console.log('posting the plan');
         try {
             const plan = await postPlanAPI(planData);
+            console.log('posted the plan');
             return plan;
         } catch (error) {
             rejectWithValue(error.message);
@@ -51,9 +52,16 @@ export const getPlan = createAsyncThunk('personalPlan/get',
         axiosHeaderToken.set(token);
         try {
             const plan = await getPlanAPI();
-            const isPersonalPlanExists = Object.values(plan).every(value => +value !== 0);
+            const isPersonalPlanExists = Object.values(plan).every(value =>
+                +value.salary !== 0 &&
+                +value.passiveIncome !== 0 &&
+                +value.savings !== 0 &&
+                +value.cost !== 0 &&
+                +value.footage !== 0 &&
+                +value.procent !== 0);
             return { ...plan, isPersonalPlanExists };
         } catch (error) {
+            if (error?.response?.status === 400) Notify.info('Create your first personal plan!');
             rejectWithValue(error.message);
         }
     }

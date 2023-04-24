@@ -21,13 +21,13 @@ export const FinanceDataBoard = ({
   const [showModalWindow, setShowModalWindow] = useState(false);
   const handleModalWindowOpen = () => setShowModalWindow(true);
   const handleModalWindowClose = () => setShowModalWindow(false);
-  const { balance } = useSelector(selectUser);
+  const balance = useSelector(selectUser).balance;
 
   const [sum, setSum] = useState(0);
   const dispatch = useDispatch();
 
   const handleInputChange = e => {
-    console.log(sum);
+    // console.log(sum);
     setSum(e.target.value);
   };
 
@@ -44,7 +44,9 @@ export const FinanceDataBoard = ({
   const handleAddBalance = () => {
     if (balance) console.log('You already have the balance');
     // console.log('add balance');
+    console.log('adding', sum)
     dispatch(addBalance(sum));
+    handleModalWindowClose();
   };
 
   useEffect(() => {

@@ -72,7 +72,6 @@ export const FinanceForm = () => {
     enableReinitialize: true,
     onSubmit: values => {
       console.log(values);
-      if (plan) console.log('You have the plan');
       dispatch(
         postPlan({
           salary: +values.salary,
