@@ -4,7 +4,8 @@ import Modal from 'components/Modal/Modal';
 import { FinanceModalForm } from 'components/FinanceModalForm/FinanceModalForm';
 import {
   postTransaction,
-  getDailyLimit,
+  // getDailyLimit,
+  getLimitsAndTotals,
 } from 'redux/operations/cashflowOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBalance } from 'redux/operations/authOperations';
@@ -22,6 +23,7 @@ export const FinanceDataBoard = ({
   const handleModalWindowOpen = () => setShowModalWindow(true);
   const handleModalWindowClose = () => setShowModalWindow(false);
   const balance = useSelector(selectUser).balance;
+  const [isSum, setIsSum] = useState(false);
 
   const [sum, setSum] = useState(0);
   const dispatch = useDispatch();
@@ -32,25 +34,49 @@ export const FinanceDataBoard = ({
   };
 
   const handleAddIncome = () => {
-    const form = {
-      sum,
-      type: 'income',
-    };
-    // console.log(sum);
-    dispatch(postTransaction(form));
-    handleModalWindowClose();
+    // const form = {
+    //   sum: Number(sum),
+    //   type: 'income',
+    // };
+    // dispatch(postTransaction(form));
+    // handleModalWindowClose();
+
+    if (sum === 0) {
+      setIsSum(true);
+    } else {
+      const form = {
+        sum: Number(sum),
+        type: 'income',
+      };
+      // console.log(sum);
+      dispatch(postTransaction(form));
+      handleModalWindowClose();
+      setSum(0);
+    }
+    setTimeout(() => {
+      setIsSum(false);
+    }, 1500);
   };
 
   const handleAddBalance = () => {
     if (balance) console.log('You already have the balance');
-    // console.log('add balance');
-    console.log('adding', sum)
-    dispatch(addBalance(sum));
-    handleModalWindowClose();
+
+    // console.log(typeof sum);
+
+    if (sum === 0) {
+      setIsSum(true);
+    } else {
+      dispatch(addBalance(sum));
+      handleModalWindowClose();
+      setSum(0);
+    }
+    setTimeout(() => {
+      setIsSum(false);
+    }, 1500);
   };
 
   useEffect(() => {
-    dispatch(getDailyLimit());
+    dispatch(getLimitsAndTotals());
   }, [dispatch]);
 
   return (
@@ -114,7 +140,7 @@ export const FinanceDataBoard = ({
               <input
                 className={s.DataDisplayField}
                 type="text"
-                placeholder={`-${dailyLimit}$`}
+                placeholder={`${dailyLimit}$`}
                 readOnly
               />
               <label>
@@ -125,7 +151,7 @@ export const FinanceDataBoard = ({
               <input
                 className={s.DataDisplayField}
                 type="text"
-                placeholder={`-${monthLimit}$`}
+                placeholder={`${monthLimit}$`}
                 readOnly
               />
               <label>
@@ -150,6 +176,7 @@ export const FinanceDataBoard = ({
                     handleToggle={handleModalWindowClose}
                     title={'Enter income'}
                     handleAddIncome={handleAddIncome}
+                    isSum={isSum}
                   />
                 </Modal>
               )}

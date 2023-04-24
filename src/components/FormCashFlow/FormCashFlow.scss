@@ -3,6 +3,22 @@
 
 .Container {
   @include container;
+
+  @include tablet {
+    background-image: url('../../assets/img/bg-tablet.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    height: calc(100vh - 75px);
+  }
+
+  @include desktop {
+    background-image: url('../../assets/img/bg-desktop.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    height: calc(100vh - 198px);
+  }
 }
 
 .Form {
@@ -26,18 +42,14 @@
 }
 
 .labelForm {
+  position: relative;
   width: 336px;
   background: $text-input-color;
   border-radius: 16px;
   border: 1px solid transparent;
   height: 74px;
-  padding-top: 14px;
-
-  @include tablet {
-    // column-gap: 32px;
-    // width: 336px;
-    // margin: 100px auto 220px auto;
-  }
+  // padding-top: 14px;
+  margin: 0;
 
   @include desktop {
     // column-gap: 30px;
@@ -47,6 +59,8 @@
 }
 
 .labelText {
+  position: absolute;
+  top: 10px;
   font-family: 'Lato-Regular';
   font-style: normal;
   font-weight: 400;
@@ -56,4 +70,16 @@
 
   padding: 0px 18px 0 18px;
   border-radius: 16px;
+}
+
+.TextDataInput_Error {
+  position: absolute;
+  top: 54px;
+  left: 18px;
+  font-family: 'Lato-Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  color: #ff2e00;
 }

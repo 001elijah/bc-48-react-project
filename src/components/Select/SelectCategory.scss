@@ -1,35 +1,13 @@
 .react-select {
   &-container {
-    // background-color: red !important;
-    &:active {
-      border-color: transparent;
-    }
+    height: 100%;
+    border-color: transparent !important;
   }
   &__control {
     background-color: transparent !important;
     border-color: transparent !important;
     padding-left: 8px;
-
-    &--is-focused {
-      border-color: transparent !important ;
-
-      &:focus {
-        border-color: transparent !important;
-      }
-      &:active {
-        border-color: transparent !important;
-      }
-    }
-    &--menu-is-open {
-      border-color: transparent !important ;
-
-      &:focus {
-        border-color: transparent !important;
-      }
-      &:active {
-        border-color: transparent !important;
-      }
-    }
+    height: 100%;
   }
   &__value-container {
     padding: 0;
@@ -37,8 +15,12 @@
   }
   &__option {
     color: black !important;
+    height: 35px;
+    align-items: center;
+    padding: 0;
+
     &:hover {
-      background: #3a6af5 !important;
+      background: #a7b3d4 !important;
       border-radius: 10px;
     }
   }
@@ -50,11 +32,9 @@
     display: none;
   }
 
-  &__indicator {
-    margin-top: -20px;
-  }
   &__menu {
-    // background: red !important;
+    margin: 0px;
     border-radius: 10px;
+    overflow: hidden;
   }
 }
