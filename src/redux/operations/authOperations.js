@@ -100,6 +100,7 @@ export const addBalance = createAsyncThunk(
     if (balance) throw new Error();
     try {
       await addBalanceApi(userBalance);
+      return userBalance;
     } catch (error) {
       return rejectWithValue(error.message);
     }

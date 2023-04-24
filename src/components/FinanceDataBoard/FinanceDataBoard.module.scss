@@ -214,6 +214,8 @@
     border: transparent;
     border-radius: 60px;
 
+    color: $accent;
+
     @include tablet {
         // margin-top: 14px;
     }

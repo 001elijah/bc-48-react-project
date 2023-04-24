@@ -16,7 +16,7 @@ export const loaderSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addMatcher(
-                action => action.type.endsWith('/pending'),
+                action => (!action.type.startsWith('personalPlan/prePost') && action.type.endsWith('/pending')),
                 state => {
                     state.isLoading = true;
                 }

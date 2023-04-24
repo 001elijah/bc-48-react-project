@@ -7,14 +7,17 @@ import { LoginPage } from "pages/LoginPage";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { HomePage } from "pages/HomePage";
 import { StatisticsPage } from "pages/StatisticsPage";
+// import{ ExpensesList} from './StatisticsComponents/ExpensesBoard/ExpensesBoard'
+// import {CategoriesList} from './StatisticsComponents/CategoryBoard/CategoryBoard'
 import { selectAuthorized } from "redux/selectors/authSelectors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // на модалку з поздоровленням
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GreetingCard } from 'components/GreetingCard/GreetingCard';
 import { selectIsPersonalPlanExists } from "redux/selectors/personalPlanSelectors";
 import { Notify } from "notiflix";
+import { getCurrentUserInfo } from "redux/operations/authOperations";
 
 
 const PrivateRoute = ({ component, redirectTo = "/login" }) => {
@@ -37,14 +40,18 @@ const PrivateRouteAndHasPlan = ({ component, redirectTo = "/plan" }) => {
 }
 
 export const App = () => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // на модалку з поздоровленням
   const [showCard, setShowCard] = useState(false);
   // const handleCardOpen = () => setShowCard(true);
   const handleCardClose = () => setShowCard(false);
+
+  useEffect(() => {
+    dispatch(getCurrentUserInfo());
   
-  // console.log(isPersonalPlan);
+  }, [dispatch])
+  
 
 
   return (
@@ -78,8 +85,18 @@ export const App = () => {
         />
         <Route
           path="/statistics"
+
+        //   element={<StatisticsPage />}>
+        // <Route path='/statistics/expenses' element={<ExpensesList/>}/>
+        // <Route path='/statistics/categories' element={<CategoriesList/>}/>
+        // <Route index element={<Navigate to='/statistics/expenses'  />} />
+        // </Route>
+        // <Route />
+
+
           element={ <PrivateRoute component={<PrivateRouteAndHasPlan component={<StatisticsPage />}/>}/>}
         />
+
         {/* <Route
           path="/register"
           element={<RegisterPage />}

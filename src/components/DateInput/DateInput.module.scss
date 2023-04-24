@@ -1,0 +1,100 @@
+@import 'src/assets/styles/utils/mixins';
+@import 'src/assets/styles/utils/vars';
+
+.calendar {
+    position: absolute;
+  
+    top: -114px;
+    left: 0px;
+    z-index: 1;
+    @include tablet {
+      top: -54px;
+      left: 484px;
+      z-index: 1;
+    }
+    @include desktop {
+      top: -54px;
+      left: 550px;
+      z-index: 1;
+    }
+  }
+  
+.input_field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 217px;
+  height: 56px;
+  text-align: left;
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-top: 50px;
+  margin-bottom: 18px;
+
+  background: $text-input-color1;
+  border-radius: 16px;
+  border: none;
+
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  /* white */
+  color: $main-white;
+}
+.month{
+  margin-bottom: 15px;
+}
+.popper{
+  width: 217px;
+  height: 220px;
+}
+:global .react-datepicker{
+  border-radius: 15px;
+  width: 217px;
+}
+:global .react-datepicker__triangle{
+  display:none;
+}
+
+:global .react-datepicker__header {
+border-radius: 15px;
+outline: none;
+border: none;
+margin-left: auto;
+margin-right: auto;
+width: 215px;
+
+font-family: 'Lato';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+}
+
+ 
+:global .react-datepicker__month-container{
+  float: none;
+}
+
+:global .react-datepicker__header{
+  border-radius: 15px;
+}
+:global .react-datepicker__month{
+  font-family: 'Lato';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+
+color: #242424;
+}
+
+:global  .react-datepicker__month-wrapper{
+  margin-bottom: 15px;
+}
+:global  .global .react-datepicker-popper{
+  padding: 0;
+}

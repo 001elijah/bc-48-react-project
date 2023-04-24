@@ -39,7 +39,7 @@ const authSlice = createSlice({
                 state.authorized = false;
             })
             .addCase(addBalance.fulfilled, (state, { payload }) => {
-                state.user = payload;
+                state.user.balance = payload;
             })
             .addCase(getCurrentUserInfo.rejected, state => {
                 state.token = null;
@@ -55,7 +55,7 @@ const authSlice = createSlice({
                 (state, { payload }) => {
                     state.error = payload;
                 }
-        )
+            )
     }
 });
 export const { refreshError } = authSlice.actions;
