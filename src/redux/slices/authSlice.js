@@ -55,6 +55,12 @@ const authSlice = createSlice({
                 (state, { payload }) => {
                     state.error = payload;
                 }
+            )
+            .addMatcher(
+                action => (action.type.startsWith('personalPlan') && action.type.endsWith('/rejected')),
+                (state, { payload }) => {
+                    state.error = payload;
+                }
         )
     }
 });

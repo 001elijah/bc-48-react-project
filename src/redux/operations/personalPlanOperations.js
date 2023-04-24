@@ -7,6 +7,7 @@ import {
     getPlanAPI,
     putPlanAPI,
 } from "../../services/backendAPI";
+import { Notify } from "notiflix";
 
 const axiosHeaderToken = {
     set(token) {
@@ -54,6 +55,7 @@ export const getPlan = createAsyncThunk('personalPlan/get',
             const isPersonalPlanExists = Object.values(plan).every(value => +value !== 0);
             return { ...plan, isPersonalPlanExists };
         } catch (error) {
+            if (error?.response?.status === 400) Notify.info('Create your first personal plan!');
             rejectWithValue(error.message);
         }
     }

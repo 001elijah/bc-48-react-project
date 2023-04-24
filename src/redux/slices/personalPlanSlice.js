@@ -22,40 +22,16 @@ const personalPlanSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(prePostPlan.fulfilled, (state, { payload }) => {
-        state.salary = payload.salary;
-        state.passiveIncome = payload.passiveIncome;
-        state.savings = payload.savings;
-        state.cost = payload.cost;
-        state.footage = payload.footage;
-        state.procent = payload.procent;
-        state.year = payload.year;
-        state.month = payload.month;
+        return {...state, ...payload }
       })
       .addCase(postPlan.fulfilled, (state, { payload }) => {
-        state.salary = payload.salary;
-        state.passiveIncome = payload.passiveIncome;
-        state.savings = payload.savings;
-        state.cost = payload.cost;
-        state.footage = payload.footage;
-        state.procent = payload.procent;
-        state.year = payload.year;
-        state.month = payload.month;
+        return {...state, ...payload }
       })
       .addCase(getPlan.fulfilled, (state, { payload }) => {
-        return {
-          ...state,
-          ...payload
-      }
+        return { ...state, ...payload }
       })
       .addCase(putPlan.fulfilled, (state, { payload }) => {
-        state.salary = payload.salary;
-        state.passiveIncome = payload.passiveIncome;
-        state.savings = payload.savings;
-        state.cost = payload.cost;
-        state.footage = payload.footage;
-        state.procent = payload.procent;
-        state.year = payload.year;
-        state.month = payload.month;
+        return { ...state, ...payload }
       })},
 });
 
