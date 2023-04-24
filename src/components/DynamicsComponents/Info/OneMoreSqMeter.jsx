@@ -14,7 +14,7 @@ const OneMoreSqMeter = () => {
         </p>
         <p className={s.sum}>{priceForOneMOreSqM + '₴'}</p>
       </div>
-      <img className={s.img} src={image} alt="Finance app" />
+      <img className={s.img} src={image} alt="Finance app" width='185' height='165'/>
     </div>
   );
 };

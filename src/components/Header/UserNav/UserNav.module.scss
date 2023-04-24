@@ -38,7 +38,8 @@
     margin: 10px 0;
     text-align: center;
     color: $main-white;
-    &:hover {
+    &:hover,
+    &:focus {
         color: $accent;
         text-decoration: none;
     }
@@ -58,4 +59,9 @@
     margin: 10px 0;
     text-align: center;
     color: $accent;
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: $accent;
+    }
 };

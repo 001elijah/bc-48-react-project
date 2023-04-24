@@ -2,6 +2,19 @@
 
 .Container {
     @include container;
+    @include tablet {
+        background-image: url('../../assets/img/bg-tablet.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: bottom;
+        height: calc(100vh - 72px);
+    }
+    @include desktop {
+        background-image: url('../../assets/img/bg-desktop.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: bottom;
+    }
 }
 
 .Form {

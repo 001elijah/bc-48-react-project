@@ -46,8 +46,8 @@ export const currentUserLogoutApi = () => {
   return axios.get('/api/user/logout');
 };
 
-export const addBalanceApi = (balance) => {
-  console.log('adding balance:', balance)
+export const addBalanceApi = balance => {
+  console.log('adding balance:', balance);
   return axios
     .put('/api/user/addBalance', { balance })
     .then(({ data: { balance } }) => ({ balance }));
@@ -244,13 +244,20 @@ export const postTransactionApi = ({ type, category, comment, sum, date }) => {
       type,
       category,
       comment,
-      sum,
+      sum: parseInt(sum),
       date,
     }));
 };
 
 export const getListOfTransactionsApi = ({ month, year }) => {
-  return axios.get('/api/cashflow', { month, year }).then(({ data }) => data);
+  return axios
+    .get('/api/cashflow', {
+      params: {
+        month,
+        year,
+      },
+    })
+    .then(({ data }) => data);
 };
 
 export const deleteOneTransactionApi = transactionId => {
@@ -259,22 +266,10 @@ export const deleteOneTransactionApi = transactionId => {
     .then(() => transactionId);
 };
 
-export const putOneTransactionApi = ({
-  transactionId,
-  type,
-  category,
-  comment,
-  sum,
-  date,
-}) => {
+export const putOneTransactionApi = ({_id, type, comment, sum, category}) => {
+  console.log('edit')
   return axios
-    .put(`/api/cashflow/${transactionId}`, {
-      type,
-      category,
-      comment,
-      sum,
-      date,
-    })
+    .put(`/api/cashflow/${_id}`, { type, category, comment, sum})
     .then(({ data: { type, category, comment, sum } }) => ({
       type,
       category,

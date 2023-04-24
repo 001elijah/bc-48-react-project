@@ -7,10 +7,10 @@ import { LoginPage } from 'pages/LoginPage';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { HomePage } from 'pages/HomePage';
 import { StatisticsPage } from 'pages/StatisticsPage';
-// import{ ExpensesList} from './StatisticsComponents/ExpensesBoard/ExpensesBoard'
-// import {CategoriesList} from './StatisticsComponents/CategoryBoard/CategoryBoard'
+import{ ExpensesList} from './StatisticsComponents/ExpensesBoard/ExpensesBoard'
+import {CategoriesList} from './StatisticsComponents/CategoryBoard/CategoryBoard'
 import { selectAuthorized } from 'redux/selectors/authSelectors';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 import { useEffect } from 'react';
 import { selectIsPersonalPlanExists } from 'redux/selectors/personalPlanSelectors';
@@ -43,8 +43,16 @@ export const App = () => {
     dispatch(getCurrentUserInfo());
   }, [dispatch]);
 
+  // console.log(isPersonalPlan);
+
   return (
     <>
+      {/* на модалку з поздоровленням */}
+      <div>
+        {/* <button onClick={handleCardOpen}>Open Greeting Card</button> */}
+
+        {showCard && <GreetingCard onClose={handleCardClose} />}
+      </div>
       <SharedLayout />
       <Routes>
         <Route path="/" element={<HomePage />}>
@@ -90,14 +98,15 @@ export const App = () => {
           // </Route>
           // <Route />
 
-          element={
-            <PrivateRoute
-              component={
-                <PrivateRouteAndHasPlan component={<StatisticsPage />} />
-              }
-            />
-          }
-        />
+
+          element={ <PrivateRoute component={<PrivateRouteAndHasPlan component={<StatisticsPage />}/>}/>}
+          // component={<StatisticsPage />}
+        >
+          <Route path="/statistics/expenses" element={<ExpensesList />} />
+          <Route path="/statistics/categories" element={<CategoriesList />} />
+          <Route index element={<Navigate to="/statistics/expenses" />} />
+        </Route>
+
 
         {/* <Route
           path="/register"

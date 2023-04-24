@@ -6,6 +6,16 @@
 }
 .wrapper{
   position: relative;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 343px;
+  @include tablet {
+    width: 704px;
+  }
+  @include desktop {
+    width: 769px;
+  }
 }
 .wrapper_category,
 .wrapper_expense {

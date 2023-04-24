@@ -1,24 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from './Popup.module.scss';
 import iconSvg from '../Svg';
 import clsx from 'clsx';
-import {putOneTransaction} from '../../../redux/operations/cashflowOperations'
+import { putOneTransaction } from '../../../redux/operations/cashflowOperations';
 import SelectCategory from './Select';
 import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
 
-export const PopUp = ({ isActive, setActive, setData }) => {
-  const { _id, date, comment, category, sum, type} = setData;
-  const dispatch = useDispatch()
-  // const [options, setOptions] = useState([]);
-  // console.log('data',setData)
+export const PopUp = ({ isActive, setActive, setData, formChange }) => {
+  const { _id, date, comment, category, sum, type } = setData;
+  const dispatch = useDispatch();
   const initialValues = {
     _id,
     date,
     category,
     comment,
     sum,
-    type
+    type,
   };
   const [form, setForm] = useState(initialValues);
 
@@ -27,34 +25,45 @@ export const PopUp = ({ isActive, setActive, setData }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    if (Boolean(Number(value)) === false) {
-      Notify.warning('Please, input number');
-      return;
+    console.log('name, value ', name, value);
+    if (name === 'sum') {
+      if (Boolean(Number(value)) === false) {
+        Notify.warning('Please, input number');
+      } else {
+        setForm(prevForm => {
+          return {
+            ...prevForm,
+            [name]: Number(value),
+          };
+        });
+      }
     }
     setForm(prevForm => {
       return {
         ...prevForm,
-        [name]: Number(value),
+        [name]: (value),
       };
     });
   };
 
   const handleSelect = data => {
+    // console.log(data)
     if (!data) return;
     const { name, value } = data;
+    console.log(name, value);
     setForm(prevForm => {
       return {
         ...prevForm,
-        [name]: value,
+        ['category']: value,
       };
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    dispatch(putOneTransaction({form}));
     console.log('form', form);
+    dispatch(putOneTransaction(form));
+    formChange(form)
     setActive(false);
   };
   return (
