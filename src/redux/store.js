@@ -8,8 +8,8 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 import authReducer from './slices/authSlice';
 import personalPlanReducer from './slices/personalPlanSlice';
@@ -24,27 +24,51 @@ const authPersistConfigs = {
   storage,
   whitelist: ['token', 'user'],
 };
+const dynamicsImageConfigs = {
+  key: 'image',
+  storage,
+  whitelist: ['imageUrl'],
+};
+const personalPlanConfigs = {
+  key: 'personalPlan',
+  storage,
+  whitelist: [
+    'footage',
+    'procent',
+    'cost',
+    'isPersonalPlanExists',
+    'dateWhenPersonalPlanCreated',
+  ],
+};
 
-const persistedAuthReducer = persistReducer(authPersistConfigs, authReducer)
+const persistedAuthReducer = persistReducer(authPersistConfigs, authReducer);
+const persistDynamicsImageReducer = persistReducer(
+  dynamicsImageConfigs,
+  dynamicsDataReducer
+);
+const persistpersonalPlanReducer = persistReducer(
+  personalPlanConfigs,
+  personalPlanReducer
+);
 
 export const store = configureStore({
   reducer: {
     authorized: persistedAuthReducer,
-    personalPlan: personalPlanReducer,
+    personalPlan: persistpersonalPlanReducer,
     cashflow: cashflowReducer,
     categories: categoriesReducer,
-    dynamicsData: dynamicsDataReducer,
+    dynamicsData: persistDynamicsImageReducer,
     transactions: transactionsReducer,
     loader: loaderSliceReducer,
-    },
-    middleware: (getDefaultMiddleware) =>
+  },
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-    // preloadedState,
-    // devTools: process.env.NODE_ENV === "production"// true/false - show/hide redux devtools state
+  // preloadedState,
+  // devTools: process.env.NODE_ENV === "production"// true/false - show/hide redux devtools state
 });
 
 export const persistor = persistStore(store);

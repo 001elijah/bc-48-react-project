@@ -12,12 +12,10 @@ import {CategoriesList} from './StatisticsComponents/CategoryBoard/CategoryBoard
 import { selectAuthorized } from 'redux/selectors/authSelectors';
 import { useDispatch, useSelector } from "react-redux";
 
-// на модалку з поздоровленням
-import { useEffect, useState } from 'react';
-import { GreetingCard } from 'components/GreetingCard/GreetingCard';
-import { selectIsPersonalPlanExists } from "redux/selectors/personalPlanSelectors";
-import { Notify } from "notiflix";
-import { getCurrentUserInfo } from "redux/operations/authOperations";
+import { useEffect } from 'react';
+import { selectIsPersonalPlanExists } from 'redux/selectors/personalPlanSelectors';
+import { Notify } from 'notiflix';
+import { getCurrentUserInfo } from 'redux/operations/authOperations';
 
 const PrivateRoute = ({ component, redirectTo = '/login' }) => {
   const isAuth = useSelector(selectAuthorized);
@@ -41,16 +39,9 @@ const PrivateRouteAndHasPlan = ({ component, redirectTo = '/plan' }) => {
 export const App = () => {
   const dispatch = useDispatch();
 
-  // на модалку з поздоровленням
-  const [showCard, setShowCard] = useState(false);
-  // const handleCardOpen = () => setShowCard(true);
-  const handleCardClose = () => setShowCard(false);
-
   useEffect(() => {
     dispatch(getCurrentUserInfo());
-  
-  }, [dispatch])
-
+  }, [dispatch]);
 
   // console.log(isPersonalPlan);
 
@@ -107,6 +98,7 @@ export const App = () => {
           // </Route>
           // <Route />
 
+
           element={ <PrivateRoute component={<PrivateRouteAndHasPlan component={<StatisticsPage />}/>}/>}
           // component={<StatisticsPage />}
         >
@@ -114,6 +106,7 @@ export const App = () => {
           <Route path="/statistics/categories" element={<CategoriesList />} />
           <Route index element={<Navigate to="/statistics/expenses" />} />
         </Route>
+
 
         {/* <Route
           path="/register"

@@ -297,7 +297,7 @@ export const getCustomerSavingsForChartApi = () => {
           month,
           accumulatedProc,
           accumulatedUah,
-          squareMeters,
+          squareМeters,
           accumToOneMoreMeters,
         },
       }) => ({
@@ -306,7 +306,7 @@ export const getCustomerSavingsForChartApi = () => {
         month,
         accumulatedProc,
         accumulatedUah,
-        squareMeters,
+        squareМeters,
         accumToOneMoreMeters,
       })
     )
@@ -335,5 +335,5 @@ export const addOrChangeImageOfFlatApi = imageFile => {
         'Content-Type': 'multipart/form-data',
       },
     })
-    .then(({ data: { imageURL } }) => imageURL);
+    .then(({ data: { image } }) => image);
 };
