@@ -46,8 +46,8 @@ export const currentUserLogoutApi = () => {
   return axios.get('/api/user/logout');
 };
 
-export const addBalanceApi = (balance) => {
-  console.log('adding balance:', balance)
+export const addBalanceApi = balance => {
+  console.log('adding balance:', balance);
   return axios
     .put('/api/user/addBalance', { balance })
     .then(({ data: { balance } }) => ({ balance }));
@@ -244,7 +244,7 @@ export const postTransactionApi = ({ type, category, comment, sum, date }) => {
       type,
       category,
       comment,
-      sum,
+      sum: parseInt(sum),
       date,
     }));
 };

@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDailyLimit } from 'redux/operations/cashflowOperations';
+import {
+  // getDailyLimit,
+  getLimitsAndTotals,
+} from 'redux/operations/cashflowOperations';
 
 const cashflowSlice = createSlice({
   name: 'cashflow',
@@ -9,8 +12,9 @@ const cashflowSlice = createSlice({
   },
 
   extraReducers: builder => {
-    builder.addCase(getDailyLimit.fulfilled, (state, { payload }) => {
-      return { ...state, ...payload };
+    builder.addCase(getLimitsAndTotals.fulfilled, (state, { payload }) => {
+      state.monthLimit = payload.monthLimit - payload.totalByMounth;
+      state.dailyLimit = Math.round(payload.dailyLimit) - payload.totalByDay;
     });
   },
 });

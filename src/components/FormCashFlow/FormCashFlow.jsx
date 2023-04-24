@@ -26,6 +26,8 @@ export const FormCashFlow = () => {
   const [sum, setSum] = useState(0);
   const [coment, setComent] = useState('');
   const [categories, setCategories] = useState(null);
+  const [isFieldTouched, setIsFieldTouched] = useState(false);
+  const [isErrorCategories, setIsErrorCategories] = useState(false);
 
   const balance = useSelector(selectUser).balance;
 
@@ -48,18 +50,45 @@ export const FormCashFlow = () => {
   const monthLimit = useSelector(state => state.cashflow.monthLimit);
   const dailyLimit = useSelector(state => state.cashflow.dailyLimit);
 
-  const handlePostTransaction = () => {
-    if (sum === 0 && categories === null) {
-      alert('asdasdasdasd');
+  // const handlePostTransaction = () => {
+  //   if (sum === 0 && categories === null) {
+  //     alert('asdasdasdasd');
+  //   } else {
+  //     const form = {
+  //       type: 'expense',
+  //       category: `${categories.value}`,
+  //       comment: coment ? coment : 'comment',
+  //       sum: +sum,
+  //     };
+
+  //     dispatch(postTransaction(form));
+  //   }
+  // };
+
+  const handlePostTransaction = e => {
+    e.preventDefault();
+
+    if (sum === 0) {
+      setIsFieldTouched(true);
+      setTimeout(() => {
+        setIsFieldTouched(false);
+      }, 2000);
+    } else if (!categories) {
+      setIsErrorCategories(true);
+      setTimeout(() => {
+        setIsErrorCategories(false);
+      }, 2000);
     } else {
       const form = {
         type: 'expense',
         category: `${categories.value}`,
         comment: coment ? coment : 'comment',
         sum,
+        // date: Date.now(),
       };
 
       dispatch(postTransaction(form));
+      setSum(0);
     }
   };
 
@@ -69,46 +98,48 @@ export const FormCashFlow = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <form className="Form">
-        <TextDataInput
-          label={'Account balance'}
-          // value={`Account balance: UAN ${balance}`}
-          // fieldError={formik.errors.salary}
-          // isFieldTouched={formik.touched.salary}
-          name={'salary'}
-          placeholder={'75 000'}
-          value={balance}
-          isReadOnly={true}
-        />
+    <div className="Container">
+      <form>
+        <div className="Form">
+          <TextDataInput
+            label={'Account balance'}
+            placeholder={'75 000'}
+            value={`Account balance: UAN ${balance}`}
+            isReadOnly={true}
+          />
 
-        <label className="labelForm">
-          <p className="labelText">Per category</p>
-          <SelectCategory getChange={e => setCategories(e)} />
-        </label>
+          <label className="labelForm">
+            <p className="labelText">Per category</p>
+            <SelectCategory getChange={e => setCategories(e)} />
+            {isErrorCategories ? (
+              <p className="TextDataInput_Error">required field</p>
+            ) : null}
+          </label>
 
-        <TextDataInput
-          onChange={e => setSum(e.target.value)}
-          label={'Sum'}
-          // value={`Account balance: UAN ${balance}`}
-          placeholder={'00.00'}
-          // getChange={e => console.log(e.target.value)}
-          value={sum === 0 ? '' : sum}
-        />
+          <TextDataInput
+            onChange={e => setSum(e.target.value)}
+            label={'Sum'}
+            placeholder={'00.00'}
+            value={sum === 0 ? '' : sum}
+            isFieldTouched={isFieldTouched}
+            fieldError={
+              'required field'
+            }
+          />
 
-        <TextDataInput
-          label={'Expense comment'}
-          onChange={e => setComent(e.target.value)}
-          value={coment}
-          // value={`Account balance: UAN ${balance}`}
-          placeholder={'Concert tickets'}
+          <TextDataInput
+            label={'Expense comment'}
+            onChange={e => setComent(e.target.value)}
+            value={coment}
+            placeholder={'Concert tickets'}
+          />
+        </div>
+        <FinanceDataBoard
+          onSubmit={handlePostTransaction}
+          dailyLimit={!dailyLimit ? 600 : dailyLimit}
+          monthLimit={!monthLimit ? 1600 : monthLimit}
         />
       </form>
-      <FinanceDataBoard
-        onSubmit={handlePostTransaction}
-        dailyLimit={!dailyLimit ? 600 : dailyLimit}
-        monthLimit={!monthLimit ? 1600 : monthLimit}
-      />
-    </>
+    </div>
   );
 };
