@@ -51,7 +51,7 @@ export const App = () => {
       <div>
         {/* <button onClick={handleCardOpen}>Open Greeting Card</button> */}
 
-        {showCard && <GreetingCard onClose={handleCardClose} />}
+        {/* {showCard && <GreetingCard onClose={handleCardClose} />} */}
       </div>
       <SharedLayout />
       <Routes>
