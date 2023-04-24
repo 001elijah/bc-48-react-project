@@ -166,11 +166,11 @@ const DynamicsChart = () => {
         data: labels.map((label, idx) => {
           if (idx < 9) {
             return (
-              '0' + (idx + 1) === stats.month && stats.income * (procent / 100)
+              idx + 1 === Number(stats.month) && stats.income * (procent / 100)
             );
           } else {
             return (
-              '' + (idx + 1) === stats.month && stats.income * (procent / 100)
+              idx + 1 === Number(stats.month) && stats.income * (procent / 100)
             );
           }
         }),
@@ -179,9 +179,9 @@ const DynamicsChart = () => {
       {
         data: labels.map((label, idx) => {
           if (idx < 9) {
-            return '0' + (idx + 1) === stats.month && stats.expense;
+            return idx + 1 === Number(stats.month) && stats.expense;
           } else {
-            return '' + (idx + 1) === stats.month && stats.expense;
+            return idx + 1 === Number(stats.month) && stats.expense;
           }
         }),
         backgroundColor: '#3a6af5',
@@ -189,9 +189,9 @@ const DynamicsChart = () => {
       {
         data: labels.map((label, idx) => {
           if (idx < 9) {
-            return '0' + (idx + 1) === stats.month && stats.income;
+            return idx + 1 === Number(stats.month) && stats.income;
           } else {
-            return '' + (idx + 1) === stats.month && stats.income;
+            return idx + 1 === Number(stats.month) && stats.income;
           }
         }),
         backgroundColor: '#f3f3f3',

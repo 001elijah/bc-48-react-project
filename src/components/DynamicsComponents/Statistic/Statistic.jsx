@@ -29,41 +29,88 @@ const monthNames = [
 ];
 
 const MonthlyStats = () => {
-  const [datepicker, setDatepicker] = useState({ month: null, year: null });
-  const [
-    month,
-    // setMonth
-  ] = useState(monthNames[new Date().getMonth()]);
-  const [
-    year,
-    // setYear
-  ] = useState(new Date().getFullYear());
-  const requstMonth = monthNames.findIndex(monthName => monthName === month);
+  const [date, setDate] = useState({
+    month: monthNames[new Date().getMonth()],
+    year: new Date().getFullYear(),
+  });
+  const [month, setMonth] = useState(null);
+  const [year, setYear] = useState(null);
+  const requstMonth = monthNames.findIndex(
+    monthName => monthName === date.month
+  );
   const savingStatistics = useSelector(selectCustomerSavingStatistic);
   const dispatch = useDispatch();
+  const selectDatepicker = document.querySelector('#datepicker');
 
   useEffect(() => {
-    dispatch(getCustomerSavingsForStatistic({ year, month: requstMonth + 1 }));
+    dispatch(
+      getCustomerSavingsForStatistic({
+        year: date.year,
+        month: requstMonth + 1,
+      })
+    );
+  }, [date]);
+
+  useEffect(() => {
+    if (month === null) return;
+    setDate({ month, year });
   }, [month, year]);
 
   const onChangeSelect = e => {
-    console.log(e.currentTarget.children.dateBox.children.date.textContent);
+    selectDatepicker.classList.toggle(s.ninja);
+    setYear(null);
+    setMonth(null);
+  };
+
+  const onSelectYear = e => {
+    const selectedYear = e.target.textContent;
+    setYear(Number(selectedYear));
+  };
+  const onSelectMonth = e => {
+    const selectedMonth = e.target.textContent;
+    setMonth(selectedMonth);
+    selectDatepicker.classList.toggle(s.ninja);
   };
 
   return (
     <>
       <div className={s.select} onClick={onChangeSelect}>
-        <div name="dateBox" className={s.monthInfo}>
+        <div className={s.monthInfo}>
           <p className={s.title}>Month</p>
-          <p name="date" className={s.exactMonth}>
-            {month} {year}
+          <p id="date" className={s.exactMonth}>
+            {date.month} {date.year}
           </p>
         </div>
         <div className={s.iconWrapper}>
           <KeyboardArrowDownIcon sx={{ color: '#fff', fontSize: 24 }} />
         </div>
       </div>
-      <div className={clsx(s.datepicker, s.ninja)}></div>
+      <div id="datepicker" className={clsx(s.datepicker, s.ninja)}>
+        {!year ? (
+          <ul onClick={onSelectYear}>
+            <li key="1" className={s.selectItem}>
+              2023
+            </li>
+            <li key="2" className={s.selectItem}>
+              2022
+            </li>
+            <li key="3" className={s.selectItem}>
+              2021
+            </li>
+            <li key="4" className={s.selectItem}>
+              2020
+            </li>
+          </ul>
+        ) : (
+          <ul onClick={onSelectMonth} className={s.selectList}>
+            {monthNames.map((monthName, idx) => (
+              <li key={idx} className={s.selectItem}>
+                {monthName}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
       <ul className={s.list}>
         <li className={s.item}>
           <span className={s.descr}>Income, ₴</span>

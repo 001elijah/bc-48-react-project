@@ -112,11 +112,36 @@
 .datepicker {
   position: absolute;
   width: 343px;
-  height: 260px;
-  background-color: #fff;
+  // height: 260px;
+  background-color: #1f2534;
   border-radius: 16px;
 }
 
 .ninja {
-  display: none;
+  visibility: hidden;
+}
+
+.selectList {
+  width: 343px;
+  max-height: 300px;
+  overflow-y: scroll;
+  border-radius: 16px;
+}
+
+.selectItem {
+  width: 100%;
+  height: 45px;
+  background-color: #1f2534;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  line-height: 1.18;
+
+  &:first-child {
+    border-radius: 16px 16px 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 16px 16px;
+  }
 }
