@@ -56,12 +56,6 @@ const authSlice = createSlice({
                     state.error = payload;
                 }
             )
-            .addMatcher(
-                action => (action.type.startsWith('personalPlan') && action.type.endsWith('/rejected')),
-                (state, { payload }) => {
-                    state.error = payload;
-                }
-        )
     }
 });
 export const { refreshError } = authSlice.actions;
