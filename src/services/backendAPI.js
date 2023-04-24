@@ -249,7 +249,14 @@ export const postTransactionApi = ({ type, category, comment, sum, date }) => {
 };
 
 export const getListOfTransactionsApi = ({ month, year }) => {
-  return axios.get('/api/cashflow', { month, year }).then(({ data }) => data);
+  return axios
+    .get('/api/cashflow', {
+      params: {
+        month,
+        year,
+      },
+    })
+    .then(({ data }) => data);
 };
 
 export const deleteOneTransactionApi = transactionId => {
@@ -258,22 +265,9 @@ export const deleteOneTransactionApi = transactionId => {
     .then(() => transactionId);
 };
 
-export const putOneTransactionApi = ({
-  transactionId,
-  type,
-  category,
-  comment,
-  sum,
-  date,
-}) => {
+export const putOneTransactionApi = ({_id, type, comment, sum, category}) => {
   return axios
-    .put(`/api/cashflow/${transactionId}`, {
-      type,
-      category,
-      comment,
-      sum,
-      date,
-    })
+    .put(`/api/cashflow/${_id}`, { type, category, comment, sum})
     .then(({ data: { type, category, comment, sum } }) => ({
       type,
       category,

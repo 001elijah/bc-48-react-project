@@ -7,6 +7,7 @@ import { PopUp } from '../PopUp/PopUp';
 import { useEffect, useState } from 'react';
 import { Calendar } from '../../DateInput/DateInput';
 import { getListOfTransactions } from '../../../redux/operations/cashflowOperations';
+// import {Notify} from "notiflix"
 
 export const Item = ({
   _id,
@@ -50,41 +51,40 @@ export const Item = ({
   );
 };
 
+
 export const ExpensesList = () => {
   const [popupActive, setPopupActive] = useState(false); //активація модального
   const [dataIn, setDataIn] = useState(''); //данні по обраній транзакції
   const [dateFilter, setDateFilter] = useState(); //обрані дати
   const [transactionData, setTransactionData] = useState([]); //отримання транзакцій
-  const[errorIn, setErrorIn] = useState()
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getListOfTransactions(dateFilter)).then(data =>{
-      console.log(data)
       if(typeof(data.payload)==='object')
       {setTransactionData(data.payload)
-        setErrorIn()}
+}
       else {
-        setErrorIn(data.payload)
         setTransactionData([]) 
+        // Notify.failure("You don't have transaction on this period")
       }}
     );
   }, [dateFilter, dispatch]);
-console.log(errorIn)
+  // console.log('dat', transactionData)
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
         <Calendar onDate={setDateFilter} />
         <StatisticsNav />
         <ul>
-          {(transactionData!==[]) ? (transactionData.map(item => (
+          {transactionData?.map(item => (
             <Item
               key={item._id}
               {...item}
               setActive={setPopupActive}
               setData={setDataIn}
             />
-          ))):('No transactions for this period')}
+          ))}
         </ul>
         {popupActive && (
           <PopUp

@@ -4,6 +4,7 @@ import { Calendar } from '../../DateInput/DateInput';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCashflowStat } from '../../../redux/operations/cashflowOperations';
+// import {Notify} from "notiflix"
 
 // const data = [
 //   {
@@ -51,12 +52,14 @@ export const Item = ({ id, amount, category, percentage }) => {
 export const CategoriesList = () => {
   const dispatch = useDispatch();
   const [dateFilter, setDateFilter] = useState(); //обрані дати
-  const [transactionData, setTransactionData] = useState([]); //отримання транзакцій
+  const [transactionData, setTransactionData] = useState(); //отримання транзакцій
 
   useEffect(() => {
     dispatch(getCashflowStat(dateFilter)).then(data => {
-      if (typeof data.payload === 'object') setTransactionData(data.payload);
-      else setTransactionData([]);
+      if (typeof data.payload === 'object') {setTransactionData(data.payload)}
+      else {setTransactionData([])
+      // Notify.failure("You don't have transaction on this period")
+    };
     });
   }, [dateFilter, dispatch]);
 
@@ -66,9 +69,7 @@ export const CategoriesList = () => {
         <Calendar onDate={setDateFilter} />
         <StatisticsNav />
         <ul>
-          {transactionData !== []
-            ? transactionData.map(item => <Item key={item.id} {...item} />)
-            : 'No transactions for this period'}
+          {transactionData?.map(item => <Item key={item.id} {...item} />)}
         </ul>
       </div>
     </div>

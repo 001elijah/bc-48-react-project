@@ -39,13 +39,14 @@ export default function SelectCategory({ currentCategory, changeCategory }) {
   const dispatch = useDispatch();
 
   const categories = useSelector(state => state?.categories?.categories);
+
   useEffect(() => {
-    dispatch(getListOfCategory());
+     dispatch(getListOfCategory());    
   }, [dispatch]);
 
   useEffect(() => {
     changeCategory(categoryValue);
-  }, [categoryValue, changeCategory]);
+  }, [categoryValue]);
 
   const category = categories?.map(({ name, title }) => {
     return {
@@ -60,7 +61,7 @@ export default function SelectCategory({ currentCategory, changeCategory }) {
         return categoryId.value === currentCategory;
       })
     );
-  }, [currentCategory, category]);
+  }, []);
 
   return (
     <Select

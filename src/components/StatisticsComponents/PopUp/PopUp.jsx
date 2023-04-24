@@ -2,14 +2,14 @@ import { useState } from 'react';
 import s from './Popup.module.scss';
 import iconSvg from '../Svg';
 import clsx from 'clsx';
-import {putOneTransaction} from '../../../redux/operations/cashflowOperations'
+import { putOneTransaction } from '../../../redux/operations/cashflowOperations';
 import SelectCategory from './Select';
 import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
 
 export const PopUp = ({ isActive, setActive, setData }) => {
-  const { _id, date, comment, category, sum, type} = setData;
-  const dispatch = useDispatch()
+  const { _id, date, comment, category, sum, type } = setData;
+  const dispatch = useDispatch();
   // const [options, setOptions] = useState([]);
   // console.log('data',setData)
   const initialValues = {
@@ -18,7 +18,7 @@ export const PopUp = ({ isActive, setActive, setData }) => {
     category,
     comment,
     sum,
-    type
+    type,
   };
   const [form, setForm] = useState(initialValues);
 
@@ -40,21 +40,22 @@ export const PopUp = ({ isActive, setActive, setData }) => {
   };
 
   const handleSelect = data => {
+    console.log(data)
     if (!data) return;
     const { name, value } = data;
+    console.log(name, value)
     setForm(prevForm => {
       return {
         ...prevForm,
-        [name]: value,
+        ['category']: value,
       };
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    dispatch(putOneTransaction({form}));
-    console.log('form', form);
+    // console.log('form', form);
+    dispatch(putOneTransaction(form));
     setActive(false);
   };
   return (
