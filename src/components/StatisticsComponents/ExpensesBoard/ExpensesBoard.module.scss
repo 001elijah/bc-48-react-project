@@ -4,8 +4,17 @@
 .container {
   @include container;
 }
-.wrapper{
+.wrapper {
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 343px;
+  @include tablet {
+    width: 704px;
+  }
+  @include desktop {
+    width: 769px;
+  }
 }
 
 .wrapper_category,
@@ -14,9 +23,9 @@
   width: 343px;
 
   background: $text-input-color;
-  &:not(:last-child){
+  &:not(:last-child) {
     border-bottom: 1px solid $border-color;
-  } 
+  }
   &:last-child {
     border-radius: 0px 0px 16px 16px;
   }
@@ -79,7 +88,6 @@
   font-size: 12px;
   line-height: 14px;
   color: $input-hint-color;
-  ;
   margin-bottom: 3px;
 }
 .expense_comment,
@@ -121,6 +129,12 @@
   margin-bottom: 15px;
 }
 .icon_block {
+  display: flex;
+
+}
+.icon_svg{
+  margin-right: 7px;
+  cursor: pointer;
 }
 .comment_block,
 .category_block {
@@ -161,10 +175,19 @@
   line-height: 17px;
   text-align: left;
   margin-top: 8px;
-  color: $text-color1 ;
+  color: $text-color1;
 }
 .positions {
   position: relative;
   background-color: black;
 }
-
+.expense_block {
+  @include desktop {
+    height: 420px;
+    overflow: scroll;
+  }
+  @include tablet {
+    height: 420px;
+    overflow: scroll;
+  }
+}

@@ -109,13 +109,10 @@ export const deleteOneTransaction = createAsyncThunk(
     }
   }
 );
-
 export const putOneTransaction = createAsyncThunk(
   'cashflow/putOneTransaction',
-  console.log('tok'),
   async (transactionIdAndData, { getState, rejectWithValue }) => {
     const { token } = getState().authorized;
-    console.log('tok', transactionIdAndData);
     axiosHeaderToken.set(token);
     try {
       const transaction = await putOneTransactionApi(transactionIdAndData);

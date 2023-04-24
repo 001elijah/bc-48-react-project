@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router-dom';
-// import {ExpensesList} from '../components/StatisticsComponents/StatisticsBoard/StatisticsBoard'
-// import {StatisticsNav} from '../components/StatisticsComponents/StatisticsNav/StatisticsNav'
+import { Outlet} from 'react-router-dom';
+
 
 export const StatisticsPage = () => {
-    return (
-        <p>StatisticsPage</p>,
-        <Outlet/>
-    );
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
