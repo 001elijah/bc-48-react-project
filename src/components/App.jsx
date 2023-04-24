@@ -10,7 +10,6 @@ import { StatisticsPage } from 'pages/StatisticsPage';
 import{ ExpensesList} from './StatisticsComponents/ExpensesBoard/ExpensesBoard'
 import {CategoriesList} from './StatisticsComponents/CategoryBoard/CategoryBoard'
 import { selectAuthorized } from 'redux/selectors/authSelectors';
-import { useSelector } from 'react-redux';
 import { useDispatch, useSelector } from "react-redux";
 
 // на модалку з поздоровленням
@@ -108,8 +107,8 @@ export const App = () => {
           // </Route>
           // <Route />
 
-          // element={ <PrivateRoute component={<PrivateRouteAndHasPlan component={<StatisticsPage />}/>}/>}
-          component={<StatisticsPage />}
+          element={ <PrivateRoute component={<PrivateRouteAndHasPlan component={<StatisticsPage />}/>}/>}
+          // component={<StatisticsPage />}
         >
           <Route path="/statistics/expenses" element={<ExpensesList />} />
           <Route path="/statistics/categories" element={<CategoriesList />} />

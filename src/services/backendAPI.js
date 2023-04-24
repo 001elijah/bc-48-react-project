@@ -267,6 +267,7 @@ export const deleteOneTransactionApi = transactionId => {
 };
 
 export const putOneTransactionApi = ({_id, type, comment, sum, category}) => {
+  console.log('edit')
   return axios
     .put(`/api/cashflow/${_id}`, { type, category, comment, sum})
     .then(({ data: { type, category, comment, sum } }) => ({

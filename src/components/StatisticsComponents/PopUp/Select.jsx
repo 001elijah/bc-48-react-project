@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
-import { getListOfCategory } from '../../../redux/operations/categoriesOperations';
 import '../../../components/Select/SelectCategory.scss';
 // import s from './Popup.module.scss';
 
@@ -10,6 +9,7 @@ const colourStyles = {
     ...styles,
     width: '275px',
     border: 'none',
+    boxShadow: "none",
     backgroundColor: '#252C4180',
     height: '74px',
     outline: 'none',
@@ -20,15 +20,14 @@ const colourStyles = {
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: '16px',
-    color: '#f3f3f3',
+    color: '#fff',
   }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
     // const color = chroma(data.color);
     return {
       ...styles,
-      backgroundColor: ' #191D28',
-      color: '#f3f3f3',
-      cursor: isDisabled ? 'not-allowed' : 'default',
+      backgroundColor: ' #fff',
+      // cursor: isDisabled ? 'not-allowed' : 'default',
       fontFamily: 'Lato',
     };
   },
@@ -39,10 +38,6 @@ export default function SelectCategory({ currentCategory, changeCategory }) {
   const dispatch = useDispatch();
 
   const categories = useSelector(state => state?.categories?.categories);
-
-  useEffect(() => {
-     dispatch(getListOfCategory());    
-  }, [dispatch]);
 
   useEffect(() => {
     changeCategory(categoryValue);
