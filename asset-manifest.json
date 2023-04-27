@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/bc-48-react-project/static/css/main.f66ded75.css",
-    "main.js": "/bc-48-react-project/static/js/main.67f37c8e.js",
+    "main.css": "/bc-48-react-project/static/css/main.ec98506d.css",
+    "main.js": "/bc-48-react-project/static/js/main.218ba840.js",
     "static/media/Lato-Semibold.ttf": "/bc-48-react-project/static/media/Lato-Semibold.dab63590f439194ec956.ttf",
     "static/media/Lato-Bold.ttf": "/bc-48-react-project/static/media/Lato-Bold.9cfae71062337c38b44f.ttf",
     "static/media/Lato-Regular.ttf": "/bc-48-react-project/static/media/Lato-Regular.cbcf73593dd54516d4b3.ttf",
@@ -20,13 +20,13 @@
     "static/media/glyphicons-halflings-regular.eot": "/bc-48-react-project/static/media/glyphicons-halflings-regular.5be1347c682810f199c7.eot",
     "static/media/one-more-sq-meter.png": "/bc-48-react-project/static/media/one-more-sq-meter.461fb7ef939628c36610.png",
     "static/media/glyphicons-halflings-regular.woff2": "/bc-48-react-project/static/media/glyphicons-halflings-regular.be810be3a3e14c682a25.woff2",
-    "static/media/sprite.svg": "/bc-48-react-project/static/media/sprite.66dfd3a02b11bfbe9d2765e6a4417e7c.svg",
+    "static/media/sprite.svg": "/bc-48-react-project/static/media/sprite.5e6c44aeceff6934ae9b29639dadf3f8.svg",
     "index.html": "/bc-48-react-project/index.html",
-    "main.f66ded75.css.map": "/bc-48-react-project/static/css/main.f66ded75.css.map",
-    "main.67f37c8e.js.map": "/bc-48-react-project/static/js/main.67f37c8e.js.map"
+    "main.ec98506d.css.map": "/bc-48-react-project/static/css/main.ec98506d.css.map",
+    "main.218ba840.js.map": "/bc-48-react-project/static/js/main.218ba840.js.map"
   },
   "entrypoints": [
-    "static/css/main.f66ded75.css",
-    "static/js/main.67f37c8e.js"
+    "static/css/main.ec98506d.css",
+    "static/js/main.218ba840.js"
   ]
 }
