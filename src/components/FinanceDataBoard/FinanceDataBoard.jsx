@@ -140,7 +140,7 @@ export const FinanceDataBoard = ({
               <input
                 className={s.DataDisplayField}
                 type="text"
-                placeholder={`${dailyLimit}$`}
+                placeholder={`${dailyLimit} ₴`}
                 readOnly
               />
               <label>
@@ -151,7 +151,7 @@ export const FinanceDataBoard = ({
               <input
                 className={s.DataDisplayField}
                 type="text"
-                placeholder={`${monthLimit}$`}
+                placeholder={`${monthLimit} ₴`}
                 readOnly
               />
               <label>

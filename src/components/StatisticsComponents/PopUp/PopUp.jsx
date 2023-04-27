@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import {
+  // useEffect,
+  useState
+} from 'react';
 import s from './Popup.module.scss';
 import iconSvg from '../Svg';
 import clsx from 'clsx';
@@ -25,7 +28,7 @@ export const PopUp = ({ isActive, setActive, setData, formChange }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    console.log('name, value ', name, value);
+    // console.log('name, value ', name, value);
     if (name === 'sum') {
       if (Boolean(Number(value)) === false) {
         Notify.warning('Please, input number');
@@ -49,12 +52,12 @@ export const PopUp = ({ isActive, setActive, setData, formChange }) => {
   const handleSelect = data => {
     // console.log(data)
     if (!data) return;
-    const { name, value } = data;
-    console.log(name, value);
+    // const { name, value } = data;
+    // console.log(name, value);
     setForm(prevForm => {
       return {
         ...prevForm,
-        ['category']: value,
+        // ['category']: value,
       };
     });
   };
@@ -63,7 +66,7 @@ export const PopUp = ({ isActive, setActive, setData, formChange }) => {
     e.preventDefault();
     console.log('form', form);
     dispatch(putOneTransaction(form));
-    formChange(form)
+    // formChange(form)
     setActive(false);
   };
   return (

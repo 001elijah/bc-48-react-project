@@ -41,6 +41,7 @@ export const postPlan = createAsyncThunk('personalPlan/post',
             console.log('posted the plan');
             return plan;
         } catch (error) {
+            if (error?.response?.status === 400) Notify.warning('You already have personal plan!');
             rejectWithValue(error.message);
         }
     }

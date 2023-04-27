@@ -104,7 +104,7 @@ export const FormCashFlow = () => {
           <TextDataInput
             label={'Account balance'}
             placeholder={'75 000'}
-            value={`Account balance: UAN ${balance}`}
+            value={`Account balance: ${balance} UAH`}
             isReadOnly={true}
           />
 

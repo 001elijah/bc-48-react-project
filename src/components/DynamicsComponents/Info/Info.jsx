@@ -29,7 +29,7 @@ const Info = () => {
     if ((squareMeters / footage) * 100 >= 100) {
       setShowCard(true);
     }
-  }, []);
+  }, [footage, squareMeters]);
 
   return (
     <div className={s.info}>

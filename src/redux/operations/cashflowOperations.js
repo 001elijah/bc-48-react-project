@@ -103,6 +103,9 @@ export const deleteOneTransaction = createAsyncThunk(
     axiosHeaderToken.set(token);
     try {
       await deleteOneTransactionApi(transactionId);
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 0);
       // return transactionId;
     } catch (error) {
       rejectWithValue(error.message);
@@ -116,6 +119,9 @@ export const putOneTransaction = createAsyncThunk(
     axiosHeaderToken.set(token);
     try {
       const transaction = await putOneTransactionApi(transactionIdAndData);
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 0);
       return transaction;
     } catch (error) {
       throw Error(error.message);

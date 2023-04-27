@@ -1,6 +1,9 @@
 import s from './ExpensesBoard.module.scss';
 import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch,
+  // useSelector
+} from 'react-redux';
 import { PopUp } from '../PopUp/PopUp';
 import { useEffect, useState } from 'react';
 import { Calendar } from '../../DateInput/DateInput';
@@ -15,21 +18,19 @@ export const ExpensesList = () => {
   const [dataIn, setDataIn] = useState(''); //данні по обраній транзакції
   const [dateFilter, setDateFilter] = useState(''); //обрані дати
   const [transactionData, setTransactionData] = useState([]); //отримання транзакцій
-  const [form, setForm]= useState()
+  // const [form, setForm] = useState();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getListOfCategory());    
- }, []);
+ }, [dispatch]);
 
   useEffect(() => {
     dispatch(getListOfTransactions(dateFilter)).then(data => {
       setTransactionData(data.payload);
     })
-  }, [dateFilter]);
-
-
+  }, [dispatch, dateFilter]);
 
 if (!transactionData || transactionData===[]) return;
 
@@ -46,14 +47,14 @@ if (!transactionData || transactionData===[]) return;
               setActive={setPopupActive}
               setData={setDataIn}
             />
-          ))):(Notify.failure("You don't have transaction on this period"))}
+          ))):(Notify.failure("You don't have transactions for this period"))}
         </ul>
         {popupActive && (
           <PopUp
             isActive={popupActive}
             setActive={setPopupActive}
             setData={dataIn}
-            formChange={setForm}
+            // formChange={setForm}
           />
         )}
       </div>
