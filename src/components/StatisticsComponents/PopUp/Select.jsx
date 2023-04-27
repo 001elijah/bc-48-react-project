@@ -21,18 +21,15 @@ const colourStyles = {
     color: '#fff',
   }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    // const color = chroma(data.color);
     return {
       ...styles,
       backgroundColor: ' #fff',
-      // cursor: isDisabled ? 'not-allowed' : 'default',
       fontFamily: 'Lato',
     };
   },
 };
 
 export default function SelectCategory({ currentCategory, setCategory }) {
-
   const categories = useSelector(state => state?.categories?.categories);
 
   const category = categories?.map(({ name, title }) => {
@@ -40,13 +37,11 @@ export default function SelectCategory({ currentCategory, setCategory }) {
       value: name,
       label: title,
     };
-  }, );
+  });
 
-const defaultcategory = (
-  category.find(categoryId => {
+  const defaultcategory = category.find(categoryId => {
     return categoryId.value === currentCategory;
-  })
-)
+  });
 
   return (
     <Select

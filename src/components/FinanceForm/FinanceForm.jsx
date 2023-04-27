@@ -71,7 +71,7 @@ export const FinanceForm = () => {
     initialValues: plan || '',
     enableReinitialize: true,
     onSubmit: values => {
-      console.log(values);
+      // console.log(values);
       dispatch(
         postPlan({
           salary: +values.salary,

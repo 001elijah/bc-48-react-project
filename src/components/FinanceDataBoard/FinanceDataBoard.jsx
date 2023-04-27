@@ -59,7 +59,7 @@ export const FinanceDataBoard = ({
   };
 
   const handleAddBalance = () => {
-    if (balance) console.log('You already have the balance');
+    // if (balance) console.log('You already have the balance');
 
     // console.log(typeof sum);
 
@@ -140,7 +140,7 @@ export const FinanceDataBoard = ({
               <input
                 className={s.DataDisplayField}
                 type="text"
-                placeholder={`${dailyLimit}$`}
+                placeholder={`${dailyLimit} ₴`}
                 readOnly
               />
               <label>
@@ -151,7 +151,7 @@ export const FinanceDataBoard = ({
               <input
                 className={s.DataDisplayField}
                 type="text"
-                placeholder={`${monthLimit}$`}
+                placeholder={`${monthLimit} ₴`}
                 readOnly
               />
               <label>

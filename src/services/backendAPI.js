@@ -47,7 +47,7 @@ export const currentUserLogoutApi = () => {
 };
 
 export const addBalanceApi = balance => {
-  console.log('adding balance:', balance);
+  // console.log('adding balance:', balance);
   return axios
     .put('/api/user/addBalance', { balance })
     .then(({ data: { balance } }) => ({ balance }));
@@ -267,7 +267,6 @@ export const deleteOneTransactionApi = transactionId => {
 };
 
 export const putOneTransactionApi = ({ _id, type, comment, sum, category }) => {
-  console.log('edit');
   return axios
     .put(`/api/cashflow/${_id}`, { type, category, comment, sum })
     .then(({ data: { type, category, comment, sum } }) => ({
@@ -333,7 +332,7 @@ export const getCustomerSavingsForStatisticApi = ({ year, month }) => {
 };
 
 export const addOrChangeImageOfFlatApi = imageFile => {
-  console.log('api works!');
+  // console.log('api works!');
   return axios
     .patch('/api/dynamics/flatImage', imageFile, {
       headers: {

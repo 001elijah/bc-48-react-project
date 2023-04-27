@@ -53,7 +53,7 @@ const MonthlyStats = () => {
         month: requstMonth + 1,
       })
     );
-  }, [date]);
+  }, [dispatch, date, requstMonth]);
 
   useEffect(() => {
     if (month === null) return;

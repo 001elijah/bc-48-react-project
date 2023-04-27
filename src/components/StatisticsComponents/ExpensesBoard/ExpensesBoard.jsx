@@ -25,11 +25,11 @@ export const ExpensesList = () => {
       setTransactionData(data.payload);
     });
   }, [dateFilter, dispatch, popupActive]);
-  
-  console.log('on board',transactionData );
 
-  if (transactionData?.length===0) return;
-  
+  console.log('on board', transactionData);
+
+  if (transactionData?.length === 0) return;
+
   console.log('board');
 
   return (
@@ -39,22 +39,28 @@ export const ExpensesList = () => {
           <Calendar onDate={setDateFilter} />
           <StatisticsNav />
           <ul className={s.expense_block}>
-            {(typeof(transactionData)==='object')?(transactionData?.map(item => (
-            <Item
-              key={item._id}
-              {...item}
-              setActive={setPopupActive}
-              setData={setDataIn}
-            />
-          ))):(<p className={s.error_mes}>You didn't have transaction on this period</p>)}
+            {typeof transactionData === 'object' ? (
+              transactionData?.map(item => (
+                <Item
+                  key={item._id}
+                  {...item}
+                  setActive={setPopupActive}
+                  setData={setDataIn}
+                />
+              ))
+            ) : (
+              <p className={s.error_mes}>
+                You didn't have transaction on this period
+              </p>
+            )}
           </ul>
           {popupActive && (
-          <PopUp
-            isActive={popupActive}
-            setActive={setPopupActive}
-            setData={dataIn}
-          />
-        )}
+            <PopUp
+              isActive={popupActive}
+              setActive={setPopupActive}
+              setData={dataIn}
+            />
+          )}
         </div>
       </div>
     </div>
