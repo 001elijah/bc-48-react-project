@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  // useDispatch,
+  useSelector
+} from 'react-redux';
 import Select from 'react-select';
 import '../../../components/Select/SelectCategory.scss';
 // import s from './Popup.module.scss';
@@ -35,13 +38,13 @@ const colourStyles = {
 
 export default function SelectCategory({ currentCategory, changeCategory }) {
   const [categoryValue, setCategoryValue] = useState('');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const categories = useSelector(state => state?.categories?.categories);
 
   useEffect(() => {
     changeCategory(categoryValue);
-  }, [categoryValue]);
+  }, [categoryValue, changeCategory]);
 
   const category = categories?.map(({ name, title }) => {
     return {
@@ -56,7 +59,7 @@ export default function SelectCategory({ currentCategory, changeCategory }) {
         return categoryId.value === currentCategory;
       })
     );
-  }, []);
+  }, [setCategoryValue, category, currentCategory]);
 
   return (
     <Select

@@ -4,6 +4,7 @@ import { Calendar } from '../../DateInput/DateInput';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCashflowStat } from '../../../redux/operations/cashflowOperations';
+import shortid from 'shortid';
 // import {Notify} from "notiflix"
 
 export const Item = ({ id, amount, category, percentage }) => {
@@ -40,7 +41,7 @@ export const CategoriesList = () => {
         <Calendar onDate={setDateFilter} />
         <StatisticsNav />
         <ul>
-          {transactionData?.map(item => <Item key={item.id} {...item} />)}
+          {transactionData?.map(item => <Item key={shortid.generate()} {...item} />)}
         </ul>
       </div>
     </div>
