@@ -12,7 +12,7 @@ export const RegisterPage = () => {
 
     const handleRegisterUser = (dataForm) => {
         dispatch(register(dataForm)).then(result => {
-            console.log(result)
+            // console.log(result)
             if (!result.error)
                 navigate('/');
         });

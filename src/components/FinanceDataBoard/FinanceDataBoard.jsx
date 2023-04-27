@@ -59,7 +59,7 @@ export const FinanceDataBoard = ({
   };
 
   const handleAddBalance = () => {
-    if (balance) console.log('You already have the balance');
+    // if (balance) console.log('You already have the balance');
 
     // console.log(typeof sum);
 

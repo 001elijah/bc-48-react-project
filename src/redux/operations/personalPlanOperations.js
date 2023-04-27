@@ -35,10 +35,10 @@ export const postPlan = createAsyncThunk('personalPlan/post',
     async (planData, { getState, rejectWithValue }) => {
         const { token } = getState().authorized;
         axiosHeaderToken.set(token);
-        console.log('posting the plan');
+        // console.log('posting the plan');
         try {
             const plan = await postPlanAPI(planData);
-            console.log('posted the plan');
+            // console.log('posted the plan');
             return plan;
         } catch (error) {
             if (error?.response?.status === 400) Notify.warning('You already have personal plan!');
