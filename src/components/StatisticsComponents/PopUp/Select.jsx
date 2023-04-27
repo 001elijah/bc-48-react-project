@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import '../../../components/Select/SelectCategory.scss';
-// import s from './Popup.module.scss';
 
 const colourStyles = {
   control: styles => ({

@@ -48,7 +48,7 @@ export const PopUp = ({ isActive, setActive, setData}) => {
 
   const handleSelect = data => {
     if (!data) return;
-    const { value, label } = data;
+    const { value } = data;
     console.log(value);
     setForm(prevForm => {
       return {
