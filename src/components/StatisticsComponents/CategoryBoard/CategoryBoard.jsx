@@ -23,28 +23,30 @@ export const Item = ({ id, amount, category, percentage }) => {
 export const CategoriesList = () => {
   const dispatch = useDispatch();
   const [dateFilter, setDateFilter] = useState(); //обрані дати
-  const [transactionData, setTransactionData] = useState(); //отримання транзакцій
+  const [transactionData, setTransactionData] = useState([]); //отримання транзакцій
 
   useEffect(() => {
     dispatch(getCashflowStat(dateFilter)).then(data => {
-      if (typeof data.payload === 'object') {setTransactionData(data.payload)}
-      else {setTransactionData([])
-      // Notify.failure("You don't have transaction on this period")
-    };
+      setTransactionData(data.payload);
     });
   }, [dateFilter, dispatch]);
+console.log('cat', transactionData)
+  if (transactionData?.length === 0) return;
 
   return (
-<div className={s.background_img}>
-<div className={s.container}>
-      <div className={s.wrapper}>
-        <Calendar onDate={setDateFilter} />
-        <StatisticsNav />
-        <ul  className={s.expense_block}>
-          {transactionData?.map(item => <Item key={item.id} {...item} />)}
-        </ul>
+    <div className={s.background_img}>
+      <div className={s.container}>
+        <div className={s.wrapper}>
+          <Calendar onDate={setDateFilter} />
+          <StatisticsNav />
+          <ul className={s.expense_block}>
+            {(typeof(transactionData)==='object')? (transactionData?.map(item => (
+              <Item key={item.category} {...item} />
+            ))):(<p className={s.error_mes}>You didn't have transaction on this period</p>)
+            }
+          </ul>
+        </div>
       </div>
     </div>
-</div>
   );
 };

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import '../../../components/Select/SelectCategory.scss';
@@ -32,13 +31,9 @@ const colourStyles = {
   },
 };
 
-export default function SelectCategory({ currentCategory, changeCategory }) {
-  const [categoryValue, setCategoryValue] = useState('');
-  const categories = useSelector(state => state?.categories?.categories);
+export default function SelectCategory({ currentCategory, setCategory }) {
 
-  useEffect(() => {
-    changeCategory(categoryValue);
-  }, [categoryValue]);
+  const categories = useSelector(state => state?.categories?.categories);
 
   const category = categories?.map(({ name, title }) => {
     return {
@@ -47,13 +42,11 @@ export default function SelectCategory({ currentCategory, changeCategory }) {
     };
   }, );
 
-  useEffect(() => {
-    setCategoryValue(
-      category.find(categoryId => {
-        return categoryId.value === currentCategory;
-      })
-    );
-  },[]);
+const defaultcategory = (
+  category.find(categoryId => {
+    return categoryId.value === currentCategory;
+  })
+)
 
   return (
     <Select
@@ -61,10 +54,10 @@ export default function SelectCategory({ currentCategory, changeCategory }) {
       className={'react-select-container'}
       styles={colourStyles}
       name="category"
-      onChange={changeCategory}
+      onChange={setCategory}
       options={category}
-      value={categoryValue}
       isSearchable={false}
+      defaultValue={defaultcategory}
     />
   );
 }

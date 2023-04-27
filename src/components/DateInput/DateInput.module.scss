@@ -2,23 +2,23 @@
 @import 'src/assets/styles/utils/vars';
 
 .calendar {
-    position: absolute;  
-    top: -114px;
-    left: 0px;
+  position: absolute;
+  top: -114px;
+  left: 0px;
+  z-index: 1;
+  width: 217px;
+  @include tablet {
+    top: -54px;
+    left: 484px;
     z-index: 1;
-    width: 217px;
-    @include tablet {
-      top: -54px;
-      left: 484px;
-      z-index: 1;
-    }
-    @include desktop {
-      top: -54px;
-      left: 550px;
-      z-index: 1;
-    }
   }
-  
+  @include desktop {
+    top: -54px;
+    left: 550px;
+    z-index: 1;
+  }
+}
+
 .input_field {
   display: flex;
   justify-content: space-between;
@@ -44,57 +44,76 @@
   /* white */
   color: $main-white;
 }
-.month{
+.month {
   margin-bottom: 15px;
 }
-.popper{
+.popper {
   width: 217px;
   height: 220px;
 }
-:global .react-datepicker{
+:global .react-datepicker {
   border-radius: 15px;
   width: 217px;
+  border:none;
 }
-:global .react-datepicker__triangle{
-  display:none;
+:global .react-datepicker__triangle {
+  display: none;
 }
 
 :global .react-datepicker__header {
-border-radius: 15px;
-outline: none;
-border: none;
-margin-left: auto;
-margin-right: auto;
-width: 215px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0;
+  outline: none;
+  border-bottom: 1px solid  #2424240D;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60px;
+  background: none;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+:global .react-datepicker__navigation{
+  height:60px;
+}
+:global .react-datepicker__month .react-datepicker__month-text {
 
-font-family: 'Lato';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 19px;
+  padding: 6px 18px;
+  margin: 0;
+  width: 57px;
 }
 
- 
-:global .react-datepicker__month-container{
+:global .react-datepicker__month-container {
   float: none;
 }
+:global .react-datepicker__month-text{
+  width: 57px;
+  border-radius: 50px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
 
-:global .react-datepicker__header{
-  border-radius: 15px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
 }
-:global .react-datepicker__month{
-  font-family: 'Lato';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
+:global .react-datepicker__month-text--keyboard-selected {
+  padding: 6px 18px;
+  width: 57px;
+  background: #3a6af5;
+  border-radius: 50px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
 
-color: #242424;
-}
-
-:global  .react-datepicker__month-wrapper{
-  margin-bottom: 15px;
-}
-:global  .global .react-datepicker-popper{
-  padding: 0;
+  color: #f3f3f3;
 }

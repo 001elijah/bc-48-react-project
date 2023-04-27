@@ -33,6 +33,8 @@ export const Calendar = ({onDate}) => {
         showMonthYearPicker
         customInput={<ChangeInput />}
         wrapperClassName={s.calendar}
+        // minDate={subDays(new Date(), 5)} // add start tarnsaction
+        maxDate={new Date()}
         />
   );
 };
