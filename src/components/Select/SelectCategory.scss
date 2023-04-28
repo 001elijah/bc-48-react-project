@@ -1,4 +1,5 @@
 .react-select {
+  background-color: red;
   &-container {
     height: 100%;
     border-color: transparent !important;
@@ -25,7 +26,7 @@
     }
   }
   &__single-value {
-    color: wheat !important;
+    color: #F3F3F3 !important;
   }
 
   &__indicator-separator {
