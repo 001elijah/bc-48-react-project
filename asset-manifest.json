@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/bc-48-react-project/static/css/main.3cb9085a.css",
+    "main.css": "/bc-48-react-project/static/css/main.f3daa2f7.css",
     "main.js": "/bc-48-react-project/static/js/main.41509055.js",
     "static/media/Lato-Semibold.ttf": "/bc-48-react-project/static/media/Lato-Semibold.dab63590f439194ec956.ttf",
     "static/media/Lato-Bold.ttf": "/bc-48-react-project/static/media/Lato-Bold.9cfae71062337c38b44f.ttf",
@@ -22,11 +22,11 @@
     "static/media/glyphicons-halflings-regular.woff2": "/bc-48-react-project/static/media/glyphicons-halflings-regular.be810be3a3e14c682a25.woff2",
     "static/media/sprite.svg": "/bc-48-react-project/static/media/sprite.322b354724982eb7ce30df5d45d8000f.svg",
     "index.html": "/bc-48-react-project/index.html",
-    "main.3cb9085a.css.map": "/bc-48-react-project/static/css/main.3cb9085a.css.map",
+    "main.f3daa2f7.css.map": "/bc-48-react-project/static/css/main.f3daa2f7.css.map",
     "main.41509055.js.map": "/bc-48-react-project/static/js/main.41509055.js.map"
   },
   "entrypoints": [
-    "static/css/main.3cb9085a.css",
+    "static/css/main.f3daa2f7.css",
     "static/js/main.41509055.js"
   ]
 }
