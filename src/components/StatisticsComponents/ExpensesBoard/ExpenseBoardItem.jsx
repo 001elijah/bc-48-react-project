@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import s from './ExpensesBoard.module.scss';
 import { deleteOneTransaction } from '../../../redux/operations/cashflowOperations';
 import iconSvg from '../Svg';
+import moment from 'moment';
 
 export const Item = ({
   _id,
@@ -18,13 +19,14 @@ export const Item = ({
     setActive(true);
     setData(setTransData);
   };
+const newDate =moment().format("DD MM YYYY");
 
   return (
     <>
       <li key={_id} className={s.wrapper_expense}>
         <div className={s.comment_block}>
           <div>
-            <p className={s.expense_date}>{date}</p>
+            <p className={s.expense_date}>{newDate}</p>
             <p className={s.expense_comment}>{comment}</p>
           </div>
           <p className={s.expense_sum}> {sum} UAH</p>

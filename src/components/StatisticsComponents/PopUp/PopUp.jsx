@@ -1,7 +1,4 @@
-import {
-  // useEffect,
-  useState
-} from 'react';
+import { useState } from 'react';
 import s from './Popup.module.scss';
 import iconSvg from '../Svg';
 import clsx from 'clsx';
@@ -10,7 +7,7 @@ import SelectCategory from './Select';
 import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
 
-export const PopUp = ({ isActive, setActive, setData, formChange }) => {
+export const PopUp = ({ isActive, setActive, setData }) => {
   const { _id, date, comment, category, sum, type } = setData;
   const dispatch = useDispatch();
   const initialValues = {
@@ -23,12 +20,10 @@ export const PopUp = ({ isActive, setActive, setData, formChange }) => {
   };
   const [form, setForm] = useState(initialValues);
 
-  // console.log(categories);
   const getBackdropClass = () => clsx(s.backdrop, isActive && s.active);
 
   const handleChange = e => {
     const { name, value } = e.target;
-    // console.log('name, value ', name, value);
     if (name === 'sum') {
       if (Boolean(Number(value)) === false) {
         Notify.warning('Please, input number');
@@ -44,20 +39,18 @@ export const PopUp = ({ isActive, setActive, setData, formChange }) => {
     setForm(prevForm => {
       return {
         ...prevForm,
-        [name]: (value),
+        [name]: value,
       };
     });
   };
 
   const handleSelect = data => {
-    // console.log(data)
+
     if (!data) return;
-    // const { name, value } = data;
-    // console.log(name, value);
     setForm(prevForm => {
       return {
         ...prevForm,
-        // ['category']: value,
+        "category": data.value,
       };
     });
   };
@@ -66,9 +59,9 @@ export const PopUp = ({ isActive, setActive, setData, formChange }) => {
     e.preventDefault();
     console.log('form', form);
     dispatch(putOneTransaction(form));
-    // formChange(form)
     setActive(false);
   };
+
   return (
     <div
       className={getBackdropClass()}
@@ -88,7 +81,7 @@ export const PopUp = ({ isActive, setActive, setData, formChange }) => {
               <span className={s.labelTitle}>Per category</span>
               <SelectCategory
                 currentCategory={category}
-                changeCategory={handleSelect}
+                setCategory={handleSelect}
               />
             </label>
           </div>

@@ -1,63 +1,68 @@
 import s from './ExpensesBoard.module.scss';
 import { StatisticsNav } from '../StatisticsNav/StatisticsNav';
-import {
-  useDispatch,
-  // useSelector
-} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { PopUp } from '../PopUp/PopUp';
 import { useEffect, useState } from 'react';
 import { Calendar } from '../../DateInput/DateInput';
 import { getListOfTransactions } from '../../../redux/operations/cashflowOperations';
-import {Item} from './ExpenseBoardItem'
-import {Notify} from "notiflix"
+import { Item } from './ExpenseBoardItem';
 import { getListOfCategory } from '../../../redux/operations/categoriesOperations';
-
 
 export const ExpensesList = () => {
   const [popupActive, setPopupActive] = useState(false); //активація модального
   const [dataIn, setDataIn] = useState(''); //данні по обраній транзакції
   const [dateFilter, setDateFilter] = useState(''); //обрані дати
   const [transactionData, setTransactionData] = useState([]); //отримання транзакцій
-  // const [form, setForm] = useState();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getListOfCategory());    
- }, [dispatch]);
+    dispatch(getListOfCategory());
+  });
 
   useEffect(() => {
     dispatch(getListOfTransactions(dateFilter)).then(data => {
       setTransactionData(data.payload);
-    })
-  }, [dispatch, dateFilter]);
+    });
+  }, [dateFilter, dispatch, popupActive]);
 
-if (!transactionData || transactionData===[]) return;
+  // console.log('on board', transactionData);
+
+  if (transactionData?.length === 0) return;
+
+  // console.log('board');
 
   return (
-    <div className={s.container}>
-      <div className={s.wrapper}>
-        <Calendar onDate={setDateFilter} />
-        <StatisticsNav />
-        <ul className={s.expense_block}>
-          {(typeof(transactionData)==='object')?(transactionData?.map(item => (
-            <Item
-              key={item._id}
-              {...item}
+    // <div className={s.background_img}>
+      <div className={s.container}>
+        <div className={s.wrapper}>
+          <Calendar onDate={setDateFilter} />
+          <StatisticsNav />
+          <ul className={s.expense_block}>
+            {typeof transactionData === 'object' ? (
+              transactionData?.map(item => (
+                <Item
+                  key={item._id}
+                  {...item}
+                  setActive={setPopupActive}
+                  setData={setDataIn}
+                />
+              ))
+            ) : (
+              <p className={s.error_mes}>
+                You didn't have transaction on this period
+              </p>
+            )}
+          </ul>
+          {popupActive && (
+            <PopUp
+              isActive={popupActive}
               setActive={setPopupActive}
-              setData={setDataIn}
+              setData={dataIn}
             />
-          ))):(Notify.failure("You don't have transactions for this period"))}
-        </ul>
-        {popupActive && (
-          <PopUp
-            isActive={popupActive}
-            setActive={setPopupActive}
-            setData={dataIn}
-            // formChange={setForm}
-          />
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    // </div>
   );
 };

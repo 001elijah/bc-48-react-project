@@ -18,18 +18,11 @@ export const Calendar = ({onDate}) => {
 
   const year = startDate.getFullYear();
   const month =startDate.getMonth()+1
-  // const month_ =()=>{
-  //   if(month<10){
-  //     return ("0"+month)
-  //   }
-  // }
 
   useEffect(()=>{
       onDate({month, year})
   },[onDate, year, month])
 
-
-  // console.log(getMonth, getYear);
   return (
       <DatePicker
         dateFormat="MMMM, yyyy"
@@ -40,6 +33,8 @@ export const Calendar = ({onDate}) => {
         showMonthYearPicker
         customInput={<ChangeInput />}
         wrapperClassName={s.calendar}
+        // minDate={subDays(new Date(), 5)} // add start tarnsaction
+        maxDate={new Date()}
         />
   );
 };

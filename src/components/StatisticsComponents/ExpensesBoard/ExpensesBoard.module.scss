@@ -1,8 +1,32 @@
 @import 'src/assets/styles/utils/mixins';
 @import 'src/assets/styles/utils/vars';
-
+// .background_img{
+//   @include tablet{
+//     background-image: url(../../../assets/img/bg-tablet.png);
+//     background-size: contain
+//   }
+//   @include desktop{
+//   background-image: url(../../../assets/img/bg-desktop.png);
+//   background-size: contain
+//   }
+// }
 .container {
   @include container;
+  
+    @include tablet {
+      background-image: url('../../../assets/img/bg-tablet.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: bottom;
+      height: calc(100vh - 72px);
+    }
+  
+    @include desktop {
+      background-image: url('../../../assets/img/bg-desktop.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: bottom;
+    }
 }
 .wrapper {
   position: relative;
@@ -183,11 +207,19 @@
 }
 .expense_block {
   @include desktop {
-    height: 420px;
-    overflow: scroll;
+    max-height: 420px;
+    overflow-y: scroll;
   }
   @include tablet {
-    height: 420px;
-    overflow: scroll;
+    max-height: 420px;
+    overflow-y: scroll;
   }
+}
+// .expense_block::-webkit-scrollbar {
+//   width: 2px;               /* ширина всей полосы прокрутки */
+// }
+.error_mes{
+  padding-top: 30px;
+  text-align: center;
+  font-size: 15px;
 }
