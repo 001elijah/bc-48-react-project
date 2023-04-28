@@ -35,7 +35,7 @@
   border-radius: 16px;
   border: none;
 
-  font-family: 'Lato';
+  font-family: 'Lato-Regular';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -71,7 +71,7 @@
   margin-right: auto;
   height: 60px;
   background: none;
-  font-family: 'Lato';
+  font-family: 'Lato-Regular';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -85,6 +85,12 @@
   padding: 6px 18px;
   margin: 0;
   width: 57px;
+
+  font-family: 'Lato-Regular';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
 }
 
 :global .react-datepicker__month-container {

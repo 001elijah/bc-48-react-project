@@ -3,17 +3,32 @@
 
 .container {
   @include container;
-}
-.background_img{
-  @include tablet{
-    background-image: url(../../../assets/img/bg-tablet.png);
-    background-size: contain
+
+  @include tablet {
+    background-image: url('../../../assets/img/bg-tablet.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    height: calc(100vh - 72px);
   }
-  @include desktop{
-  background-image: url(../../../assets/img/bg-desktop.png);
-  background-size: contain
+
+  @include desktop {
+    background-image: url('../../../assets/img/bg-desktop.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
   }
 }
+// .background_img{
+//   @include tablet{
+//     background-image: url(../../../assets/img/bg-tablet.png);
+//     background-size: contain
+//   }
+//   @include desktop{
+//   background-image: url(../../../assets/img/bg-desktop.png);
+//   background-size: contain
+//   }
+// }
 .wrapper{
   position: relative;
   position: relative;
@@ -197,9 +212,9 @@
     overflow-y: scroll;
   }
 }
-.expense_block::-webkit-scrollbar {
-  width: 2px;               /* ширина всей полосы прокрутки */
-}
+// .expense_block::-webkit-scrollbar {
+//   width: 2px;               /* ширина всей полосы прокрутки */
+// }
 .error_mes{
   padding-top: 30px;
   text-align: center;

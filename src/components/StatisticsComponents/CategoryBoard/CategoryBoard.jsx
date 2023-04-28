@@ -4,7 +4,7 @@ import { Calendar } from '../../DateInput/DateInput';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCashflowStat } from '../../../redux/operations/cashflowOperations';
-import shortid from 'shortid';
+// import shortid from 'shortid';
 // import {Notify} from "notiflix"
 
 export const Item = ({ id, amount, category, percentage }) => {
@@ -31,11 +31,11 @@ export const CategoriesList = () => {
       setTransactionData(data.payload);
     });
   }, [dateFilter, dispatch]);
-console.log('cat', transactionData)
+// console.log('cat', transactionData)
   if (transactionData?.length === 0) return;
 
   return (
-    <div className={s.background_img}>
+    // <div className={s.background_img}>
       <div className={s.container}>
         <div className={s.wrapper}>
           <Calendar onDate={setDateFilter} />
@@ -48,6 +48,6 @@ console.log('cat', transactionData)
           </ul>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };

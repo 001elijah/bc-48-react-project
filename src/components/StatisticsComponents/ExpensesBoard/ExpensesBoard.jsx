@@ -26,14 +26,14 @@ export const ExpensesList = () => {
     });
   }, [dateFilter, dispatch, popupActive]);
 
-  console.log('on board', transactionData);
+  // console.log('on board', transactionData);
 
   if (transactionData?.length === 0) return;
 
-  console.log('board');
+  // console.log('board');
 
   return (
-    <div className={s.background_img}>
+    // <div className={s.background_img}>
       <div className={s.container}>
         <div className={s.wrapper}>
           <Calendar onDate={setDateFilter} />
@@ -63,6 +63,6 @@ export const ExpensesList = () => {
           )}
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
